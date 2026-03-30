@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servicios Fotovoltaicos en Cantabria | Cantabria Solar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#bfcaba",
+              "surface-tint": "#1b6d24",
+              "on-surface": "#191c1b",
+              "on-tertiary-fixed": "#281900",
+              "surface-container-high": "#e6e9e7",
+              "primary-container": "#2e7d32",
+              "on-surface-variant": "#40493d",
+              "tertiary-fixed": "#ffdeac",
+              "inverse-primary": "#88d982",
+              "secondary-fixed": "#cfe5ff",
+              "secondary-container": "#62b4fe",
+              "surface-variant": "#e1e3e1",
+              "surface-dim": "#d8dad9",
+              "surface-container-highest": "#e1e3e1",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceeec",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f8faf8",
+              "outline": "#707a6c",
+              "on-secondary-fixed-variant": "#004a78",
+              "on-secondary-container": "#004470",
+              "background": "#f8faf8",
+              "primary-fixed": "#a3f69c",
+              "on-primary-fixed": "#002204",
+              "on-primary-container": "#cbffc2",
+              "primary-fixed-dim": "#88d982",
+              "secondary": "#00629e",
+              "on-background": "#191c1b",
+              "on-primary-fixed-variant": "#005312",
+              "surface-container-lowest": "#ffffff",
+              "tertiary": "#734e00",
+              "on-secondary-fixed": "#001d34",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f2f4f2",
+              "error": "#ba1a1a",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#99cbff",
+              "surface": "#f8faf8",
+              "inverse-on-surface": "#eff1ef",
+              "primary": "#0d631b",
+              "on-tertiary-container": "#ffefda",
+              "on-tertiary-fixed-variant": "#604100",
+              "inverse-surface": "#2e3130",
+              "tertiary-container": "#926500",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#ffba38"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black text-green-900 dark:text-green-50 uppercase tracking-tighter">
+                Cantabria Solar
+            </div>
+<div class="hidden md:flex items-center gap-8 font-['Manrope'] font-semibold text-sm tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 dark:hover:text-green-200 transition-colors" href="#">Precios</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 dark:hover:text-green-200 transition-colors" href="#">Cómo Funciona</a>
+<a class="text-green-700 dark:text-green-400 border-b-2 border-green-700 dark:border-green-400 pb-1" href="#">Cantabria</a>
+</div>
+<button class="bg-tertiary text-tertiary-fixed px-6 py-2.5 rounded-lg font-headline font-bold text-sm scale-95 active:scale-90 transition-transform hover:bg-amber-900 transition-all duration-300">
+                Pedir Presupuesto Gratis
+            </button>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section: Editorial Headline -->
+<section class="max-w-7xl mx-auto px-6 mb-24">
+<div class="max-w-4xl">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-primary leading-[1.1] mb-8">
+                    Nuestros Servicios Fotovoltaicos en Cantabria
+                </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed font-light">
+                    Transformamos la luz del norte en ahorro real para tu hogar o empresa. Instaladores placas solares Cantabria certificados con compromiso local.
+                </p>
+</div>
+</section>
+<!-- Services Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 mb-32">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Service 1: Residencial -->
+<div class="md:col-span-8 bg-surface-container-lowest p-8 md:p-12 rounded-3xl flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6" data-icon="home">home</span>
+<h2 class="font-headline text-3xl font-bold mb-4">Autoconsumo Residencial</h2>
+<p class="text-on-surface-variant text-lg max-w-lg mb-8">
+                            Reduce tu factura eléctrica hasta un 70% desde el primer día. Gestionamos todas las subvenciones del Gobierno de Cantabria para que tu inversión sea mínima y tu tranquilidad máxima.
+                        </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-sm font-medium">Instalación llave en mano en 48h</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-sm font-medium">Ahorro fiscal en el IBI local</span>
+</li>
+</ul>
+</div>
+<div class="md:absolute md:right-0 md:bottom-0 md:w-1/2 h-64 md:h-full mt-6 md:mt-0">
+<img alt="Instalación residencial" class="w-full h-full object-cover rounded-2xl md:rounded-none group-hover:scale-105 transition-transform duration-700" data-alt="Modern family home in Cantabria with sleek black solar panels on a slate roof under a bright clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCljy2OM0F-OHbMiLriPqIXN99FktqGqs4bhwrrA0NT9XexJE20d8DuQdgW785FATkLmWO0XVAiT8fHoEDEOMNIqXLicSdkphI3igwC7ueYHQGCP_JG6uJxsh2V4CNRhuRb1k0DwXMuIsg43u8gOmsGdprGuBUTlOWZp2BNcttRX9oJI7sruSLvmT4mO43qdr8IE_qKElPGByiePpuHUwIvIsmH3jfxfybZWRaoVMXLONJKxHUs31Ss7jzd6PbYFubpnxy9HbGCBQ"/>
+</div>
+</div>
+<!-- Service 2: Industrial -->
+<div class="md:col-span-4 bg-primary text-on-primary p-8 rounded-3xl flex flex-col">
+<span class="material-symbols-outlined text-primary-fixed text-4xl mb-6" data-icon="factory">factory</span>
+<h2 class="font-headline text-3xl font-bold mb-4">Industrial</h2>
+<p class="text-on-primary-container text-lg mb-8 leading-relaxed">
+                        Potencia la competitividad de tu negocio. Amortización acelerada y reducción drástica de costes fijos energéticos para naves industriales y pymes.
+                    </p>
+<div class="mt-auto">
+<button class="w-full bg-primary-fixed text-on-primary-fixed py-4 rounded-xl font-bold hover:bg-white transition-colors">
+                            Estudio de Viabilidad
+                        </button>
+</div>
+</div>
+<!-- Service 3: Mantenimiento -->
+<div class="md:col-span-12 bg-surface-container-low p-8 md:p-12 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+                            Mantenimiento fotovoltaico Santander
+                        </div>
+<h2 class="font-headline text-3xl md:text-4xl font-bold mb-6">Mantenimiento y Monitorización</h2>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">
+                            Asegura el máximo rendimiento de tu instalación. Realizamos limpiezas profesionales y auditorías técnicas para evitar pérdidas por degradación o suciedad, muy comunes en el clima costero cántabro.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="cleaning_services">cleaning_services</span>
+<span class="font-semibold text-sm">Limpieza Profesional</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="monitoring">monitoring</span>
+<span class="font-semibold text-sm">App de Seguimiento</span>
+</div>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden h-80">
+<img alt="Mantenimiento solar" class="w-full h-full object-cover" data-alt="Technical worker in high-visibility gear inspecting solar panel connections on a sunny rooftop overlooking the Cantabrian Sea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuY0gGaVJHO0SoWQfob-Lrem9p8tPH1YL1oYCg8PklCnp4NdgCsF9BNJ649G18Nyt2iw0T--4kRLSQTyOOkpZrMsXh5VulP4qxqVpGjnOhBr2uWlFDEviKXNhdjZGrRk0RNK_JfQCDQ8ebj32eXpa5XdlTt3fLsRrHvhjSou8J0MpanntV0tVlSn25704RYSRRu3p4Z11tibox8p5VTFk05rzbt2Z3LQ9meAPKnEBCKAZKJNRiKg-AbnlM-TLSn5fbpdzS0DXQVQ8"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Area Map Section -->
+<section class="max-w-7xl mx-auto px-6 mb-32">
+<div class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary/5 flex flex-col md:flex-row">
+<div class="p-10 md:p-16 md:w-1/2">
+<h2 class="font-headline text-4xl font-extrabold mb-6 leading-tight">Cobertura en toda Cantabria</h2>
+<p class="text-on-surface-variant text-lg mb-10">
+                        Nuestra red de instaladores técnicos se desplaza a cualquier rincón de la tierruca. Estamos presentes en los principales núcleos urbanos y zonas rurales.
+                    </p>
+<div class="grid grid-cols-2 gap-y-4 gap-x-8">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-medium">Santander</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-medium">Torrelavega</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-medium">Castro Urdiales</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-medium">Camargo</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-medium">Piélagos</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-medium">Laredo</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 h-96 md:h-auto grayscale hover:grayscale-0 transition-all duration-700 bg-surface-container-high relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary/20" data-icon="map">map</span>
+</div>
+<img alt="Mapa de Cantabria" class="w-full h-full object-cover opacity-60" data-alt="Abstract aerial topographic map aesthetic of Northern Spain coastline with deep greens and ocean blues" data-location="Cantabria" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zHBZe5TInunNn859gP6epcXupRwQxdtEMxH0n0tqBNNbrTtGdi0EOCyyhKIoyaNjtNWnMaIcHShE_ewY6CdpH5P6grbQasjOZyi8gBGFnPhyCSPGsxAcmsTFDGZQCwE6uak5osWj9C3O04L-gBLcu8NAWdCQcwh1gx8BQuL6ZZA3uNg0Xh-DDC31TpDkh64lHChFSsXmYCbMibkmw8JR-tS3nb3MKltwNlBREGUWB-5R0A0qn5D_hP0Bcut1GwtA-QjXagfvJuQ"/>
+</div>
+</div>
+</section>
+<!-- Trust Atmospheric CTA -->
+<section class="max-w-7xl mx-auto px-6 mb-32">
+<div class="bg-primary-container text-on-primary-container p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline text-4xl md:text-5xl font-bold mb-8">¿Listo para unirte a la revolución solar?</h2>
+<p class="text-xl max-w-2xl mx-auto mb-12 opacity-90">
+                        Nuestros expertos realizarán un estudio gratuito personalizado para tu tejado. Sin compromisos, solo ahorro real.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-tertiary text-tertiary-fixed px-10 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-transform shadow-xl shadow-black/10">
+                            Solicitar Presupuesto Gratis
+                        </button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
+                            Llámanos ahora
+                        </button>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-tertiary-fixed/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary-fixed/20 rounded-full blur-3xl"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-3xl mt-20 bg-slate-50 dark:bg-slate-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-16 max-w-7xl mx-auto font-['Inter'] text-sm leading-relaxed">
+<div class="md:col-span-1">
+<div class="text-xl font-bold text-green-900 dark:text-green-50 mb-6">Cantabria Solar</div>
+<p class="text-slate-500 dark:text-slate-400 mb-6">
+                    Líderes en energía fotovoltaica profesional en el Norte de España.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="thumb_up">thumb_up</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-green-800 dark:text-green-400 mb-6">Localidades</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Santander</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Torrelavega</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Castro Urdiales</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Camargo</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-green-800 dark:text-green-400 mb-6">Información</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Piélagos</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Laredo</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Aviso Legal</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-green-700 underline decoration-amber-500/30 underline-offset-4" href="#">Privacidad</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-green-800 dark:text-green-400 mb-6">Certificaciones</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-12 bg-slate-200 dark:bg-slate-800 rounded flex items-center justify-center">
+<span class="text-[10px] font-bold opacity-50">ISO 9001</span>
+</div>
+<div class="h-12 bg-slate-200 dark:bg-slate-800 rounded flex items-center justify-center">
+<span class="text-[10px] font-bold opacity-50">FOTOVOLTAICA+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 py-8 px-8 max-w-7xl mx-auto text-center">
+<p class="text-slate-500 dark:text-slate-400 text-xs">© 2024 Cantabria Solar. Energía fotovoltaica profesional.</p>
+</div>
+</footer>
+</body></html>

@@ -2,7 +2,7 @@ export const header = `
   <header class="header">
     <nav class="nav container">
       <a href="/" class="logo">
-        <img src="/src/logotipo horizontal.svg" alt="eSolar Cantabria">
+        <img src="/logotipo-horizontal.svg" alt="eSolar Cantabria">
       </a>
       <ul class="nav-links">
         <li><a href="/">Inicio</a></li>
@@ -22,7 +22,7 @@ export const footer = `
     <div class="container footer-grid">
       <div class="footer-col">
         <a href="/" class="logo" style="margin-bottom: 1.5rem;">
-          <img src="/src/logotipo-monocolor blanco.svg" alt="eSolar Cantabria" style="height: 50px;">
+          <img src="/logotipo-monocolor-blanco.svg" alt="eSolar Cantabria" style="height: 50px;">
         </a>
         <p style="margin-top: 1.5rem; color: #ccc;">Expertos en energía solar fotovoltaica en Cantabria. Lideramos la transición energética en nuestra región con soluciones personalizadas, asesoramiento experto y toda la documentación para tus ayudas.</p>
       </div>

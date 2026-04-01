@@ -87,6 +87,10 @@
               <input type="tel" name="telefono" placeholder="+34 600 000 000" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
             </div>
             <div>
+              <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Correo Electrónico</label>
+              <input type="email" name="email" placeholder="tu@email.com" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
+            </div>
+            <div>
               <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Localidad en Cantabria</label>
               <input type="text" name="localidad" placeholder="Ej: Torrelavega" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
             </div>
@@ -99,7 +103,13 @@
                 <option value="cabaña">Cabaña / Finca Rural</option>
               </select>
             </div>
-            <button type="submit" id="submit-btn" class="btn btn-primary" style="margin-top: 1rem;">
+            <div>
+              <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">
+                Mensaje <span style="font-weight: 400; color: #aaa;">(opcional)</span>
+              </label>
+              <textarea name="mensaje" rows="4" placeholder="Cuéntanos algo más sobre tu proyecto o cualquier duda que tengas…" style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd; resize: vertical; font-family: inherit; font-size: 1rem;"></textarea>
+            </div>
+            <button type="submit" id="submit-btn" class="btn btn-primary" style="margin-top: 0.5rem;">
               Enviar Solicitud
             </button>
           </form>

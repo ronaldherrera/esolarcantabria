@@ -3,17 +3,41 @@ import { initCommonUI } from './src/components.js';
 // Initialize Global UI Components
 initCommonUI();
 
+/**
+ * ANIMACIONES AL HACER SCROLL (REVEAL)
+ */
+const initScrollAnimations = () => {
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // Una vez animado, dejamos de observar para ahorrar recursos
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Seleccionamos elementos que queremos animar automáticamente
+  // Añadimos la clase .reveal a secciones, tarjetas y elementos de rejilla
+  const elementsToAnimate = document.querySelectorAll('section, .glass-card, .step-card, .faq-item, .grid-3 > div');
+  
+  elementsToAnimate.forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+};
+
 // --- CALCULADOR WIZARD LOGIC v2.0 ---
 const wizard = {
+  // ... (mantenemos la lógica del calculador igual)
   currentStep: 1,
   totalSteps: 4,
-  data: {
-    municipioIbi: 0,
-    gastoLuz: 120,
-    superficie: 40,
-    consumoKwh: null,
-    email: ''
-  },
+  data: { municipioIbi: 0, gastoLuz: 120, superficie: 40, consumoKwh: null, email: '' },
   
   init() {
     this.bindEvents();
@@ -24,7 +48,7 @@ const wizard = {
     document.querySelectorAll('.next-step').forEach(btn => btn.addEventListener('click', () => this.nextStep()));
     document.querySelectorAll('.prev-step').forEach(btn => btn.addEventListener('click', () => this.prevStep()));
     
-    // Step 1 Inputs
+    // Step 1
     const gastoInput = document.getElementById('gastoLuz');
     if (gastoInput) {
       gastoInput.addEventListener('input', (e) => {
@@ -33,7 +57,7 @@ const wizard = {
       });
     }
 
-    // Step 2 Inputs
+    // Step 2
     const superficieInput = document.getElementById('superficieTejado');
     if (superficieInput) {
       superficieInput.addEventListener('change', (e) => this.data.superficie = e.target.value);
@@ -91,26 +115,19 @@ const wizard = {
   },
 
   calculateFinal() {
-    // Collect Fresh Data
     const municipio = document.getElementById('municipioIbi').value;
     const superficie = parseFloat(document.getElementById('superficieTejado').value) || 40;
     const kwhManual = parseFloat(document.getElementById('consumoKwh').value);
     
-    // 1. Determinar consumo mensual (kWh)
-    // Si no hay manual, estimamos: Factura / 0.22€ (precio medio kWh con impuestos)
     const consumoMensualKwh = kwhManual || (this.data.gastoLuz / 0.22);
-    
-    // 2. Paneles necesarios vs Paneles posibles (Transparencia)
-    // Dimensionamos para cubrir el 100% teóricamente, luego limitamos
-    const panelesDeseados = Math.round(consumoMensualKwh / 45); // Un panel de 450W genera ~45kWh/mes en Cantabria
-    const panelesPorSuperficie = Math.floor(superficie / 2.1); // 2.1m² por panel con estructura y pasillos
+    const panelesDeseados = Math.round(consumoMensualKwh / 45); 
+    const panelesPorSuperficie = Math.floor(superficie / 2.1); 
     
     const numPaneles = Math.min(panelesDeseados, panelesPorSuperficie);
     const limitado = numPaneles < panelesDeseados;
     
-    // 3. Cálculos Económicos
     const potenciaKwp = (numPaneles * 0.45).toFixed(1);
-    let ahorroMensualFactura = (numPaneles * 45) * 0.20; // Ahorro directo kWh generado
+    let ahorroMensualFactura = (numPaneles * 45) * 0.20; 
     let ahorroAnualIbi = (municipio !== "0") ? 250 : 0;
     
     const ahorroTotalAnual = Math.round((ahorroMensualFactura * 12) + ahorroAnualIbi);
@@ -118,81 +135,69 @@ const wizard = {
     const roi = (inversionAprox / ahorroTotalAnual).toFixed(1);
     const co2 = (numPaneles * 0.28).toFixed(1);
 
-    // 4. Render Dashboard
     const dashboard = document.getElementById('dashboard-content');
-    dashboard.innerHTML = `
-      <div style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: 2.5rem 2rem; border-radius: 1.5rem; margin-bottom: 2rem; box-shadow: 0 15px 30px rgba(147, 197, 114, 0.3);">
-        <h3 style="margin-bottom: 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">Ahorro Anual Estimado</h3>
-        <div style="font-size: 4rem; font-weight: 800; line-height: 1;">
-          ${ahorroTotalAnual.toLocaleString('es-ES')} <span style="font-size: 1.8rem; opacity: 0.8;">€</span>
-        </div>
-        ${limitado ? `<p style="margin-top: 1rem; font-size: 0.85rem; padding: 0.5rem; background: rgba(0,0,0,0.1); border-radius: 0.5rem;">⚠️ Limitado por superficie disponible (${superficie}m²)</p>` : ''}
-      </div>
-      
-      <div class="grid grid-3" style="gap: 1rem; margin-bottom: 2rem;">
-        <div class="glass-card" style="padding: 1.2rem; background: #fafafa; border: none;">
-          <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">${numPaneles}</div>
-          <div style="font-size: 0.65rem; font-weight: 800; color: #999; text-transform: uppercase;">Paneles</div>
-        </div>
-        <div class="glass-card" style="padding: 1.2rem; background: #fafafa; border: none;">
-          <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">${roi}</div>
-          <div style="font-size: 0.65rem; font-weight: 800; color: #999; text-transform: uppercase;">Años ROI</div>
-        </div>
-        <div class="glass-card" style="padding: 1.2rem; background: #fafafa; border: none;">
-          <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);">${co2} t</div>
-          <div style="font-size: 0.65rem; font-weight: 800; color: #999; text-transform: uppercase;">CO2 Evitado/Año</div>
-        </div>
-      </div>
-
-      <div style="background: #fdfdfd; border: 1px solid #eee; border-radius: 1rem; padding: 1.5rem; text-align: left; margin-bottom: 1.5rem;">
-        <h4 style="font-size: 0.9rem; color: var(--dark-color); margin-bottom: 1rem;">🔍 Detalle Técnico de tu instalación</h4>
-        <div style="font-size: 0.85rem; color: #666; display: grid; gap: 0.8rem;">
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding-bottom: 0.5rem;">
-            <span>Potencia Total:</span>
-            <strong style="color: var(--dark-color);">${potenciaKwp} kWp</strong>
+    if (dashboard) {
+        dashboard.innerHTML = `
+          <div style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: 2.5rem 2rem; border-radius: 1.5rem; margin-bottom: 2rem; box-shadow: 0 15px 30px rgba(147, 197, 114, 0.3);">
+            <h3 style="margin-bottom: 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">Ahorro Anual Estimado</h3>
+            <div style="font-size: 4rem; font-weight: 800; line-height: 1;">
+              ${ahorroTotalAnual.toLocaleString('es-ES')} <span style="font-size: 1.8rem; opacity: 0.8;">€</span>
+            </div>
+            ${limitado ? `<p style="margin-top: 1rem; font-size: 0.85rem; padding: 0.5rem; background: rgba(0,0,0,0.1); border-radius: 0.5rem;">⚠️ Limitado por superficie disponible (${superficie}m²)</p>` : ''}
           </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding-bottom: 0.5rem;">
-            <span>Consumo Estimado:</span>
-            <strong style="color: var(--dark-color);">${Math.round(consumoMensualKwh)} kWh/mes</strong>
+          
+          <div class="grid grid-3" style="gap: 1rem; margin-bottom: 2rem;">
+            <div class="glass-card" style="padding: 1.2rem; background: #fafafa; border: none;">
+              <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">${numPaneles}</div>
+              <div style="font-size: 0.65rem; font-weight: 800; color: #999; text-transform: uppercase;">Paneles</div>
+            </div>
+            <div class="glass-card" style="padding: 1.2rem; background: #fafafa; border: none;">
+              <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">${roi}</div>
+              <div style="font-size: 0.65rem; font-weight: 800; color: #999; text-transform: uppercase;">Años ROI</div>
+            </div>
+            <div class="glass-card" style="padding: 1.2rem; background: #fafafa; border: none;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);">${co2} t</div>
+              <div style="font-size: 0.65rem; font-weight: 800; color: #999; text-transform: uppercase;">CO2 Evitado/Año</div>
+            </div>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span>Superficie Utilizada:</span>
-            <strong style="color: var(--dark-color);">${(numPaneles * 2.1).toFixed(1)} m²</strong>
+    
+          <div style="background: #fdfdfd; border: 1px solid #eee; border-radius: 1rem; padding: 1.5rem; text-align: left; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 0.9rem; color: var(--dark-color); margin-bottom: 1rem;">🔍 Detalle Técnico de tu instalación</h4>
+            <div style="font-size: 0.85rem; color: #666; display: grid; gap: 0.8rem;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding-bottom: 0.5rem;">
+                <span>Potencia Total:</span>
+                <strong style="color: var(--dark-color);">${potenciaKwp} kWp</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding-bottom: 0.5rem;">
+                <span>Consumo Estimado:</span>
+                <strong style="color: var(--dark-color);">${Math.round(consumoMensualKwh)} kWh/mes</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Superficie Utilizada:</span>
+                <strong style="color: var(--dark-color);">${(numPaneles * 2.1).toFixed(1)} m²</strong>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    `;
+        `;
+    }
   }
 };
 
-// Initialize if we are on Home
-if (document.getElementById('calculator-wizard') || document.getElementById('step1')) {
-  wizard.init();
-}
-
-// FAQ Logic
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const faqItem = button.parentElement;
-    faqItem.classList.toggle('active');
-  });
-});
-
-// Animations with Intersection Observer
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('fade-in');
-      observer.unobserve(entry.target);
+// --- INITIALIZATION ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Calculador
+    if (document.getElementById('calculator-wizard') || document.getElementById('step1')) {
+        wizard.init();
     }
-  });
-}, observerOptions);
+    
+    // FAQ
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const faqItem = button.parentElement;
+          faqItem.classList.toggle('active');
+        });
+    });
 
-document.querySelectorAll('section, .glass-card, .grid-3 > div').forEach(el => {
-  observer.observe(el);
+    // Iniciar Animaciones
+    initScrollAnimations();
 });

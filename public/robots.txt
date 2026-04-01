@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://esolarcantabria.vercel.app/sitemap.xml

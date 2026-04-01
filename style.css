@@ -57,7 +57,7 @@ body {
 /* Typography */
 h1, h2, h3 {
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .section-title {
@@ -134,7 +134,112 @@ h1, h2, h3 {
 }
 
 .nav-links a:hover, .nav-links a.active {
-  color: var(--primary-color);
+  color: var(--accent-color);
+}
+
+/* Botón hamburguesa */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background: var(--secondary-color);
+  border-radius: 4px;
+  transition: var(--transition);
+  transform-origin: center;
+}
+
+/* Animación X al abrir */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8.75px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8.75px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(320px, 85vw);
+    height: 100dvh;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 6rem 2rem 2rem;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1050;
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+    margin-top: 1.5rem;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+  }
+
+  .nav-cta {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 1rem !important;
+  }
+
+}
+
+/* Overlay oscuro detrás del menú móvil */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.nav-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Buttons */
@@ -201,6 +306,7 @@ h1, h2, h3 {
   font-size: 4.5rem;
   margin-bottom: 2rem;
   line-height: 1.1;
+  font-weight: 700;
 }
 
 .hero h1 span {
@@ -402,4 +508,71 @@ input[type="range"]::-webkit-slider-thumb {
 
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================
+   RESPONSIVE GLOBAL
+   ============================================= */
+@media (max-width: 768px) {
+  /* Contenedor */
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  /* Tipografía de secciones */
+  .section-title h2 {
+    font-size: 2rem;
+  }
+  .section-title {
+    margin-bottom: 3rem;
+  }
+
+  /* Hero páginas internas */
+  .page-hero {
+    padding: 9rem 0 4rem;
+  }
+  .page-hero h1 {
+    font-size: 2.2rem;
+  }
+  .breadcrumbs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Glass cards con menos padding */
+  .glass-card {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Logos en el footer más pequeños */
+  .footer-col .logo img {
+    height: 38px;
+  }
+
+  /* FAQ pregunta menor */
+  .faq-question {
+    font-size: 1rem;
+  }
+
+  /* Botones a ancho completo en acciones del hero */
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title h2 {
+    font-size: 1.7rem;
+  }
+  .page-hero h1 {
+    font-size: 1.9rem;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .logo img {
+    height: 38px;
+  }
 }

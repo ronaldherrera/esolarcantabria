@@ -4,14 +4,19 @@ export const header = `
       <a href="/" class="logo">
         <img src="/logotipo-horizontal.svg" alt="eSolar Cantabria">
       </a>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="/">Inicio</a></li>
         <li><a href="/servicios.html">Servicios</a></li>
         <li><a href="/subvenciones.html">Subvenciones</a></li>
         <li><a href="/proceso.html">Proceso</a></li>
         <li><a href="/nosotros.html">Nosotros</a></li>
         <li><a href="/faq.html">FAQ</a></li>
-        <li><a href="/contacto.html" class="btn btn-primary">Pide Presupuesto</a></li>
+        <li><a href="/contacto.html" class="btn btn-primary nav-cta">Pide Presupuesto</a></li>
       </ul>
     </nav>
   </header>
@@ -53,7 +58,7 @@ export const footer = `
       </div>
     </div>
     <div class="container copy">
-      <p>&copy; 2026 eSolar Cantabria. Todos los derechos reservados. | <a href="#">Aviso Legal</a> | <a href="#">Privacidad</a></p>
+      <p>&copy; 2026 eSolar Cantabria. Todos los derechos reservados. | <a href="/aviso-legal.html">Aviso Legal</a> | <a href="/privacidad.html">Privacidad</a></p>
     </div>
   </footer>
 `;
@@ -78,5 +83,42 @@ export function initCommonUI() {
     if (link.getAttribute('href') === currentPath || (currentPath === '/' && link.getAttribute('href') === '/')) {
       link.classList.add('active');
     }
+  });
+
+  // Menú hamburguesa
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  // Crear overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
+
+  function openMenu() {
+    navLinks.classList.add('open');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', true);
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    navLinks.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    navLinks.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Cerrar al hacer clic en el overlay
+  overlay.addEventListener('click', closeMenu);
+
+  // Cerrar al hacer clic en un enlace
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 }

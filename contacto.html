@@ -7,14 +7,14 @@
   <title>Presupuesto Placas Solares Cantabria Gratis | Contacto eSolar</title>
   <meta name="description" content="Solicita tu presupuesto de placas solares en Cantabria sin compromiso. Respuesta en menos de 24h. Estudio energético gratuito para Santander, Torrelavega, Castro Urdiales y toda la región.">
   <meta name="keywords" content="presupuesto placas solares Cantabria, contacto instalador solar Cantabria, estudio solar gratuito Cantabria, pedir presupuesto solar Santander">
-  <link rel="canonical" href="https://esolarcantabria.vercel.app/contacto.html">
+  <link rel="canonical" href="https://esolarcantabria.es/contacto.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://esolarcantabria.vercel.app/contacto.html">
+  <meta property="og:url" content="https://esolarcantabria.es/contacto.html">
   <meta property="og:title" content="Presupuesto Gratis Placas Solares Cantabria | eSolar Cantabria">
   <meta property="og:description" content="Estudio energético gratuito para tu hogar o empresa en Cantabria. Respuesta en menos de 24 horas.">
-  <meta property="og:image" content="https://esolarcantabria.vercel.app/logotipo-horizontal.svg">
+  <meta property="og:image" content="https://esolarcantabria.es/logotipo-horizontal.svg">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="eSolar Cantabria">
 
@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Presupuesto Solar Gratis Cantabria | eSolar">
   <meta name="twitter:description" content="Pide tu presupuesto de placas solares en Cantabria. Respuesta en 24h.">
-  <meta name="twitter:image" content="https://esolarcantabria.vercel.app/logotipo-horizontal.svg">
+  <meta name="twitter:image" content="https://esolarcantabria.es/logotipo-horizontal.svg">
 
   <!-- JSON-LD: BreadcrumbList -->
   <script type="application/ld+json">
@@ -30,8 +30,8 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Inicio","item":"https://esolarcantabria.vercel.app/"},
-      {"@type":"ListItem","position":2,"name":"Contacto","item":"https://esolarcantabria.vercel.app/contacto.html"}
+      {"@type":"ListItem","position":1,"name":"Inicio","item":"https://esolarcantabria.es/"},
+      {"@type":"ListItem","position":2,"name":"Contacto","item":"https://esolarcantabria.es/contacto.html"}
     ]
   }
   </script>
@@ -66,29 +66,74 @@
         </div>
         <div class="glass-card fade-in" style="background: white;">
           <h3 style="margin-bottom: 2rem;">Solicitar Estudio Energético</h3>
-          <form id="contact-form" class="grid" style="gap: 1.5rem;">
+
+          <!-- ✅ Mensaje de confirmación (oculto por defecto) -->
+          <div id="form-success" style="display:none; background: #e8f5e9; border: 1px solid var(--primary-color); border-radius: 0.8rem; padding: 1.5rem; text-align: center; margin-bottom: 1rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">¡Solicitud enviada!</h4>
+            <p>Nos pondremos en contacto contigo en menos de 24 horas.</p>
+          </div>
+
+          <form id="contact-form" class="grid" style="gap: 1.5rem;"
+                action="https://formspree.io/f/XXXXXXXX"
+                method="POST">
+
+            <!-- Campo oculto para que Formspree use el asunto correcto -->
+            <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto solar – eSolar Cantabria">
+
             <div>
               <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Nombre Completo</label>
-              <input type="text" placeholder="Ej: Juan Pérez" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
+              <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
             </div>
             <div>
               <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Teléfono de Contacto</label>
-              <input type="tel" placeholder="+34 000 000 000" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
+              <input type="tel" name="telefono" placeholder="+34 600 000 000" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
             </div>
             <div>
               <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Localidad en Cantabria</label>
-              <input type="text" placeholder="Ej: Torrelavega" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
+              <input type="text" name="localidad" placeholder="Ej: Torrelavega" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
             </div>
             <div>
               <label style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Tipo de Inmueble</label>
-              <select required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
+              <select name="tipo_inmueble" required style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; border: 1px solid #ddd;">
                 <option value="unifamiliar">Vivienda Unifamiliar</option>
                 <option value="comunidad">Comunidad de Propietarios</option>
                 <option value="industrial">Empresa / Nave Industrial</option>
+                <option value="cabaña">Cabaña / Finca Rural</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Enviar Solicitud</button>
+            <button type="submit" id="submit-btn" class="btn btn-primary" style="margin-top: 1rem;">
+              Enviar Solicitud
+            </button>
           </form>
+
+          <script>
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('form-success');
+            const submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', async (e) => {
+              e.preventDefault();
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Enviando…';
+
+              const data = new FormData(form);
+              const response = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+              });
+
+              if (response.ok) {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+              } else {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitud';
+                alert('Ha ocurrido un error. Por favor, escríbenos a hola@esolarcantabria.es');
+              }
+            });
+          </script>
         </div>
       </div>
     </section>

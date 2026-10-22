@@ -63,9 +63,22 @@ export const footer = `
   </footer>
 `;
 
+export const cookieBanner = `
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+      <span>🍪</span>
+      <p>Utilizamos cookies propias para asegurar que damos la mejor experiencia al usuario en nuestra web. Si continúas utilizando este sitio asumiremos que estás de acuerdo. <a href="/privacidad.html">Más información</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button id="accept-cookies" class="btn btn-primary" style="padding: 0.8rem 2rem;">Aceptar y continuar</button>
+    </div>
+  </div>
+`;
+
 export function initCommonUI() {
   document.body.insertAdjacentHTML('afterbegin', header);
   document.body.insertAdjacentHTML('beforeend', footer);
+  document.body.insertAdjacentHTML('beforeend', cookieBanner);
 
   // Scroll Header Effect
   window.addEventListener('scroll', () => {

@@ -200,4 +200,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iniciar Animaciones
     initScrollAnimations();
+
+    // Lógica de Cookies
+    const cookieBannerEl = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    
+    if (cookieBannerEl && acceptBtn) {
+        // Si no ha aceptado, mostrar tras un pequeño delay
+        if (!localStorage.getItem('cookies-accepted')) {
+            setTimeout(() => {
+                cookieBannerEl.classList.add('visible');
+            }, 500);
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookies-accepted', 'true');
+            cookieBannerEl.classList.remove('visible');
+        });
+    }
 });

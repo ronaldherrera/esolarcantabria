@@ -11,7 +11,11 @@ La rama `main` tiene el código fuente; la rama `hostinger` solo tiene la web co
 
 En el administrador de archivos de Hostinger, crea `config-correo.php` **una carpeta por encima de `public_html`** (junto a ella, no dentro). Copia `docs/config-correo.ejemplo.php` y pon la contraseña real del buzón `hola@esolarcantabria.es`. No va nunca en git. Sin este archivo el formulario no envía nada.
 
-## Paso de la web antigua a la nueva (una sola vez)
+## Estado (30/10/2026)
+
+Hecho: despliegue Git de Hostinger conectado con GitHub (rama `hostinger` → `public_html`, implementación automática activada). `config-correo.php` está en la raíz del dominio, junto a `public_html`; la contraseña ya está puesta y las solicitudes van solo a hola@esolarcantabria.es. La web antigua se movió a la papelera del administrador de archivos (`.trash/web-antigua`), recuperable hasta que se vacíe.
+
+## Paso de la web antigua a la nueva (una sola vez, ya hecho)
 
 1. **hPanel → Avanzado → Git:** borra el despliegue actual (el de la rama `main`). Así un push no publica el código sin compilar.
 2. Haz el commit y el `git push` de `main`. En GitHub → Actions, espera a que «Publicar web» termine en verde: habrá creado la rama `hostinger`.

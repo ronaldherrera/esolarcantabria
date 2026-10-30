@@ -8,5 +8,5 @@ return [
     'usuario' => 'hola@esolarcantabria.es',
     'clave' => 'CONTRASEÑA_DEL_BUZÓN',
     // A quién llegan las solicitudes
-    'destinatarios' => ['cristianperez@esolarcantabria.es'],
+    'destinatarios' => ['hola@esolarcantabria.es'],
 ];

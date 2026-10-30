@@ -49,3 +49,14 @@ console.log('Imágenes generadas');
 fs.mkdirSync('public/correo', { recursive: true });
 fs.writeFileSync('public/correo/logotipo-negativo.png', png(fs.readFileSync('public/marca/logotipo-negativo.svg', 'utf8'), 440));
 console.log('Logotipo de correo generado');
+
+// favicon.ico (16, 32 y 48 px) y PNG de 48 y 96 px: Google y algunos navegadores los piden además del SVG
+const favicon = fs.readFileSync('public/favicon.svg', 'utf8');
+for (const t of [16, 32, 48, 96]) fs.writeFileSync(`public/marca/favicon-${t}.png`, png(favicon, t));
+const { execFileSync } = await import('node:child_process');
+execFileSync('python', ['-c', `
+from PIL import Image
+im = Image.open('public/marca/favicon-48.png').convert('RGBA')
+im.save('public/favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
+`]);
+console.log('favicon.ico y favicon-*.png generados');

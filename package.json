@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "datos": "node scripts/datos-municipios.mjs"
+    "datos": "node scripts/datos-municipios.mjs",
+    "enlaces": "node scripts/enlaces.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

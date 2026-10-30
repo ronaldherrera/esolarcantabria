@@ -2,7 +2,7 @@
 
 Web de captación de una **red de instaladores** de placas solares en Cantabria (no es una instaladora). Astro 7 estático + `public/send-mail.php` (PHPMailer) en Hostinger.
 
-- Dev: `npx astro dev --port 4330`. Build: `npm run build` → `dist/`. Despliegue: `docs/DESPLIEGUE.md`.
+- Dev: `npx astro dev --port 4330`. Build: `npm run build` → `dist/`. Despliegue automático con cada push a `main` (GitHub Actions → rsync por SSH, como Tankily): `docs/DESPLIEGUE.md`. `npm run enlaces` comprueba que no haya enlaces rotos.
 - Marca «Sol del norte» (aprobada el 30/10/2026): `marca/propuesta-marca.html`. Generador del logotipo en `marca/herramientas-logo/`. Tokens en `src/styles/global.css`.
 - Datos de los 102 municipios (Wikidata + PVGIS) en `src/data/municipios.json`, generados con `scripts/datos-municipios.mjs`.
 - Cálculos compartidos en `src/lib/solar.js`. Supuestos de precio en `SUPUESTOS`.

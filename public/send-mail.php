@@ -69,6 +69,12 @@ $slug = function (string $t): string {
     return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($t)) ?? '', '-');
 };
 
+// Registro de errores de envío, fuera de public_html (no se sirve ni se borra al desplegar)
+function registrar(string $texto): void {
+    @file_put_contents(dirname(__DIR__) . '/correo-errores.log', date('Y-m-d H:i:s') . ' ' . $texto . "
+", FILE_APPEND);
+}
+
 function correo(array $config): PHPMailer {
     $m = new PHPMailer(true);
     $m->isSMTP();
@@ -116,6 +122,7 @@ try {
     $m->AltBody = implode("\n", array_map(fn($k, $v) => "$k: $v", array_keys($filas), $filas));
     $m->send();
 } catch (Exception $e) {
+    registrar('Aviso interno: ' . ($m->ErrorInfo ?? $e->getMessage()));
     responder(500, ['ok' => false, 'error' => 'No se pudo enviar']);
 }
 
@@ -142,6 +149,7 @@ if ($tipo === 'presupuesto' && $email !== '') {
         $c->send();
     } catch (Exception $e) {
         // El aviso interno ya salió: la solicitud no se pierde aunque falle la copia
+        registrar('Copia al cliente: ' . ($c->ErrorInfo ?? $e->getMessage()));
     }
 }
 

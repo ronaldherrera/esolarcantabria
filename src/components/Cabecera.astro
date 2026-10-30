@@ -1,0 +1,62 @@
+---
+const ruta = Astro.url.pathname;
+const enlaces = [
+  { url: '/calculadoras/', texto: 'Calculadoras' },
+  { url: '/ayudas/', texto: 'Ayudas' },
+  { url: '/placas-solares/', texto: 'Tu municipio' },
+  { url: '/blog/', texto: 'Guías' },
+  { url: '/como-funciona/', texto: 'Cómo funciona' },
+];
+const activo = (url: string) => ruta.startsWith(url);
+---
+<header class="cabecera">
+  <div class="ancho fila">
+    <a href="/" class="marca" aria-label="eSolar Cantabria, inicio">
+      <img src="/marca/logotipo.svg" alt="" width="490" height="196">
+    </a>
+    <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="solo-lector">Menú</span>
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 7h20M3 13h20M3 19h20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <nav id="menu-principal" class="menu" aria-label="Principal">
+      <ul>
+        {enlaces.map((e) => (
+          <li><a href={e.url} aria-current={activo(e.url) ? 'page' : undefined}>{e.texto}</a></li>
+        ))}
+      </ul>
+      <a class="boton" href="/presupuesto/">Pedir presupuesto</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const boton = document.querySelector<HTMLButtonElement>('.menu-boton');
+  const menu = document.getElementById('menu-principal');
+  boton?.addEventListener('click', () => {
+    const abierto = boton.getAttribute('aria-expanded') === 'true';
+    boton.setAttribute('aria-expanded', String(!abierto));
+    menu?.classList.toggle('abierto', !abierto);
+  });
+</script>
+
+<style>
+  .cabecera { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--linea); }
+  .fila { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 72px; }
+  .marca img { height: 54px; width: auto; }
+  .menu ul { list-style: none; padding: 0; display: flex; gap: 1.6rem; }
+  .menu a:not(.boton) { color: var(--pizarra); text-decoration: none; font-weight: 600; font-size: 1rem; padding-block: .4rem; border-bottom: 2px solid transparent; }
+  .menu a:not(.boton):hover { color: var(--cantabrico); border-bottom-color: var(--ria-clara); }
+  .menu a[aria-current='page'] { color: var(--cantabrico); border-bottom-color: var(--sol); }
+  .menu { display: flex; align-items: center; gap: 1.8rem; }
+  .menu-boton { display: none; background: none; border: 0; color: var(--cantabrico); padding: .5rem; cursor: pointer; }
+
+  @media (max-width: 960px) {
+    .menu-boton { display: block; }
+    .marca img { height: 40px; }
+    .menu { display: none; position: absolute; inset: 72px 0 auto 0; background: var(--blanco); border-bottom: 1px solid var(--linea); flex-direction: column; align-items: stretch; gap: 0; padding: .5rem 1.25rem 1.25rem; box-shadow: 0 20px 30px -20px rgba(15, 59, 76, .3); }
+    .menu.abierto { display: flex; }
+    .menu ul { flex-direction: column; gap: 0; }
+    .menu li a:not(.boton) { display: block; padding: .85rem 0; border-bottom: 1px solid var(--bruma); font-size: 1.08rem; }
+    .menu .boton { margin-top: 1rem; }
+  }
+</style>

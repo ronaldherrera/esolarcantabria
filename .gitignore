@@ -7,3 +7,8 @@ dist
 *.log
 .gemini
 tmp
+
+# Contraseña del correo (solo en el servidor)
+config-correo.php
+.astro/
+esolar-web.zip

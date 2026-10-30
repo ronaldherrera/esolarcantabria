@@ -1,0 +1,102 @@
+---
+import CalcMarco from '../../components/CalcMarco.astro';
+import CampoMunicipio from '../../components/CampoMunicipio.astro';
+import { SUPUESTOS, PERFILES, MESES_CORTOS } from '../../lib/solar.js';
+---
+<CalcMarco slug="excedentes"
+  tituloSeo="Calculadora de compensación de excedentes solares"
+  descripcionSeo="Calcula cuánto te descuentan en la factura por los excedentes de tus placas solares en Cantabria, mes a mes, con el tope legal de la compensación simplificada."
+  entradilla="Lo que tus placas producen y no gastas en ese momento sale a la red. Con la compensación simplificada te lo descuentan de la factura, pero con un tope: nunca más de lo que pagas por la energía que compras ese mes.">
+
+  <Fragment slot="entradas">
+    <CampoMunicipio id="e-municipio" />
+    <div class="campo">
+      <label for="e-kwp">Potencia de tus placas (kWp)</label>
+      <input class="entrada" id="e-kwp" name="kwp" type="number" min="0.5" max="100" step="0.05" value="4.5">
+    </div>
+    <div class="campo">
+      <label for="e-consumo">Consumo de luz al año (kWh)</label>
+      <input class="entrada" id="e-consumo" name="consumo" type="number" min="300" max="100000" step="100" value="3500">
+    </div>
+    <fieldset class="grupo">
+      <legend>¿Cuándo se gasta la luz en casa?</legend>
+      {Object.entries(PERFILES).map(([k, p]) => (
+        <label class="opcion"><input type="radio" name="perfil" value={k} checked={k === 'fuera'}> {p.texto}</label>
+      ))}
+    </fieldset>
+    <details class="supuestos" open>
+      <summary>Precios de tu tarifa</summary>
+      <div class="campo"><label for="e-precio">Precio de la energía que compras (€/kWh)</label><input class="entrada" id="e-precio" name="precioLuz" type="number" step="0.01" value={SUPUESTOS.precioLuz}></div>
+      <div class="campo"><label for="e-exc">Precio de compensación de excedentes (€/kWh)</label><input class="entrada" id="e-exc" name="precioExcedente" type="number" step="0.01" value={SUPUESTOS.precioExcedente}><span class="ayuda">Viene en tu contrato o en la factura. En el mercado regulado (PVPC) cambia cada hora.</span></div>
+    </details>
+  </Fragment>
+
+  <Fragment slot="resultados">
+    <div class="principal">
+      <p class="cifra"><span data-r="compensacion">–</span><small>descontados al año por tus excedentes</small></p>
+      <p>Viertes <strong data-r="excedente">–</strong> a la red al año.</p>
+    </div>
+    <ul class="datos">
+      <li><b data-r="perdida">–</b><span>de excedentes que no se compensan por el tope</span></li>
+      <li><b data-r="meses">–</b><span>en los que llegas al tope</span></li>
+    </ul>
+    <div class="tabla-envoltura">
+      <table class="tabla-meses">
+        <thead><tr><th>Mes</th><th class="num">Excedente</th><th class="num">Descuento</th><th class="num">Se pierde</th></tr></thead>
+        <tbody data-tabla>{MESES_CORTOS.map((m) => <tr><td>{m}</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="nota">Si pierdes excedentes muchos meses, te conviene mirar una batería, una «batería virtual» de tu comercializadora o gastar más de día.</p>
+  </Fragment>
+
+  <Fragment slot="explicacion">
+    <h2>Cómo funciona la compensación simplificada</h2>
+    <p>Está regulada en el Real Decreto 244/2019. Puedes acogerte si tu instalación es renovable, de hasta 100 kW y con un solo contrato de suministro. Cada mes, la comercializadora valora tus excedentes al precio pactado y te lo resta del término de energía de la factura.</p>
+    <p>El límite es claro: el descuento nunca puede ser mayor que lo que pagas por la energía que compras ese mes. El término de potencia, el alquiler del contador y los impuestos se pagan igual. Lo que pase del tope se pierde, salvo que tu comercializadora ofrezca una «batería virtual» que lo guarde como saldo para otros meses (es un producto comercial, no está en la norma).</p>
+    <p>Con los precios habituales, en una vivienda el tope rara vez se alcanza: tendrías que verter en un mes más de tres veces lo que compras. Se alcanza con instalaciones muy grandes para lo que se consume (una segunda residencia vacía, por ejemplo) o con contratos que pagan muy bien los excedentes. La tabla de arriba te dice si te pasa y en qué meses.</p>
+  </Fragment>
+</CalcMarco>
+
+<script>
+  import municipios from '../../data/municipios.json';
+  import { SUPUESTOS, PERFILES, balance, euros, kwh, numero } from '../../lib/solar.js';
+  import { valor, escribir, municipioGuardado, recordarMunicipio } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.calc form')!;
+  const res = document.querySelector<HTMLElement>('.calc .resultados')!;
+  const porSlug = Object.fromEntries(municipios.map((m) => [m.slug, m]));
+  const guardado = municipioGuardado();
+  if (guardado && porSlug[guardado]) (form.elements.namedItem('municipio') as HTMLSelectElement).value = guardado;
+
+  function calcular() {
+    const m = porSlug[valor(form, 'municipio')];
+    const s = { ...SUPUESTOS, precioLuz: valor(form, 'precioLuz') || SUPUESTOS.precioLuz, precioExcedente: valor(form, 'precioExcedente') ?? SUPUESTOS.precioExcedente };
+    const perfil = PERFILES[valor(form, 'perfil')] ?? PERFILES.fuera;
+    const b = balance({ meses: m.meses, kwp: valor(form, 'kwp') || 0, consumoAnual: valor(form, 'consumo') || 0, diurno: perfil.diurno, s });
+    escribir(res, 'compensacion', euros(b.compensacion));
+    escribir(res, 'excedente', kwh(b.excedente));
+    escribir(res, 'perdida', euros(b.compensacionPerdida));
+    const conTope = b.filas.filter((f) => f.compensacionPerdida > 0.5).length;
+    escribir(res, 'meses', `${conTope} ${conTope === 1 ? 'mes' : 'meses'}`);
+    res.querySelectorAll('[data-tabla] tr').forEach((tr, i) => {
+      const f = b.filas[i];
+      const celdas = tr.querySelectorAll('td');
+      celdas[1].textContent = kwh(f.excedente);
+      celdas[2].textContent = euros(f.compensacion, 2);
+      celdas[3].textContent = f.compensacionPerdida > 0.005 ? euros(f.compensacionPerdida, 2) : '—';
+    });
+    recordarMunicipio(m.slug);
+  }
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  calcular();
+</script>
+
+<style>
+  .tabla-envoltura { background: var(--bruma); border-radius: var(--radio); padding: .6rem 1rem; overflow-x: auto; }
+  .tabla-meses { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .tabla-meses th, .tabla-meses td { padding: .4rem .3rem; border-bottom: 1px solid var(--linea); text-align: left; }
+  .tabla-meses tr:last-child td { border-bottom: 0; }
+  .tabla-meses th { font-family: var(--titular); color: var(--cantabrico); }
+  .tabla-meses .num { text-align: right; font-variant-numeric: tabular-nums; }
+</style>

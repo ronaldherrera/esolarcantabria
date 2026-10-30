@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import Cabecera from '../components/Cabecera.astro';
+import Pie from '../components/Pie.astro';
+import { sitio } from '../data/sitio.js';
+
+interface Props {
+  titulo: string;
+  descripcion: string;
+  imagen?: string;
+  tipo?: 'website' | 'article';
+  noindex?: boolean;
+  esquema?: object | object[];
+  migas?: { nombre: string; url: string }[];
+}
+
+const { titulo, descripcion, imagen = '/compartir.png', tipo = 'website', noindex = false, esquema, migas } = Astro.props;
+const canonica = new URL(Astro.url.pathname, sitio.url).href;
+const tituloCompleto = Astro.url.pathname === '/' ? titulo : `${titulo} | ${sitio.nombre}`;
+
+const esquemas = [];
+if (esquema) esquemas.push(...(Array.isArray(esquema) ? esquema : [esquema]));
+if (migas?.length) {
+  esquemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ nombre: 'Inicio', url: '/' }, ...migas].map((m, i) => ({
+      '@type': 'ListItem', position: i + 1, name: m.nombre, item: new URL(m.url, sitio.url).href,
+    })),
+  });
+}
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{tituloCompleto}</title>
+  <meta name="description" content={descripcion}>
+  <link rel="canonical" href={canonica}>
+  {noindex && <meta name="robots" content="noindex, follow">}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0F3B4C">
+  <meta property="og:type" content={tipo}>
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content={sitio.nombre}>
+  <meta property="og:title" content={titulo}>
+  <meta property="og:description" content={descripcion}>
+  <meta property="og:url" content={canonica}>
+  <meta property="og:image" content={new URL(imagen, sitio.url).href}>
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="sitemap" href="/sitemap-index.xml">
+  {esquemas.map((e) => <script type="application/ld+json" set:html={JSON.stringify(e)} />)}
+  <slot name="cabeza" />
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <Cabecera />
+  {migas?.length && (
+    <nav class="migas ancho" aria-label="Estás en">
+      <ol>
+        <li><a href="/">Inicio</a></li>
+        {migas.map((m, i) => (i === migas.length - 1 ? <li aria-current="page">{m.nombre}</li> : <li><a href={m.url}>{m.nombre}</a></li>))}
+      </ol>
+    </nav>
+  )}
+  <main id="contenido">
+    <slot />
+  </main>
+  <Pie />
+</body>
+</html>
+
+<style>
+  .saltar { position: absolute; left: 1rem; top: -4rem; z-index: 50; background: var(--sol); color: var(--cantabrico); padding: .6rem 1rem; border-radius: 8px; font-weight: 600; }
+  .saltar:focus { top: 1rem; }
+</style>

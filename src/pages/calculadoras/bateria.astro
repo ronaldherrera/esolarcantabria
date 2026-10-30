@@ -1,0 +1,120 @@
+---
+import CalcMarco from '../../components/CalcMarco.astro';
+import CampoMunicipio from '../../components/CampoMunicipio.astro';
+import { SUPUESTOS, PERFILES, numero } from '../../lib/solar.js';
+---
+<CalcMarco slug="bateria"
+  tituloSeo="¿Me compensa una batería para las placas solares? Calculadora"
+  descripcionSeo="Calcula si te compensa añadir una batería a tus placas solares en Cantabria: energía que aprovechas de más, ahorro adicional y años para pagarla, con datos reales de tu municipio."
+  entradilla="Una batería guarda lo que sobra a mediodía para usarlo por la noche. Que compense depende de cuánto te sobra, de cuánto te pagan por los excedentes y del precio de la batería.">
+
+  <Fragment slot="entradas">
+    <CampoMunicipio id="b-municipio" />
+    <div class="campo">
+      <label for="b-kwp">Potencia de tus placas (kWp)</label>
+      <input class="entrada" id="b-kwp" name="kwp" type="number" min="1" max="50" step="0.05" value="3.6">
+    </div>
+    <div class="campo">
+      <label for="b-consumo">Consumo de luz al año (kWh)</label>
+      <input class="entrada" id="b-consumo" name="consumo" type="number" min="500" max="100000" step="100" value="4500">
+    </div>
+    <fieldset class="grupo">
+      <legend>¿Cuándo se gasta la luz en casa?</legend>
+      {Object.entries(PERFILES).map(([k, p]) => (
+        <label class="opcion"><input type="radio" name="perfil" value={k} checked={k === 'fuera'}> {p.texto}</label>
+      ))}
+    </fieldset>
+    <div class="campo">
+      <label for="b-bat">Capacidad útil de la batería (kWh)</label>
+      <select class="entrada" id="b-bat" name="bateria">
+        <option value="2.5">2,5 kWh</option>
+        <option value="5" selected>5 kWh</option>
+        <option value="7.5">7,5 kWh</option>
+        <option value="10">10 kWh</option>
+      </select>
+    </div>
+    <details class="supuestos">
+      <summary>Cambiar precios y supuestos</summary>
+      <div class="campo"><label for="b-precio">Precio de la luz que dejas de comprar (€/kWh)</label><input class="entrada" id="b-precio" name="precioLuz" type="number" step="0.01" value={SUPUESTOS.precioLuz}></div>
+      <div class="campo"><label for="b-exc">Compensación de excedentes (€/kWh)</label><input class="entrada" id="b-exc" name="precioExcedente" type="number" step="0.01" value={SUPUESTOS.precioExcedente}></div>
+      <div class="campo"><label for="b-coste">Precio de la batería por kWh útil, instalada (€)</label><input class="entrada" id="b-coste" name="costeBateriaKwh" type="number" step="25" value={SUPUESTOS.costeBateriaKwh}></div>
+    </details>
+  </Fragment>
+
+  <Fragment slot="resultados">
+    <div class="principal">
+      <p class="cifra"><span data-r="extra">–</span><small>de ahorro más al año con la batería</small></p>
+      <p data-r="veredicto">–</p>
+    </div>
+    <ul class="datos">
+      <li><b data-r="sin">–</b><span>de ahorro al año sin batería</span></li>
+      <li><b data-r="con">–</b><span>de ahorro al año con batería</span></li>
+      <li><b data-r="desplazada">–</b><span>que la batería guarda para la noche al año</span></li>
+      <li><b data-r="retorno">–</b><span>para pagar la batería (<span data-r="coste">–</span>)</span></li>
+      <li><b data-r="cobSin">–</b><span>del consumo cubierto sin batería</span></li>
+      <li><b data-r="cobCon">–</b><span>del consumo cubierto con batería</span></li>
+    </ul>
+    <div class="cta-calc">
+      <p>Pregunta por la batería en tu presupuesto: el instalador la dimensiona con tus consumos reales.</p>
+      <a class="boton" href="/presupuesto/" data-pedir>Pedir presupuesto con estos datos</a>
+    </div>
+  </Fragment>
+
+  <Fragment slot="explicacion">
+    <h2>Cómo se calcula</h2>
+    <p>Calculamos mes a mes, con la producción de tu municipio (PVGIS), cuánta energía te sobra durante el día. La batería guarda cada día lo que sobra, hasta su capacidad, y lo devuelve por la noche, con un {Math.round(SUPUESTOS.rendimientoBateria * 100)}&nbsp;% de rendimiento.</p>
+    <p>Lo que ganas con cada kWh que pasa por la batería es la diferencia entre el precio de la luz que dejas de comprar y lo que te habrían pagado por verterlo a la red. Con la luz a {numero(SUPUESTOS.precioLuz, 2)}&nbsp;€/kWh y los excedentes a {numero(SUPUESTOS.precioExcedente, 2)}&nbsp;€/kWh, cada kWh guardado vale unos {numero(SUPUESTOS.precioLuz - SUPUESTOS.precioExcedente, 2)}&nbsp;€.</p>
+    <h3>Cuándo suele compensar</h3>
+    <ul>
+      <li>Cuando la casa está vacía de día y por eso sobra mucha energía.</li>
+      <li>Cuando tus excedentes superan el tope de compensación de la factura y se pierden.</li>
+      <li>Cuando hay cortes de luz frecuentes y quieres respaldo (no todas las baterías lo dan: pregúntalo).</li>
+    </ul>
+    <p>En invierno, en Cantabria, sobra poca energía y la batería trabaja menos. Por eso el cálculo es mes a mes y no con una media anual.</p>
+  </Fragment>
+</CalcMarco>
+
+<script>
+  import municipios from '../../data/municipios.json';
+  import { SUPUESTOS, PERFILES, balance, euros, kwh, porcentaje, numero } from '../../lib/solar.js';
+  import { valor, escribir, guardarCalculo, municipioGuardado, recordarMunicipio } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.calc form')!;
+  const res = document.querySelector<HTMLElement>('.calc .resultados')!;
+  const porSlug = Object.fromEntries(municipios.map((m) => [m.slug, m]));
+  const guardado = municipioGuardado();
+  if (guardado && porSlug[guardado]) (form.elements.namedItem('municipio') as HTMLSelectElement).value = guardado;
+
+  let resumen = '';
+  function calcular() {
+    const m = porSlug[valor(form, 'municipio')];
+    const s = { ...SUPUESTOS, precioLuz: valor(form, 'precioLuz') || SUPUESTOS.precioLuz, precioExcedente: valor(form, 'precioExcedente') ?? SUPUESTOS.precioExcedente, costeBateriaKwh: valor(form, 'costeBateriaKwh') || SUPUESTOS.costeBateriaKwh };
+    const kwp = valor(form, 'kwp') || 0, consumo = valor(form, 'consumo') || 0;
+    const perfil = PERFILES[valor(form, 'perfil')] ?? PERFILES.fuera;
+    const bat = Number(valor(form, 'bateria'));
+    const base = { meses: m.meses, kwp, consumoAnual: consumo, diurno: perfil.diurno, s };
+    const sin = balance(base), con = balance({ ...base, bateriaKwh: bat });
+    const extra = con.ahorro - sin.ahorro;
+    const coste = bat * s.costeBateriaKwh;
+    const retorno = extra > 0 ? coste / extra : Infinity;
+    escribir(res, 'extra', euros(extra));
+    escribir(res, 'sin', euros(sin.ahorro));
+    escribir(res, 'con', euros(con.ahorro));
+    escribir(res, 'desplazada', kwh(con.filas.reduce((a, f) => a + f.deBateria, 0)));
+    escribir(res, 'retorno', Number.isFinite(retorno) ? `${numero(retorno, 1)} años` : 'no se paga');
+    escribir(res, 'coste', euros(coste));
+    escribir(res, 'cobSin', porcentaje(sin.cobertura));
+    escribir(res, 'cobCon', porcentaje(con.cobertura));
+    escribir(res, 'veredicto', retorno <= 8
+      ? 'Con estos datos la batería se paga en un plazo razonable: merece la pena estudiarla.'
+      : retorno <= 12
+        ? 'Se paga, pero despacio. Compensa si además valoras tener respaldo o crees que la luz subirá.'
+        : 'Con estos datos la batería tarda demasiado en pagarse. Mejor empezar sin ella; se puede añadir después.');
+    resumen = `Calculadora de batería: ${m.nombre}, ${numero(kwp, 2)} kWp, consumo ${kwh(consumo)}/año, batería de ${numero(bat, 1)} kWh. Ahorro extra estimado ${euros(extra)}/año.`;
+    recordarMunicipio(m.slug);
+  }
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  res.querySelector('[data-pedir]')!.addEventListener('click', () => guardarCalculo(resumen, porSlug[valor(form, 'municipio')].nombre));
+  calcular();
+</script>

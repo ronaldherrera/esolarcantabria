@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import { sitio } from '../data/sitio.js';
+import Foto from '../components/Foto.astro';
+---
+<Base titulo="Instaladores de placas solares en Cantabria: entra en la red"
+  descripcion="¿Eres instalador de placas solares en Cantabria? Entra en la red de eSolar Cantabria y recibe clientes de tu zona con los datos de su caso ya calculados."
+  migas={[{ nombre: 'Soy instalador', url: '/instaladores/' }]}>
+  <section class="ancho rejilla">
+    <div class="prosa">
+      <h1>¿Eres instalador? Entra en la red</h1>
+      <p class="entradilla">eSolar Cantabria consigue clientes que quieren placas solares y se los pasa a instaladores de la red que trabajan en su zona.</p>
+      <Foto clave="temas/instalador" alt="Técnico con casco instalando placas solares en un tejado" proporcion="3 / 2" pie="Foto ilustrativa." tamanos="(min-width: 900px) 560px, 100vw" />
+      <h2>Qué recibes</h2>
+      <ul>
+        <li>Solicitudes de clientes de tu comarca, con teléfono, municipio y, si han usado una calculadora, su consumo y la instalación estimada.</li>
+        <li>Clientes que ya saben con datos cuánto produce una placa en su municipio y qué ayudas son reales.</li>
+        <li>Material de los fabricantes con los que trabaja la red.</li>
+      </ul>
+      <h2>Qué pedimos</h2>
+      <ul>
+        <li>Empresa instaladora habilitada en baja tensión en Cantabria.</li>
+        <li>Presupuestos cerrados y por escrito, y llamar al cliente pronto.</li>
+        <li>Hacer los papeles: CIE, legalización y declaración responsable.</li>
+        <li>Seguro de responsabilidad civil y trabajos anteriores que podamos comprobar.</li>
+        <li>Cumplir: si un trabajo no está a la altura, el instalador deja de recibir clientes de la red.</li>
+      </ul>
+    </div>
+    <form class="formulario" action="/send-mail.php" method="post">
+      <h2 class="titulo-form">Quiero entrar en la red</h2>
+      <input type="hidden" name="tipo" value="instalador">
+      <input type="hidden" name="origen" value="/instaladores/">
+      <div class="campo"><label for="i-nombre">Nombre y empresa</label><input class="entrada" id="i-nombre" name="nombre" required maxlength="120"></div>
+      <div class="campo"><label for="i-tel">Teléfono</label><input class="entrada" id="i-tel" name="telefono" type="tel" required pattern="[+0-9 ]{9,16}"></div>
+      <div class="campo"><label for="i-email">Email</label><input class="entrada" id="i-email" name="email" type="email" maxlength="120"></div>
+      <div class="campo"><label for="i-zona">Zona en la que trabajas</label><input class="entrada" id="i-zona" name="municipio" required maxlength="120" placeholder="Por ejemplo: Besaya y Campoo"></div>
+      <div class="trampa" aria-hidden="true"><label>No rellenes este campo <input name="web" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consentimiento"><input type="checkbox" name="acepto" required> <span>Acepto la <a href="/privacidad/">política de privacidad</a>.</span></label>
+      <button class="boton" type="submit">Enviar</button>
+      <p class="estado" role="status" aria-live="polite"></p>
+      <p class="nota">También puedes escribir a <a href={`mailto:${sitio.email}`}>{sitio.email}</a>.</p>
+    </form>
+  </section>
+</Base>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('form.formulario')!;
+  const estado = form.querySelector<HTMLElement>('.estado')!;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    estado.textContent = 'Enviando…';
+    try {
+      const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const j = await r.json();
+      if (!j.ok) throw new Error();
+      form.innerHTML = '<h2 class="titulo-form">Recibido</h2><p>Gracias. Te llamamos para contarte cómo funciona la red.</p>';
+    } catch {
+      estado.textContent = 'No se ha podido enviar. Escríbenos por email.';
+    }
+  });
+</script>
+
+<style>
+  .rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; padding-block: 1.5rem 5rem; }
+  @media (max-width: 900px) { .rejilla { grid-template-columns: 1fr; } }
+  .formulario { background: var(--bruma); border-radius: var(--radio-grande); padding: clamp(1.3rem, 4vw, 2rem); display: grid; gap: 1rem; }
+  .titulo-form { font-size: 1.5rem; }
+  .trampa { position: absolute; left: -9999px; }
+  .consentimiento { display: flex; gap: .6rem; font-size: .9rem; align-items: start; }
+  .consentimiento input { width: 20px; height: 20px; accent-color: var(--cantabrico); }
+  .estado:empty { display: none; }
+</style>

@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import fotos from '../../data/fotos.json';
+import { getCollection } from 'astro:content';
+
+const articulos = (await getCollection('blog')).sort((a, b) => Number(b.data.destacado) - Number(a.data.destacado) || b.data.fecha.valueOf() - a.data.fecha.valueOf());
+const [principal, ...resto] = articulos;
+const foto = (clave?: string) => (clave ? (fotos as Record<string, any>)[clave] : undefined);
+const fp = foto(principal.data.imagen);
+// Minutos de lectura a 220 palabras por minuto
+const minutos = (a: (typeof articulos)[number]) => Math.max(2, Math.round((a.body ?? '').split(/\s+/).length / 220));
+---
+<Base titulo="Guías sobre placas solares en Cantabria"
+  descripcion="Guías claras y con fuentes oficiales sobre placas solares en Cantabria: si merecen la pena, ayudas, IRPF, IBI, baterías, excedentes, comunidades de vecinos y trámites."
+  migas={[{ nombre: 'Guías', url: '/blog/' }]}>
+  <section class="ancho cabeza">
+    <h1>Guías</h1>
+    <p class="entradilla">Lo que conviene saber antes de poner placas en Cantabria, con los datos de tu municipio y el enlace a cada norma.</p>
+  </section>
+
+  <section class="ancho">
+    <article class="principal">
+      {fp && <img src={fp.src} srcset={`${fp.src640} 640w, ${fp.src} ${fp.ancho}w`} sizes="(min-width: 900px) 640px, 100vw" alt={principal.data.imagenAlt ?? ''} width={fp.ancho} height={fp.alto} fetchpriority="high">}
+      <div class="principal-texto">
+        <h2><a href={`/blog/${principal.id}/`}>{principal.data.titulo}</a></h2>
+        <p>{principal.data.descripcion}</p>
+        <p class="meta">{minutos(principal)} minutos de lectura</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="ancho rejilla-seccion">
+    <ul class="rejilla">
+      {resto.map((a) => {
+        const f = foto(a.data.imagen);
+        return (
+          <li>
+            <article>
+              {f && <img src={f.src640} alt={a.data.imagenAlt ?? ''} width="640" height={Math.round((640 * f.alto) / f.ancho)} loading="lazy" decoding="async">}
+              <h2><a href={`/blog/${a.id}/`}>{a.data.titulo}</a></h2>
+              <p>{a.data.descripcion}</p>
+              <p class="meta">{minutos(a)} minutos de lectura</p>
+            </article>
+          </li>
+        );
+      })}
+    </ul>
+    <p class="nota creditos">Las fotos de placas y equipos son ilustrativas. Autores y licencias en <a href="/creditos/">créditos de las fotos</a>.</p>
+  </section>
+</Base>
+
+<style>
+  .cabeza { padding-block: 1.5rem 2rem; }
+  .cabeza h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); }
+
+  .principal { position: relative; display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; padding-bottom: 3rem; border-bottom: 2px solid var(--cantabrico); }
+  .principal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radio-grande); }
+  .principal h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+  .principal-texto p { margin-top: .9rem; font-size: 1.1rem; }
+  @media (max-width: 860px) { .principal { grid-template-columns: 1fr; } }
+
+  .rejilla-seccion { padding-block: 3rem 5rem; }
+  .rejilla { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 2rem; }
+  @media (max-width: 960px) { .rejilla { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .rejilla { grid-template-columns: 1fr; } }
+  .rejilla li { max-width: none; }
+  .rejilla article { position: relative; display: grid; gap: .6rem; align-content: start; }
+  .rejilla img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radio); margin-bottom: .4rem; }
+  .rejilla h2 { font-size: 1.25rem; }
+  .rejilla p { font-size: .97rem; }
+
+  article h2 a { color: var(--cantabrico); text-decoration: none; }
+  article h2 a::after { content: ''; position: absolute; inset: 0; }
+  article:hover h2 a { text-decoration: underline; }
+  article:hover img { filter: brightness(1.04); }
+  .meta { font-size: .85rem; color: var(--ria); }
+  .creditos { margin-top: 3rem; }
+</style>

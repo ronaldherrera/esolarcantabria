@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_lib/
 
-Sitemap: https://esolarcantabria.es/sitemap.xml
+Sitemap: https://esolarcantabria.es/sitemap-index.xml

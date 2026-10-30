@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eSolar Cantabria · Propuesta de marca y plan de la web</title>
+<link rel="icon" href="propuestas/a-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;1,400&family=Barlow+Semi+Condensed:wght@500;700&family=Young+Serif&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cantabrico: #0F3B4C;
+    --sol: #F2A71B;
+    --ria: #3B6E7E;
+    --bruma: #EDF1F2;
+    --prado: #2F7D4F;
+    --pizarra: #1B2629;
+    --blanco: #FFFFFF;
+    --titular: 'Schibsted Grotesk', system-ui, sans-serif;
+    --texto: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: var(--texto); color: var(--pizarra); background: var(--blanco); font-size: 1.0625rem; line-height: 1.6; }
+  h1, h2, h3 { font-family: var(--titular); color: var(--cantabrico); line-height: 1.12; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; margin-bottom: 1rem; }
+  h3 { font-size: 1.3rem; font-weight: 700; margin: 2rem 0 .6rem; }
+  p, li { max-width: 68ch; }
+  p + p { margin-top: .8rem; }
+  a { color: var(--ria); }
+  .ancho { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+  section { padding: 5rem 0; border-top: 1px solid #DCE4E6; }
+  .nota { color: var(--ria); font-size: .95rem; }
+
+  /* Portada */
+  .portada { background: var(--cantabrico); color: #DCEAEE; padding: 4rem 0 5rem; border: 0; }
+  .portada img { height: 74px; margin-bottom: 3.5rem; }
+  .portada h1 { color: var(--blanco); font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 800; max-width: 17ch; }
+  .portada p { margin-top: 1.4rem; font-size: 1.15rem; }
+  .indice { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; margin-top: 2.6rem; padding: 0; list-style: none; }
+  .indice a { color: var(--sol); text-decoration: none; font-weight: 600; }
+  .indice a:hover { text-decoration: underline; }
+
+  /* La idea: gráfico de producción */
+  .grafico { margin-top: 2.2rem; background: var(--bruma); border-radius: 18px; padding: 1.8rem; }
+  .grafico-cabecera { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .cifra { font-family: var(--titular); font-weight: 800; font-size: clamp(2.6rem, 6vw, 4rem); color: var(--cantabrico); line-height: 1; }
+  .cifra small { font-size: 1rem; font-weight: 500; color: var(--ria); margin-left: .4rem; }
+  .leyenda { display: flex; gap: 1.2rem; font-size: .9rem; color: var(--ria); }
+  .leyenda span::before { content: ''; display: inline-block; width: 14px; height: 10px; margin-right: .4rem; border-radius: 2px; vertical-align: middle; }
+  .leyenda .l-stdr::before { background: var(--sol); }
+  .leyenda .l-ber::before { background: none; border-top: 3px solid var(--cantabrico); height: 0; }
+  .barras { display: grid; grid-template-columns: repeat(12, 1fr); gap: .5rem; align-items: end; height: 220px; margin-top: 1.6rem; }
+  .mes { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+  .mes .b { background: var(--sol); border-radius: 6px 6px 0 0; }
+  .mes .ber { position: absolute; left: -2px; right: -2px; border-top: 3px solid var(--cantabrico); }
+  .meses { display: grid; grid-template-columns: repeat(12, 1fr); gap: .5rem; margin-top: .5rem; font-size: .8rem; color: var(--ria); text-align: center; }
+
+  /* Logotipos */
+  .lienzo { border-radius: 18px; padding: 2.4rem; display: flex; align-items: center; justify-content: center; }
+  .lienzo img { max-width: 100%; }
+  .rejilla { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 1.4rem; }
+  .claro { background: var(--bruma); }
+  .oscuro { background: var(--cantabrico); }
+  .pie-lienzo { font-size: .9rem; color: var(--ria); margin-top: .5rem; }
+  .tamanos { display: flex; align-items: flex-end; gap: 1.6rem; }
+
+  /* Colores */
+  .colores { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.4rem; }
+  .color { border-radius: 14px; overflow: hidden; border: 1px solid #DCE4E6; }
+  .color div { height: 92px; }
+  .color p { padding: .7rem .9rem; font-size: .9rem; line-height: 1.4; }
+  .color strong { display: block; font-family: var(--titular); color: var(--cantabrico); }
+
+  /* Tipografía */
+  .muestra-tipo { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.4rem; }
+  .muestra-tipo > div { background: var(--bruma); border-radius: 18px; padding: 1.8rem; }
+  .muestra-tipo .grande { font-family: var(--titular); font-weight: 800; font-size: 2.6rem; color: var(--cantabrico); line-height: 1.05; }
+  @media (max-width: 760px) { .muestra-tipo { grid-template-columns: 1fr; } }
+
+  /* Ejemplo de portada de la web */
+  .maqueta { border: 1px solid #CFD9DC; border-radius: 18px; overflow: hidden; margin-top: 1.6rem; box-shadow: 0 30px 60px -30px rgba(15, 59, 76, .35); }
+  .maqueta-barra { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.6rem; border-bottom: 1px solid #E3EAEC; }
+  .maqueta-barra img { height: 34px; }
+  .maqueta-barra nav { display: flex; gap: 1.4rem; font-size: .95rem; align-items: center; }
+  .boton { display: inline-flex; align-items: center; gap: .5rem; background: var(--sol); color: var(--cantabrico); font-family: var(--titular); font-weight: 700; padding: .75rem 1.3rem; border-radius: 10px; text-decoration: none; border: 0; font-size: 1rem; }
+  .boton-sec { background: transparent; border: 2px solid var(--cantabrico); }
+  .maqueta-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; padding: 3rem 1.6rem 3.4rem; align-items: center; }
+  .maqueta-hero h1 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 800; }
+  .maqueta-hero p { margin: 1.1rem 0 1.6rem; font-size: 1.1rem; }
+  .acciones { display: flex; flex-wrap: wrap; gap: .8rem; }
+  .parte { background: var(--cantabrico); color: #DCEAEE; border-radius: 16px; padding: 1.5rem; }
+  .parte label { font-size: .9rem; display: block; margin-bottom: .4rem; }
+  .parte select { width: 100%; font: inherit; padding: .6rem .8rem; border-radius: 8px; border: 0; margin-bottom: 1.2rem; }
+  .parte .cifra { color: var(--blanco); font-size: 3rem; }
+  .parte .cifra small { color: #A9C9D3; }
+  .parte .mini { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; align-items: end; height: 70px; margin: 1rem 0 .6rem; }
+  .parte .mini i { background: var(--sol); border-radius: 3px 3px 0 0; display: block; }
+  .parte p { font-size: .92rem; margin: 0; }
+  @media (max-width: 820px) { .maqueta-hero { grid-template-columns: 1fr; } .maqueta-barra nav a:not(.boton) { display: none; } }
+
+  /* Formulario corto */
+  .formulario { background: var(--bruma); border-radius: 18px; padding: 1.8rem; max-width: 460px; }
+  .formulario label { display: block; font-weight: 600; margin: .9rem 0 .3rem; }
+  .formulario input, .formulario select { width: 100%; font: inherit; padding: .75rem .9rem; border: 1.5px solid #B9C9CE; border-radius: 10px; background: var(--blanco); }
+  .formulario .legal { font-size: .85rem; color: var(--ria); margin: 1rem 0; }
+  .formulario .boton { width: 100%; justify-content: center; }
+  .o-whatsapp { text-align: center; margin-top: .9rem; font-size: .95rem; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+  @media (max-width: 820px) { .dos { grid-template-columns: 1fr; } }
+
+  /* Alternativas */
+  .alternativas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; margin-top: 1.4rem; }
+  .alt { border: 1px solid #DCE4E6; border-radius: 18px; padding: 1.6rem; }
+  .alt .lienzo { padding: 1.6rem; margin-bottom: 1rem; }
+  .paleta { display: flex; gap: .4rem; margin: .8rem 0; }
+  .paleta span { width: 38px; height: 38px; border-radius: 8px; }
+  @media (max-width: 820px) { .alternativas { grid-template-columns: 1fr; } }
+
+  /* Listas del plan */
+  .lista { padding-left: 1.2rem; }
+  .lista li { margin: .45rem 0; }
+  .lista strong { font-family: var(--titular); color: var(--cantabrico); }
+  .pasos { counter-reset: paso; list-style: none; padding: 0; }
+  .pasos li { counter-increment: paso; position: relative; padding-left: 2.6rem; margin: 1rem 0; }
+  .pasos li::before { content: counter(paso); position: absolute; left: 0; top: -.1rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--sol); color: var(--cantabrico); font-family: var(--titular); font-weight: 800; display: grid; place-items: center; }
+  .pendiente { background: #FFF6E3; border-left: 4px solid var(--sol); padding: 1.2rem 1.4rem; border-radius: 0 12px 12px 0; margin-top: 1.4rem; }
+  footer { background: var(--bruma); padding: 2.5rem 0; font-size: .9rem; color: var(--ria); }
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="ancho">
+    <img src="propuestas/a-logotipo-negativo.svg" alt="eSolar Cantabria">
+    <h1>Propuesta de marca y plan de la web</h1>
+    <p>eSolar Cantabria conecta a quien quiere poner placas solares con un instalador de su red que trabaja cerca de casa. Este documento propone cómo debe verse, cómo debe hablar y qué debe tener la web para ser la referencia solar de Cantabria en Google.</p>
+    <p class="nota" style="color:#A9C9D3">No he aplicado nada todavía. Elige dirección (o pide cambios) y la llevo a la web.</p>
+    <ul class="indice">
+      <li><a href="#idea">La idea</a></li>
+      <li><a href="#marca">Dirección recomendada</a></li>
+      <li><a href="#alternativas">Alternativas</a></li>
+      <li><a href="#contacto">Contacto más corto</a></li>
+      <li><a href="#plan">Plan de la web</a></li>
+      <li><a href="#seo">SEO en Cantabria</a></li>
+      <li><a href="#necesito">Lo que necesito</a></li>
+    </ul>
+  </div>
+</header>
+
+<section id="idea">
+  <div class="ancho">
+    <h2>La idea: en Cantabria hay más sol del que se cree</h2>
+    <p>La primera duda de cualquier cántabro es si las placas merecen la pena con tanta nube. La web actual responde «funciona con nubes», pero no lo demuestra. Propongo que la marca entera gire alrededor de demostrarlo con datos públicos.</p>
+    <p>Según PVGIS, la base de datos solar de la Comisión Europea, cada kWp instalado en Santander produce 1.207 kWh al año. En Berlín produce 1.053, y en Múnich 1.139. Alemania es uno de los países con más placas de Europa. En Reinosa y Potes se pasa de 1.300.</p>
+
+    <div class="grafico" role="img" aria-label="Producción mensual por kWp: Santander frente a Berlín. En enero, 63 kWh en Santander y 33 en Berlín.">
+      <div class="grafico-cabecera">
+        <div class="cifra">1.207 kWh<small>al año por kWp en Santander</small></div>
+        <div class="leyenda"><span class="l-stdr">Santander</span><span class="l-ber">Berlín (1.053 kWh)</span></div>
+      </div>
+      <div class="barras" id="barras"></div>
+      <div class="meses"><span>ene</span><span>feb</span><span>mar</span><span>abr</span><span>may</span><span>jun</span><span>jul</span><span>ago</span><span>sep</span><span>oct</span><span>nov</span><span>dic</span></div>
+    </div>
+    <p class="nota" style="margin-top:1rem">En invierno, Santander produce casi el doble que Berlín (63 frente a 33 kWh en enero). Datos PVGIS-SARAH3, 2005–2023, inclinación óptima y 14 % de pérdidas.</p>
+    <p style="margin-top:1.2rem">La web calculará este dato para cada uno de los 102 municipios de Cantabria. Así cada página tiene contenido propio y útil, que es justo lo que Google premia.</p>
+  </div>
+</section>
+
+<section id="marca">
+  <div class="ancho">
+    <h2>Dirección recomendada: «Sol del norte»</h2>
+    <p>Una marca que suena a ingeniería seria y a parte del tiempo local, no a anuncio. Azul del Cantábrico para la confianza, el amarillo del sol solo donde importa: el símbolo, los datos de producción y el botón de pedir presupuesto.</p>
+
+    <h3>Logotipo</h3>
+    <p>La «e» de eSolar es un sol saliendo sobre el horizonte: todo lo que queda por encima de la barra es sol, la barra es el horizonte del Cantábrico y el resto de la letra, el mar. Ya no es un dibujo puesto delante de la palabra. Es la «e» auténtica de la tipografía, con el mismo grosor, el mismo contraste y el mismo remate que «solar», así que el conjunto se lee como una sola palabra. «Cantabria» va en minúsculas y en un tono más suave, porque la palabra que tiene que quedarse es «esolar».</p>
+
+    <h3>Tres ajustes posibles del sol</h3>
+    <p>Recomiendo la del centro: el horizonte blanco hace que el sol se lea como sol y no como una letra pintada a medias.</p>
+    <div class="rejilla">
+      <div><div class="lienzo claro"><img src="propuestas/c1-logotipo.svg" alt="Variante sin horizonte" style="height:84px"></div><p class="pie-lienzo">Sin horizonte: solo cambia el color</p></div>
+      <div><div class="lienzo claro" style="outline:3px solid var(--sol)"><img src="propuestas/c2-logotipo.svg" alt="Variante con horizonte" style="height:84px"></div><p class="pie-lienzo">Con horizonte (recomendada)</p></div>
+      <div><div class="lienzo claro"><img src="propuestas/c3-logotipo.svg" alt="Variante con el sol asomando" style="height:84px"></div><p class="pie-lienzo">«e» algo mayor: el sol asoma sobre las demás letras</p></div>
+    </div>
+    <div class="rejilla">
+      <div><div class="lienzo claro tamanos"><img src="propuestas/c1-app.svg" alt="" style="height:72px"><img src="propuestas/c1-favicon.svg" alt="" style="height:32px"><img src="propuestas/c1-favicon.svg" alt="" style="height:16px"></div></div>
+      <div><div class="lienzo claro tamanos"><img src="propuestas/c2-app.svg" alt="" style="height:72px"><img src="propuestas/c2-favicon.svg" alt="" style="height:32px"><img src="propuestas/c2-favicon.svg" alt="" style="height:16px"></div></div>
+      <div><div class="lienzo claro tamanos"><img src="propuestas/c3-app.svg" alt="" style="height:72px"><img src="propuestas/c3-favicon.svg" alt="" style="height:32px"><img src="propuestas/c3-favicon.svg" alt="" style="height:16px"></div></div>
+    </div>
+
+    <h3>La recomendada, en uso</h3>
+    <div class="rejilla">
+      <div><div class="lienzo claro"><img src="propuestas/a-logotipo.svg" alt="Logotipo eSolar Cantabria en positivo" style="height:110px"></div><p class="pie-lienzo">Positivo, sobre fondos claros</p></div>
+      <div><div class="lienzo oscuro"><img src="propuestas/a-logotipo-negativo.svg" alt="Logotipo eSolar Cantabria en negativo" style="height:110px"></div><p class="pie-lienzo">Negativo, sobre azul Cantábrico</p></div>
+    </div>
+    <div class="rejilla">
+      <div><div class="lienzo claro tamanos"><img src="propuestas/a-app.svg" alt="" style="height:96px"><img src="propuestas/a-simbolo.svg" alt="" style="height:64px"><img src="propuestas/a-favicon.svg" alt="" style="height:32px"><img src="propuestas/a-favicon.svg" alt="" style="height:16px"></div><p class="pie-lienzo">Icono de app, símbolo y favicon: se reconoce incluso a 16 píxeles</p></div>
+      <div><div class="lienzo claro"><img src="propuestas/logo-anterior.svg" alt="Logotipo actual" style="height:60px"></div><p class="pie-lienzo">Logotipo actual, para comparar</p></div>
+    </div>
+
+    <h3>Colores</h3>
+    <div class="colores">
+      <div class="color"><div style="background:#0F3B4C"></div><p><strong>Cantábrico</strong>#0F3B4C · titulares, cabecera y pie</p></div>
+      <div class="color"><div style="background:#F2A71B"></div><p><strong>Sol</strong>#F2A71B · símbolo, datos de producción y botón principal</p></div>
+      <div class="color"><div style="background:#3B6E7E"></div><p><strong>Ría</strong>#3B6E7E · textos secundarios y enlaces</p></div>
+      <div class="color"><div style="background:#2F7D4F"></div><p><strong>Prado</strong>#2F7D4F · solo para ahorro y cifras positivas</p></div>
+      <div class="color"><div style="background:#EDF1F2"></div><p><strong>Bruma</strong>#EDF1F2 · fondos de bloques y calculadoras</p></div>
+      <div class="color"><div style="background:#1B2629"></div><p><strong>Pizarra</strong>#1B2629 · texto de lectura</p></div>
+    </div>
+    <p class="nota" style="margin-top:.8rem">Todas las combinaciones de texto cumplen el contraste AA. El botón es azul sobre amarillo (5,9:1), no blanco sobre amarillo, que no se lee.</p>
+
+    <h3>Tipografía</h3>
+    <div class="muestra-tipo">
+      <div>
+        <div class="grande">Schibsted Grotesk</div>
+        <p style="margin-top:.8rem">Titulares y cifras. Firme y con aire de periódico serio, sin ser fría. Es la misma letra del logotipo.</p>
+      </div>
+      <div>
+        <p style="font-size:1.3rem; line-height:1.5">Atkinson Hyperlegible Next, para el texto. La diseñaron para lectores con baja visión: cada letra se distingue de las demás.</p>
+        <p style="margin-top:.8rem">El cliente típico tiene entre 40 y 70 años y lee en el móvil. Esta letra se lo pone fácil sin parecer de hospital.</p>
+      </div>
+    </div>
+
+    <h3>Cómo habla eSolar Cantabria</h3>
+    <ul class="lista">
+      <li><strong>De tú, directo y con números.</strong> «Con una factura de 90 € al mes, 8 placas cubren dos tercios de tu consumo.» Nada de «soluciones energéticas integrales».</li>
+      <li><strong>Cifras con fuente.</strong> Cada dato de producción, ayuda o ahorro dice de dónde sale. Eso es lo que da imagen profesional.</li>
+      <li><strong>Honesta con lo que es.</strong> eSolar Cantabria es una red de instaladores: lo dice claro. «Un instalador de la red cerca de ti», no «nuestros técnicos».</li>
+      <li><strong>Local sin postal.</strong> Nombra municipios, la galerna o el salitre de la costa cuando aporta algo, no para decorar.</li>
+    </ul>
+
+    <h3>Así se vería la portada</h3>
+    <p>El elemento que se recuerda es el «parte solar»: eliges tu municipio y ves cuánto produce una placa allí, mes a mes. Todo lo demás, tranquilo.</p>
+    <div class="maqueta">
+      <div class="maqueta-barra">
+        <img src="propuestas/a-logotipo.svg" alt="eSolar Cantabria">
+        <nav><a>Calculadoras</a><a>Ayudas</a><a>Blog</a><a class="boton">Pedir presupuesto</a></nav>
+      </div>
+      <div class="maqueta-hero">
+        <div>
+          <h1>En Cantabria hay sol de sobra para tus placas</h1>
+          <p>Una placa en Santander produce un 15 % más que en Berlín. Te ponemos en contacto con un instalador de la red cerca de ti y te llega el presupuesto sin compromiso.</p>
+          <div class="acciones"><a class="boton">Pedir presupuesto</a><a class="boton boton-sec">Calcular mi ahorro</a></div>
+        </div>
+        <div class="parte">
+          <label for="mun">Parte solar de tu municipio</label>
+          <select id="mun"><option>Santander</option><option>Torrelavega</option><option>Reinosa</option><option>Potes</option></select>
+          <div class="cifra" id="parteCifra">1.207<small>kWh al año por kWp</small></div>
+          <div class="mini" id="mini"></div>
+          <p id="parteFrase">Un 15 % más que Berlín. Tu mes más flojo es diciembre.</p>
+        </div>
+      </div>
+    </div>
+    <p class="nota" style="margin-top:.8rem">Las cifras del selector son reales (PVGIS); el reparto por meses es el de Santander a escala. Prueba a cambiar de municipio.</p>
+  </div>
+</section>
+
+<section id="alternativas">
+  <div class="ancho">
+    <h2>Dos alternativas</h2>
+    <p>Por si la recomendada no te convence. Las desarrollo igual de completas si eliges una de ellas.</p>
+    <div class="alternativas">
+      <div class="alt">
+        <div class="lienzo claro"><img src="propuestas/b-logotipo.svg" alt="Logotipo alternativa Etiqueta energética" style="height:90px"></div>
+        <h3 style="margin-top:0">Etiqueta energética</h3>
+        <div class="paleta"><span style="background:#1F8A4C"></span><span style="background:#55A846"></span><span style="background:#B8CF3A"></span><span style="background:#16232B"></span><span style="background:#F4F6F3"></span></div>
+        <p>Toma las flechas de la etiqueta de eficiencia que todo el mundo ha visto en electrodomésticos y certificados energéticos. Se entiende al instante: «sube tu casa a la A». Letra condensada tipo señalética (Barlow). Más técnica y fría que la recomendada, y el verde es muy habitual entre empresas solares.</p>
+      </div>
+      <div class="alt">
+        <div class="lienzo claro"><img src="propuestas/c-logotipo.svg" alt="Logotipo alternativa La solana" style="height:90px"></div>
+        <h3 style="margin-top:0">La solana</h3>
+        <div class="paleta"><span style="background:#2F5A3C"></span><span style="background:#E3A23B"></span><span style="background:#7A5534"></span><span style="background:#F7F6F2"></span><span style="background:#22302A"></span></div>
+        <p>La casona montañesa y su solana, el balcón que mira al sol. Muy cántabra y cercana, con una letra con serifa (Young Serif). Transmite tradición más que tecnología, así que encaja peor con «imagen profesional» y con clientes empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="ancho dos">
+    <div>
+      <h2>Pedir presupuesto en 20 segundos</h2>
+      <p>El formulario actual pide demasiado antes de dar nada. Propongo tres datos y listo: con el teléfono y el municipio, tu compañero ya sabe a qué instalador pasárselo.</p>
+      <ul class="lista">
+        <li>Nombre, teléfono y municipio. El email y la factura son opcionales.</li>
+        <li>Botón de WhatsApp para quien prefiera escribir.</li>
+        <li>Si viene de una calculadora, el formulario ya lleva los datos calculados, sin volver a escribirlos.</li>
+        <li>La casilla legal explica que los datos se pasan a un instalador de la red. Es obligatorio por el RGPD y además da confianza.</li>
+        <li>Al cliente le llega un correo con la marca. A vosotros os llega la solicitud con todo lo calculado.</li>
+      </ul>
+    </div>
+    <form class="formulario" onsubmit="return false">
+      <h3 style="margin-top:0">Pide tu presupuesto</h3>
+      <label for="f-nombre">Nombre</label><input id="f-nombre" autocomplete="name">
+      <label for="f-tel">Teléfono</label><input id="f-tel" type="tel" autocomplete="tel">
+      <label for="f-mun">Municipio</label><select id="f-mun"><option>Santander</option><option>Torrelavega</option><option>Camargo</option></select>
+      <p class="legal"><input type="checkbox" style="width:auto"> Acepto que eSolar Cantabria pase mis datos a un instalador de su red para preparar el presupuesto. <a>Privacidad</a></p>
+      <button class="boton">Pedir presupuesto</button>
+      <p class="o-whatsapp">o escríbenos por <a>WhatsApp</a></p>
+    </form>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="ancho">
+    <h2>Plan de la web</h2>
+    <p>Mismo método que con Tankily: web estática rápida, cada página con su SEO propio y datos reales generados al construir.</p>
+
+    <h3>Tecnología</h3>
+    <p>Paso la web de páginas HTML sueltas a <strong>Astro</strong>. Sigue siendo una web estática que se sube a Hostinger como ahora, con el mismo <code>send-mail.php</code>. Astro permite generar el blog y las 102 páginas de municipios desde datos, sin copiar y pegar HTML. Las calculadoras son pequeñas piezas interactivas dentro de páginas que Google lee completas.</p>
+
+    <h3>Calculadoras</h3>
+    <ul class="lista">
+      <li><strong>¿Cuánto ahorro con placas?</strong> Municipio y factura: placas recomendadas, producción, ahorro al año y años de retorno.</li>
+      <li><strong>¿Cuántas placas necesito?</strong> Consumo, potencia, número de paneles y metros de tejado.</li>
+      <li><strong>¿Me compensa una batería?</strong> Según cuánto consumes de noche y lo que te pagan los excedentes.</li>
+      <li><strong>Bonificación del IBI en tu municipio.</strong> Solo con ordenanzas fiscales comprobadas, y con la fecha de revisión a la vista.</li>
+      <li><strong>Placas + aerotermia frente a gas o gasóleo.</strong> El combo que ya anuncia la web, pero con números.</li>
+      <li><strong>Excedentes: qué te descuentan en la factura.</strong> Compensación simplificada, explicada con tu caso.</li>
+    </ul>
+
+    <h3>Blog: los primeros 12 artículos</h3>
+    <p>Elegidos por lo que busca la gente en Cantabria y donde la competencia local escribe poco o mal. Cada dato legal o de ayudas, con su fuente oficial.</p>
+    <ul class="lista">
+      <li>¿Merecen la pena las placas solares en Cantabria? Los datos, municipio a municipio</li>
+      <li>Bonificación del IBI por placas solares en Cantabria: municipio a municipio (2026)</li>
+      <li>Deducción del IRPF por placas solares en 2026: qué queda y cómo pedirla</li>
+      <li>Cuántas placas solares necesita una casa en Cantabria</li>
+      <li>Compensación de excedentes: cómo funciona y qué tarifa elegir</li>
+      <li>Baterías para placas solares: cuándo compensan y cuándo no</li>
+      <li>Autoconsumo en comunidades de vecinos: cómo hacerlo en Santander y Torrelavega</li>
+      <li>Legalizar una instalación de autoconsumo en Cantabria: los pasos</li>
+      <li>Placas solares junto al mar: salitre, viento y galerna</li>
+      <li>Instalaciones aisladas para cabañas pasiegas, fincas y casas sin luz</li>
+      <li>Aerotermia y placas en un clima húmedo: lo que hay que saber</li>
+      <li>Placas solares en cascos históricos de Cantabria: permisos y límites</li>
+    </ul>
+
+    <h3>Páginas de municipio</h3>
+    <p>Una página por cada municipio de Cantabria, como <code>/placas-solares/torrelavega/</code>, con su parte solar mes a mes, el ahorro típico calculado con esos datos, la bonificación del IBI si está comprobada y artículos relacionados. Son páginas con datos propios de cada sitio, no copias con el nombre cambiado, porque Google castiga esas copias.</p>
+  </div>
+</section>
+
+<section id="seo">
+  <div class="ancho">
+    <h2>SEO: cómo ganar Cantabria</h2>
+    <ol class="pasos">
+      <li><strong>Base técnica.</strong> URLs limpias, datos estructurados por página, sitemap, imágenes ligeras y una web que carga en menos de un segundo.</li>
+      <li><strong>Contenido que nadie más tiene.</strong> Producción solar y bonificación del IBI de los 102 municipios, calculadoras y artículos con fuentes. Esto es lo que posiciona.</li>
+      <li><strong>Search Console y Bing</strong> desde el primer día, para ver qué búsquedas traen gente y reforzarlas.</li>
+      <li><strong>Enlaces y menciones locales.</strong> Prensa local, asociaciones de vecinos y directorios de Cantabria. Los instaladores de la red pueden enlazar a la web desde las suyas.</li>
+      <li><strong>Reseñas reales</strong> de clientes atendidos, pedidas al terminar cada instalación.</li>
+    </ol>
+    <div class="pendiente">
+      <p><strong>Ojo con Google Maps.</strong> Google no permite fichas de Google Business para negocios que captan clientes y los pasan a otros: suele suspenderlas. La web tiene que ganar en los resultados normales de Google, que es donde está el volumen. En el mapa salen las fichas de los instaladores de la red, y está bien que sea así.</p>
+    </div>
+  </div>
+</section>
+
+<section id="necesito">
+  <div class="ancho">
+    <h2>Lo que necesito de vosotros</h2>
+    <ul class="lista">
+      <li><strong>Que elijas dirección</strong> o me digas qué cambiar. Hasta entonces no toco la web.</li>
+      <li><strong>Teléfono / WhatsApp</strong> que se puede publicar.</li>
+      <li><strong>Fotos reales</strong> de instalaciones de la red, aunque sean de móvil. Una foto real vale más que cualquier imagen de stock.</li>
+      <li><strong>Titular legal:</strong> quién figura como responsable de la web y de los datos (nombre o empresa y NIF), para el aviso legal y la privacidad.</li>
+      <li><strong>Cómo subís la web a Hostinger</strong> ahora (FTP a mano, administrador de archivos…), para dejarlo igual o automatizarlo.</li>
+    </ul>
+  </div>
+</section>
+
+<footer><div class="ancho">Propuesta preparada el 30 de octubre de 2026. Datos de producción: PVGIS (Comisión Europea, JRC).</div></footer>
+
+<script>
+  // Producción mensual por kWp (PVGIS) para el gráfico y el parte solar de ejemplo
+  const datos = {
+    Santander: [63, 77, 107, 118, 128, 120, 128, 126, 118, 96, 66, 62],
+    Reinosa: null, Potes: null, Torrelavega: null,
+  };
+  const berlin = [33, 57, 91, 121, 130, 130, 127, 120, 104, 72, 40, 29];
+  const anual = { Santander: 1207, Reinosa: 1317, Potes: 1319, Torrelavega: 1155 };
+  const max = 160;
+  document.getElementById('barras').innerHTML = datos.Santander.map((v, i) =>
+    `<div class="mes" title="${v} kWh en Santander, ${berlin[i]} en Berlín"><div class="b" style="height:${v / max * 100}%"></div><div class="ber" style="bottom:${berlin[i] / max * 100}%"></div></div>`).join('');
+
+  const forma = datos.Santander.map((v) => v / 1207);
+  const mini = document.getElementById('mini');
+  function pintar(m) {
+    const total = anual[m];
+    const meses = forma.map((f) => f * total);
+    mini.innerHTML = meses.map((v) => `<i style="height:${v / max * 100}%"></i>`).join('');
+    document.getElementById('parteCifra').innerHTML = `${total.toLocaleString('es-ES')}<small>kWh al año por kWp</small>`;
+    const dif = Math.round((total / 1053 - 1) * 100);
+    document.getElementById('parteFrase').textContent = `Un ${dif} % más que Berlín. Tu mes más flojo es diciembre.`;
+  }
+  document.getElementById('mun').addEventListener('change', (e) => pintar(e.target.value));
+  pintar('Santander');
+</script>
+</body>
+</html>

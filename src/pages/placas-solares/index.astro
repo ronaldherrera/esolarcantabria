@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import municipios from '../../data/municipios.json';
+import { REFERENCIAS, numero } from '../../lib/solar.js';
+
+const porProduccion = [...municipios].sort((a, b) => b.anual - a.anual);
+const max = porProduccion[0].anual;
+const min = porProduccion.at(-1)!.anual;
+const media = Math.round(municipios.reduce((a, x) => a + x.anual, 0) / municipios.length);
+---
+<Base titulo="Placas solares en los 102 municipios de Cantabria"
+  descripcion={`Producción solar de los 102 municipios de Cantabria según PVGIS: de ${numero(min)} a ${numero(max)} kWh al año por kWp. Busca el tuyo y mira cuánto producen las placas allí.`}
+  migas={[{ nombre: 'Municipios', url: '/placas-solares/' }]}>
+  <section class="ancho cabeza">
+    <h1>Placas solares en los 102 municipios de Cantabria</h1>
+    <p class="entradilla">Cuánto produce cada kWp de placas en cada municipio, según PVGIS (Comisión Europea), teniendo en cuenta el relieve que tapa el sol. La media de Cantabria es de {numero(media)}&nbsp;kWh al año; Berlín, de referencia, {numero(REFERENCIAS.berlin)}.</p>
+    <div class="campo buscador">
+      <label for="buscar">Busca tu municipio</label>
+      <input class="entrada" id="buscar" type="search" placeholder="Escribe el nombre" autocomplete="off">
+    </div>
+  </section>
+  <section class="ancho tabla">
+    <ol class="ranking">
+      {porProduccion.map((m, i) => (
+        <li data-nombre={m.nombre.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()}>
+          <span class="puesto">{i + 1}</span>
+          <a href={`/placas-solares/${m.slug}/`}>{m.nombre}</a>
+          <span class="barra" aria-hidden="true"><i style={`width:${((m.anual - 900) / (max - 900)) * 100}%`} class:list={{ bajo: m.anual < REFERENCIAS.berlin }}></i></span>
+          <span class="valor">{numero(m.anual)}&nbsp;kWh</span>
+        </li>
+      ))}
+    </ol>
+    <p class="vacio" hidden>No hay ningún municipio con ese nombre.</p>
+    <p class="nota">kWh producidos al año por cada kWp instalado, con inclinación óptima. Las barras en azul están por debajo de Berlín.</p>
+  </section>
+</Base>
+
+<script>
+  const buscar = document.getElementById('buscar') as HTMLInputElement;
+  const filas = [...document.querySelectorAll<HTMLElement>('.ranking li')];
+  const vacio = document.querySelector<HTMLElement>('.vacio')!;
+  buscar.addEventListener('input', () => {
+    const q = buscar.value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    let visibles = 0;
+    filas.forEach((f) => { const ok = !q || f.dataset.nombre!.includes(q); f.hidden = !ok; if (ok) visibles++; });
+    vacio.hidden = visibles > 0;
+  });
+</script>
+
+<style>
+  .cabeza { padding-block: 1.5rem 2rem; }
+  .buscador { max-width: 420px; margin-top: 1.8rem; }
+  .tabla { padding-bottom: 5rem; }
+  .ranking { list-style: none; padding: 0; display: grid; gap: 0; max-width: 900px; }
+  .ranking li { display: grid; grid-template-columns: 2.5rem minmax(9rem, 14rem) 1fr 6.5rem; gap: 1rem; align-items: center; padding-block: .55rem; border-bottom: 1px solid var(--bruma); }
+  .ranking li[hidden] { display: none; }
+  .puesto { color: var(--ria); font-size: .9rem; text-align: right; }
+  .ranking a { font-weight: 600; text-decoration: none; color: var(--cantabrico); }
+  .ranking a:hover { text-decoration: underline; }
+  .barra { height: 12px; background: var(--bruma); border-radius: 6px; overflow: hidden; }
+  .barra i { display: block; height: 100%; background: var(--sol); border-radius: 6px; }
+  .barra i.bajo { background: var(--ria-clara); }
+  .valor { text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 600px) { .ranking li { grid-template-columns: 2rem 1fr 5.5rem; } .barra { display: none; } }
+  .vacio { margin-block: 1rem; }
+</style>

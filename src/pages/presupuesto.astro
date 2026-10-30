@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import FormularioPresupuesto from '../components/FormularioPresupuesto.astro';
+import { sitio, enlaceWhatsapp } from '../data/sitio.js';
+const whatsapp = enlaceWhatsapp();
+---
+<Base titulo="Pedir presupuesto de placas solares en Cantabria"
+  descripcion="Pide presupuesto de placas solares en Cantabria: tres datos y te llama un instalador de la red que trabaja cerca de tu casa. Sin compromiso."
+  migas={[{ nombre: 'Pedir presupuesto', url: '/presupuesto/' }]}>
+  <section class="ancho rejilla">
+    <div>
+      <h1>Pide tu presupuesto</h1>
+      <p class="entradilla">Tres datos y listo. Te llama un instalador de la red que trabaja en tu zona, mira tu tejado y tus facturas y te da un presupuesto cerrado.</p>
+      <h2 class="h3">Qué pasa después</h2>
+      <ol class="pasos">
+        <li>Pasamos tu solicitud a un instalador de la red cercano a tu municipio.</li>
+        <li>Te llama para conocer tu caso y, si hace falta, quedar para ver el tejado.</li>
+        <li>Te da un presupuesto cerrado. Si no te convence, no hay compromiso.</li>
+      </ol>
+      <h2 class="h3">¿Prefieres escribir?</h2>
+      <p>Escríbenos a <a href={`mailto:${sitio.email}`}>{sitio.email}</a>{whatsapp && <Fragment> o por <a href={whatsapp} rel="noopener">WhatsApp</a></Fragment>}{sitio.telefono && <Fragment> o llama al <a href={`tel:${sitio.telefono.replace(/\s/g, '')}`}>{sitio.telefono}</a></Fragment>}.</p>
+    </div>
+    <FormularioPresupuesto titulo="Tus datos" id="presupuesto-pagina" />
+  </section>
+</Base>
+
+<style>
+  .rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; padding-block: 1.5rem 5rem; }
+  @media (max-width: 900px) { .rejilla { grid-template-columns: 1fr; } }
+  .h3 { font-size: 1.3rem; margin-top: 2.2rem; margin-bottom: .8rem; }
+  .pasos { padding-left: 1.3rem; display: grid; gap: .5rem; }
+</style>

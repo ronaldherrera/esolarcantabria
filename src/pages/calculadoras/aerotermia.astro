@@ -1,0 +1,113 @@
+---
+import CalcMarco from '../../components/CalcMarco.astro';
+import CampoMunicipio from '../../components/CampoMunicipio.astro';
+import { SUPUESTOS } from '../../lib/solar.js';
+---
+<CalcMarco slug="aerotermia"
+  tituloSeo="Aerotermia con placas solares frente a gas o gasóleo: calculadora"
+  descripcionSeo="Compara lo que te cuesta la calefacción con caldera de gas, gasóleo o propano frente a una bomba de calor de aerotermia apoyada por placas solares en tu municipio de Cantabria."
+  entradilla="La aerotermia saca calor del aire con una bomba de calor: por cada kWh de electricidad entrega unos tres de calor. Si además parte de esa electricidad sale de tus placas, el ahorro crece. Pon lo que gastas ahora y lo comparamos.">
+
+  <Fragment slot="entradas">
+    <CampoMunicipio id="t-municipio" />
+    <fieldset class="grupo">
+      <legend>¿Cómo calientas ahora la casa y el agua?</legend>
+      <label class="opcion"><input type="radio" name="combustible" value="gas" checked> Caldera de gas natural</label>
+      <label class="opcion"><input type="radio" name="combustible" value="gasoleo"> Caldera de gasóleo</label>
+      <label class="opcion"><input type="radio" name="combustible" value="propano"> Propano o butano</label>
+      <label class="opcion"><input type="radio" name="combustible" value="electrico"> Radiadores eléctricos</label>
+    </fieldset>
+    <div class="campo">
+      <label for="t-gasto">Lo que gastas al año en calefacción y agua caliente (€)</label>
+      <div class="deslizador">
+        <input type="range" min="300" max="4000" step="50" value="1200" aria-label="Gasto anual (deslizador)">
+        <input class="entrada" id="t-gasto" name="gasto" type="number" min="100" max="20000" step="50" value="1200" inputmode="numeric">
+      </div>
+    </div>
+    <div class="campo">
+      <label for="t-kwp">Placas solares que dedicarías a la aerotermia (kWp)</label>
+      <input class="entrada" id="t-kwp" name="kwp" type="number" min="0" max="30" step="0.45" value="2.7">
+      <span class="ayuda">Pon 0 para ver la aerotermia sola.</span>
+    </div>
+    <details class="supuestos">
+      <summary>Cambiar precios y supuestos</summary>
+      <div class="campo"><label for="t-pgas">Gas natural (€/kWh, con impuestos)</label><input class="entrada" id="t-pgas" name="pgas" type="number" step="0.01" value="0.09"></div>
+      <div class="campo"><label for="t-pgasoleo">Gasóleo de calefacción (€/litro)</label><input class="entrada" id="t-pgasoleo" name="pgasoleo" type="number" step="0.01" value="1.05"></div>
+      <div class="campo"><label for="t-ppropano">Propano (€/kWh)</label><input class="entrada" id="t-ppropano" name="ppropano" type="number" step="0.01" value="0.13"></div>
+      <div class="campo"><label for="t-pluz">Luz (€/kWh)</label><input class="entrada" id="t-pluz" name="precioLuz" type="number" step="0.01" value={SUPUESTOS.precioLuz}></div>
+      <div class="campo"><label for="t-scop">Rendimiento estacional de la aerotermia (SCOP)</label><input class="entrada" id="t-scop" name="scop" type="number" step="0.1" min="1.5" max="6" value="3.2"></div>
+    </details>
+  </Fragment>
+
+  <Fragment slot="resultados">
+    <div class="principal">
+      <p class="cifra"><span data-r="ahorro">–</span><small>menos al año que ahora</small></p>
+      <p>Pasarías de <strong data-r="actual">–</strong> a <strong data-r="nuevo">–</strong> al año en calefacción y agua caliente.</p>
+    </div>
+    <ul class="datos">
+      <li><b data-r="calor">–</b><span>de calor que necesita tu casa al año (estimado)</span></li>
+      <li><b data-r="luzAero">–</b><span>de luz que gastaría la aerotermia</span></li>
+      <li><b data-r="solar">–</b><span>de esa luz cubierta por las placas</span></li>
+      <li><b data-r="sinPlacas">–</b><span>al año con aerotermia sin placas</span></li>
+    </ul>
+    <div class="cta-calc">
+      <p>Muchos instaladores de la red montan placas y aerotermia juntas. Cuéntanos tu caso en el presupuesto.</p>
+      <a class="boton" href="/presupuesto/" data-pedir>Pedir presupuesto con estos datos</a>
+    </div>
+  </Fragment>
+
+  <Fragment slot="explicacion">
+    <h2>Cómo se calcula</h2>
+    <p><strong>Calor que necesita tu casa.</strong> Lo deducimos de lo que gastas: dividimos el gasto entre el precio del combustible y lo multiplicamos por el rendimiento de la caldera (92 % en gas y propano, 88 % en gasóleo, 100 % en radiadores eléctricos). Para el gasóleo contamos 10 kWh por litro.</p>
+    <p><strong>Aerotermia.</strong> Ese calor dividido entre el SCOP, el rendimiento medio de la bomba de calor en todo el año. En un clima suave y húmedo como el de la costa cántabra, 3,2 es una cifra prudente; las mejores máquinas superan 4.</p>
+    <p><strong>Placas.</strong> La calefacción se concentra en invierno, justo cuando las placas producen menos. Calculamos mes a mes: el 80 % del calor se reparte según el frío de cada mes y el 20 % (agua caliente) por igual. Suponemos que las placas pueden cubrir hasta la mitad del consumo de la bomba en cada mes, que es lo que funciona de día, y que dedicas a ella la mitad de su producción.</p>
+    <div class="caja caja-aviso"><p>El cambio a aerotermia exige revisar radiadores o suelo radiante y el aislamiento. Con radiadores antiguos pequeños el rendimiento baja. Es una comparación de costes de uso, no incluye el precio del equipo.</p></div>
+  </Fragment>
+</CalcMarco>
+
+<script>
+  import municipios from '../../data/municipios.json';
+  import { SUPUESTOS, REPARTO_CALEFACCION, euros, kwh, porcentaje } from '../../lib/solar.js';
+  import { enlazarDeslizadores, valor, escribir, guardarCalculo, municipioGuardado, recordarMunicipio } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.calc form')!;
+  const res = document.querySelector<HTMLElement>('.calc .resultados')!;
+  const porSlug = Object.fromEntries(municipios.map((m) => [m.slug, m]));
+  enlazarDeslizadores(form);
+  const guardado = municipioGuardado();
+  if (guardado && porSlug[guardado]) (form.elements.namedItem('municipio') as HTMLSelectElement).value = guardado;
+
+  let resumen = '';
+  function calcular() {
+    const m = porSlug[valor(form, 'municipio')];
+    const comb = valor(form, 'combustible');
+    const gasto = valor(form, 'gasto') || 0;
+    const precioLuz = valor(form, 'precioLuz') || SUPUESTOS.precioLuz;
+    const precios = { gas: valor(form, 'pgas') || 0.09, gasoleo: (valor(form, 'pgasoleo') || 1.05) / 10, propano: valor(form, 'ppropano') || 0.13, electrico: precioLuz };
+    const rend = { gas: 0.92, gasoleo: 0.88, propano: 0.92, electrico: 1 };
+    const calor = (gasto / precios[comb]) * rend[comb];
+    const scop = valor(form, 'scop') || 3.2;
+    const luzAero = calor / scop;
+    const kwp = valor(form, 'kwp') || 0;
+    let solar = 0;
+    REPARTO_CALEFACCION.forEach((r, i) => {
+      const mes = luzAero * (0.8 * r + 0.2 / 12);
+      solar += Math.min(mes * 0.5, m.meses[i] * kwp * 0.5);
+    });
+    const sinPlacas = luzAero * precioLuz;
+    const nuevo = (luzAero - solar) * precioLuz;
+    escribir(res, 'ahorro', euros(gasto - nuevo));
+    escribir(res, 'actual', euros(gasto));
+    escribir(res, 'nuevo', euros(nuevo));
+    escribir(res, 'calor', kwh(calor));
+    escribir(res, 'luzAero', kwh(luzAero));
+    escribir(res, 'solar', luzAero ? porcentaje(solar / luzAero) : '0 %');
+    escribir(res, 'sinPlacas', euros(sinPlacas));
+    resumen = `Calculadora de aerotermia: ${m.nombre}, ahora ${comb} con ${euros(gasto)}/año. Con aerotermia y ${kwp} kWp de placas: unos ${euros(nuevo)}/año.`;
+    recordarMunicipio(m.slug);
+  }
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  res.querySelector('[data-pedir]')!.addEventListener('click', () => guardarCalculo(resumen, porSlug[valor(form, 'municipio')].nombre));
+  calcular();
+</script>

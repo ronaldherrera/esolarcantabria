@@ -1,0 +1,48 @@
+---
+// Barras de producción mensual (kWh por kWp) con una línea de comparación opcional.
+import { MESES, MESES_CORTOS, numero } from '../lib/solar.js';
+
+interface Props {
+  meses: number[];
+  nombre: string;
+  comparar?: { nombre: string; meses: number[] };
+  oscuro?: boolean;
+}
+const { meses, nombre, comparar, oscuro = false } = Astro.props;
+const max = Math.max(160, ...meses, ...(comparar?.meses ?? []));
+const ancho = 600, alto = 220, margenAbajo = 26, hueco = 8;
+const anchoBarra = (ancho - hueco * 11) / 12;
+const y = (v: number) => alto - margenAbajo - (v / max) * (alto - margenAbajo - 8);
+const descripcion = `Producción por kWp en ${nombre}, mes a mes: ` + meses.map((v, i) => `${MESES[i]} ${numero(v)} kWh`).join(', ') + '.'
+  + (comparar ? ` En ${comparar.nombre}: ` + comparar.meses.map((v, i) => `${MESES[i]} ${numero(v)}`).join(', ') + '.' : '');
+---
+<figure class:list={['grafico', { oscuro }]}>
+  <svg viewBox={`0 0 ${ancho} ${alto}`} role="img" aria-label={descripcion}>
+    {meses.map((v, i) => (
+      <g>
+        <rect x={i * (anchoBarra + hueco)} y={y(v)} width={anchoBarra} height={alto - margenAbajo - y(v)} rx="5" class="barra" />
+        {comparar && <line x1={i * (anchoBarra + hueco) - 2} x2={i * (anchoBarra + hueco) + anchoBarra + 2} y1={y(comparar.meses[i])} y2={y(comparar.meses[i])} class="comparar" />}
+        <text x={i * (anchoBarra + hueco) + anchoBarra / 2} y={alto - 6} text-anchor="middle" class="mes">{MESES_CORTOS[i]}</text>
+      </g>
+    ))}
+  </svg>
+  <figcaption>
+    <span class="clave clave-barra">{nombre}</span>
+    {comparar && <span class="clave clave-linea">{comparar.nombre}</span>}
+    <span class="unidad">kWh producidos por cada kWp instalado</span>
+  </figcaption>
+</figure>
+
+<style>
+  .grafico svg { width: 100%; height: auto; overflow: visible; }
+  .barra { fill: var(--sol); }
+  .comparar { stroke: var(--cantabrico); stroke-width: 3; stroke-linecap: round; }
+  .mes { font-family: var(--texto); font-size: 13px; fill: var(--ria); }
+  figcaption { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: .8rem; font-size: .9rem; color: var(--ria); }
+  .clave::before { content: ''; display: inline-block; width: 14px; height: 10px; margin-right: .45rem; border-radius: 2px; vertical-align: middle; }
+  .clave-barra::before { background: var(--sol); }
+  .clave-linea::before { height: 0; border-top: 3px solid var(--cantabrico); }
+  .oscuro .comparar { stroke: var(--blanco); }
+  .oscuro .mes, .oscuro figcaption { color: var(--ria-clara); fill: var(--ria-clara); }
+  .oscuro .clave-linea::before { border-top-color: var(--blanco); }
+</style>

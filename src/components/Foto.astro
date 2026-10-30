@@ -1,0 +1,44 @@
+---
+// Foto con licencia libre y su crédito visible (autor, licencia y enlace al original), como exige CC BY.
+import fotos from '../data/fotos.json';
+
+interface Props {
+  clave: string;          // p. ej. 'temas/costa-nubes' o 'municipios/potes'
+  alt: string;
+  pie?: string;           // texto propio antes del crédito
+  prioridad?: boolean;    // carga inmediata (la primera imagen visible de la página)
+  proporcion?: string;    // relación de aspecto del recorte, p. ej. '16 / 9'
+  tamanos?: string;
+  class?: string;
+}
+const { clave, alt, pie, prioridad = false, proporcion = '16 / 9', tamanos = '(min-width: 1160px) 1160px, 100vw', class: clase } = Astro.props;
+const f = (fotos as Record<string, any>)[clave];
+---
+{f && (
+  <figure class:list={['foto', clase]}>
+    <img
+      src={f.src}
+      srcset={`${f.src640} 640w, ${f.src} ${f.ancho}w`}
+      sizes={tamanos}
+      alt={alt}
+      width={f.ancho}
+      height={f.alto}
+      loading={prioridad ? 'eager' : 'lazy'}
+      fetchpriority={prioridad ? 'high' : undefined}
+      decoding="async"
+      style={`aspect-ratio:${proporcion}`}
+    >
+    <figcaption>
+      {pie && <span class="pie">{pie} </span>}
+      <span class="credito">Foto: <a href={f.pagina} rel="noopener">{f.autor}</a>, {f.licenciaUrl ? <a href={f.licenciaUrl} rel="noopener license">{f.licencia}</a> : f.licencia}.</span>
+    </figcaption>
+  </figure>
+)}
+
+<style>
+  .foto { margin: 0; }
+  .foto img { width: 100%; height: auto; object-fit: cover; border-radius: var(--radio-grande); background: var(--bruma); }
+  figcaption { font-size: .82rem; color: var(--ria); margin-top: .5rem; line-height: 1.45; }
+  figcaption .pie { color: var(--pizarra); font-size: .92rem; }
+  figcaption a { color: inherit; }
+</style>

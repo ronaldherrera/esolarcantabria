@@ -1,0 +1,131 @@
+---
+import CalcMarco from '../../components/CalcMarco.astro';
+import CampoMunicipio from '../../components/CampoMunicipio.astro';
+import { SUPUESTOS, PERFILES } from '../../lib/solar.js';
+---
+<CalcMarco slug="ahorro-placas-solares"
+  tituloSeo="Calculadora de ahorro con placas solares en Cantabria"
+  descripcionSeo="Calcula cuánto ahorras con placas solares en tu municipio de Cantabria: potencia recomendada, producción mes a mes con datos de PVGIS, ahorro anual y años de retorno."
+  entradilla="Elige tu municipio y pon lo que pagas de luz. El cálculo usa la producción solar real de tu municipio, mes a mes, según la base de datos de la Comisión Europea.">
+
+  <Fragment slot="entradas">
+    <CampoMunicipio id="a-municipio" />
+    <div class="campo">
+      <label for="a-factura">Tu factura de luz al mes</label>
+      <div class="deslizador">
+        <input type="range" min="30" max="400" step="5" value="90" aria-label="Factura al mes (deslizador)">
+        <input class="entrada" id="a-factura" name="factura" type="number" min="20" max="2000" step="5" value="90" inputmode="numeric">
+      </div>
+      <span class="ayuda">En euros, la media de un mes normal con impuestos.</span>
+    </div>
+    <div class="campo">
+      <label for="a-consumo">Consumo anual (opcional)</label>
+      <input class="entrada" id="a-consumo" name="consumo" type="number" min="500" max="100000" step="100" placeholder="Si lo sabes, en kWh: viene en tu factura">
+      <span class="ayuda">Si lo pones, se usa en lugar de la factura.</span>
+    </div>
+    <fieldset class="grupo">
+      <legend>¿Cuándo se gasta la luz en casa?</legend>
+      {Object.entries(PERFILES).map(([k, p]) => (
+        <label class="opcion"><input type="radio" name="perfil" value={k} checked={k === 'mixto'}> {p.texto}</label>
+      ))}
+    </fieldset>
+    <div class="campo">
+      <label for="a-techo">Tejado disponible (opcional)</label>
+      <input class="entrada" id="a-techo" name="techo" type="number" min="5" max="5000" step="1" placeholder="m² orientados al sur, este u oeste">
+    </div>
+    <details class="supuestos">
+      <summary>Cambiar precios y supuestos</summary>
+      <div class="campo"><label for="a-precio">Precio de la luz que dejas de comprar (€/kWh)</label><input class="entrada" id="a-precio" name="precioLuz" type="number" step="0.01" min="0.05" max="0.6" value={SUPUESTOS.precioLuz}></div>
+      <div class="campo"><label for="a-exc">Compensación de excedentes (€/kWh)</label><input class="entrada" id="a-exc" name="precioExcedente" type="number" step="0.01" min="0" max="0.3" value={SUPUESTOS.precioExcedente}></div>
+      <div class="campo"><label for="a-coste">Precio por kWp instalado, con IVA (€)</label><input class="entrada" id="a-coste" name="costeKwp" type="number" step="50" min="500" max="4000" value={SUPUESTOS.costeKwp}></div>
+    </details>
+  </Fragment>
+
+  <Fragment slot="resultados">
+    <div class="principal">
+      <p class="cifra"><span data-r="ahorro">–</span><small>de ahorro al año en tu factura</small></p>
+      <p>Con <strong data-r="paneles">–</strong> paneles (<span data-r="kwp">–</span>) en <span data-r="nombre">–</span>, que ocupan unos <span data-r="m2">–</span> de tejado.</p>
+    </div>
+    <ul class="datos">
+      <li><b data-r="produccion">–</b><span>producidos al año</span></li>
+      <li><b data-r="cobertura">–</b><span>de tu consumo cubierto con sol</span></li>
+      <li><b data-r="coste">–</b><span>precio orientativo de la instalación</span></li>
+      <li><b data-r="retorno">–</b><span>para recuperar la inversión</span></li>
+      <li><b data-r="irpf">–</b><span>de deducción en el IRPF si la terminas en 2026</span></li>
+      <li><b data-r="ahorro25">–</b><span>ahorrados en 25 años, sin contar subidas de la luz</span></li>
+    </ul>
+    <div>
+      <div class="barras-doble" data-barras aria-hidden="true"></div>
+      <p class="leyenda"><span class="lp">Producción de tus placas</span><span class="lc">Tu consumo</span></p>
+    </div>
+    <p class="nota" data-r="aviso"></p>
+    <div class="cta-calc">
+      <p><strong>¿Quieres el número exacto?</strong> Un instalador de la red de tu zona mira tu tejado y tus facturas y te da un presupuesto cerrado. Los datos de este cálculo van con tu solicitud.</p>
+      <a class="boton" href="/presupuesto/" data-pedir>Pedir presupuesto con estos datos</a>
+    </div>
+  </Fragment>
+
+  <Fragment slot="explicacion">
+    <h2>Cómo se calcula</h2>
+    <p><strong>Producción.</strong> Para cada municipio usamos PVGIS, la herramienta solar de la Comisión Europea: cuánto produce cada kWp instalado, mes a mes, con la inclinación óptima, el horizonte real del terreno (montes incluidos) y un 14 % de pérdidas del sistema.</p>
+    <p><strong>Consumo.</strong> Si no pones tu consumo anual, lo estimamos a partir de la factura: restamos unos {SUPUESTOS.parteFija}&nbsp;€ al mes de parte fija (potencia y contador) y dividimos el resto entre el precio de la luz.</p>
+    <p><strong>Autoconsumo.</strong> Las placas solo cubren lo que gastas mientras hay sol. Por eso importa cuándo se gasta la luz en casa: con la casa vacía de día se aprovecha directamente en torno al 30 % del consumo; con teletrabajo, bastante más. Lo que sobra se vierte a la red y te lo descuentan en la factura con la compensación simplificada, que nunca puede superar lo que pagas por la energía ese mes.</p>
+    <p><strong>Potencia recomendada.</strong> La justa para producir en torno al 80 % de tu consumo anual, en paneles de {SUPUESTOS.potenciaPanel * 1000} W y con un mínimo de cuatro. Más potencia suele significar más excedentes mal pagados.</p>
+    <p><strong>Precio y retorno.</strong> El precio por kWp es orientativo ({SUPUESTOS.costeKwp}&nbsp;€ con IVA, que puedes cambiar). El retorno divide lo que pagas, menos la deducción del IRPF si terminas la instalación en 2026, entre el ahorro del primer año. El ahorro a 25 años cuenta que los paneles pierden un {SUPUESTOS.degradacion * 100}&nbsp;% de rendimiento al año y no supone ninguna subida de la luz.</p>
+    <div class="caja caja-aviso"><p>Es una estimación honesta, no un presupuesto. Sombras, orientación del tejado, tipo de tarifa y precio real de la instalación cambian el resultado. Para el número exacto, <a href="/presupuesto/">pide presupuesto</a>.</p></div>
+  </Fragment>
+</CalcMarco>
+
+<script>
+  import municipios from '../../data/municipios.json';
+  import { SUPUESTOS, PERFILES, consumoDesdeFactura, potenciaRecomendada, balance, ahorroAcumulado, deduccionIrpf, euros, kwh, porcentaje, numero } from '../../lib/solar.js';
+  import { enlazarDeslizadores, valor, escribir, pintarBarras, guardarCalculo, municipioGuardado, recordarMunicipio } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.calc form')!;
+  const res = document.querySelector<HTMLElement>('.calc .resultados')!;
+  const porSlug = Object.fromEntries(municipios.map((m) => [m.slug, m]));
+  enlazarDeslizadores(form);
+  const guardado = municipioGuardado();
+  if (guardado && porSlug[guardado]) (form.elements.namedItem('municipio') as HTMLSelectElement).value = guardado;
+
+  let resumen = '';
+  function calcular() {
+    const m = porSlug[valor(form, 'municipio')];
+    const s = { ...SUPUESTOS, precioLuz: valor(form, 'precioLuz') || SUPUESTOS.precioLuz, precioExcedente: valor(form, 'precioExcedente') ?? SUPUESTOS.precioExcedente, costeKwp: valor(form, 'costeKwp') || SUPUESTOS.costeKwp };
+    const consumo = valor(form, 'consumo') || consumoDesdeFactura(valor(form, 'factura') || 0, s);
+    const perfil = PERFILES[valor(form, 'perfil')] ?? PERFILES.mixto;
+    if (consumo < 300) {
+      escribir(res, 'aviso', 'Con ese gasto la factura es casi toda parte fija: las placas apenas ahorrarían. Revisa la factura o pon tu consumo anual.');
+      return;
+    }
+    const pot = potenciaRecomendada(consumo, m.anual, s, valor(form, 'techo'));
+    const b = balance({ meses: m.meses, kwp: pot.kwp, consumoAnual: consumo, diurno: perfil.diurno, s });
+    const coste = pot.kwp * s.costeKwp;
+    const irpf = deduccionIrpf({ pagado: coste });
+    const retorno = (coste - irpf.deduccion) / b.ahorro;
+
+    escribir(res, 'ahorro', euros(b.ahorro));
+    escribir(res, 'paneles', numero(pot.paneles));
+    escribir(res, 'kwp', `${numero(pot.kwp, 2)} kWp`);
+    escribir(res, 'nombre', m.nombre);
+    escribir(res, 'm2', `${pot.m2} m²`);
+    escribir(res, 'produccion', kwh(b.produccion));
+    escribir(res, 'cobertura', porcentaje(b.cobertura));
+    escribir(res, 'coste', euros(Math.round(coste / 50) * 50));
+    escribir(res, 'retorno', `${numero(retorno, 1)} años`);
+    escribir(res, 'irpf', euros(irpf.deduccion));
+    escribir(res, 'ahorro25', euros(Math.round(ahorroAcumulado(b.ahorro, 25, s) / 100) * 100));
+    escribir(res, 'aviso', b.compensacionPerdida > 20
+      ? `Ojo: unos ${euros(b.compensacionPerdida)} al año de excedentes no se pueden compensar porque superan el tope de la factura. Una batería o gastar más de día los aprovecharía.`
+      : `Consumo usado: ${kwh(consumo)} al año. Aprovechas directamente el ${porcentaje(b.aprovechamiento)} de lo que producen las placas; el resto se compensa en la factura.`);
+    pintarBarras(res.querySelector('[data-barras]')!, b.filas.map((f) => f.produccion), b.filas.map((f) => f.consumo));
+
+    resumen = `Calculadora de ahorro: ${m.nombre}, consumo ${kwh(consumo)}/año (${perfil.texto.toLowerCase()}). Propuesta: ${pot.paneles} paneles, ${numero(pot.kwp, 2)} kWp, ${kwh(b.produccion)}/año, ahorro estimado ${euros(b.ahorro)}/año.`;
+    recordarMunicipio(m.slug);
+  }
+
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  res.querySelector('[data-pedir]')!.addEventListener('click', () => guardarCalculo(resumen, porSlug[valor(form, 'municipio')].nombre));
+  calcular();
+</script>

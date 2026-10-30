@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import { sitio } from '../data/sitio.js';
+import Foto from '../components/Foto.astro';
+---
+<Base titulo="Cómo funciona eSolar Cantabria: una red de instaladores"
+  descripcion="eSolar Cantabria es una red de instaladores de placas solares. Pides el presupuesto aquí y lo prepara un instalador de la red que trabaja en tu zona. Así funciona, paso a paso."
+  migas={[{ nombre: 'Cómo funciona', url: '/como-funciona/' }]}>
+  <section class="ancho cabeza">
+    <h1>Cómo funciona eSolar Cantabria</h1>
+    <p class="entradilla">eSolar Cantabria es una red de instaladores de placas solares que trabajan en Cantabria. Tú pides el presupuesto en esta web y lo prepara un instalador de la red que trabaja cerca de tu casa. Queremos que lo sepas desde el principio.</p>
+  </section>
+
+  <section class="ancho foto-cabeza">
+    <Foto clave="temas/instaladores-andamio" alt="Dos instaladores montan placas solares en un tejado desde un andamio" proporcion="21 / 8" prioridad pie="Foto ilustrativa." />
+  </section>
+
+  <section class="bloque bloque-bruma">
+    <div class="ancho">
+      <h2>Paso a paso</h2>
+      <ol class="pasos">
+        <li>
+          <h3>Pides presupuesto</h3>
+          <p>Con tu nombre, teléfono y municipio basta. Si has usado alguna calculadora, sus datos van con la solicitud para que el instalador no te pregunte dos veces lo mismo.</p>
+        </li>
+        <li>
+          <h3>Elegimos un instalador de tu zona</h3>
+          <p>Pasamos tu solicitud a un instalador de la red que trabaja en tu comarca. Cerca de casa significa visitas rápidas y alguien a mano si algún día hace falta revisar algo.</p>
+        </li>
+        <li>
+          <h3>Visita y presupuesto cerrado</h3>
+          <p>El instalador mira la orientación y el estado del tejado, las sombras y tus facturas, y te da un presupuesto cerrado: paneles, inversor, estructura, mano de obra y papeles.</p>
+        </li>
+        <li>
+          <h3>Instalación</h3>
+          <p>Si aceptas, el montaje en una vivienda suele llevar uno o dos días. Trabajamos con paneles de fabricantes Tier 1, con 25 años de garantía de producción.</p>
+        </li>
+        <li>
+          <h3>Papeles y legalización</h3>
+          <p>El instalador emite el Certificado de Instalación Eléctrica (CIE), tramita la legalización, presenta la declaración responsable en el ayuntamiento y te deja la documentación para la compensación de excedentes y la deducción del IRPF.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="bloque" id="por-que-esolar">
+    <div class="ancho">
+      <h2>¿Por qué a través de eSolar y no directamente con un instalador?</h2>
+      <p class="entradilla">Puedes llamar a un instalador por tu cuenta y, si ya conoces uno de confianza, adelante. Esto es lo que añade pedirlo a través de la red:</p>
+      <ul class="ventajas">
+        <li><h3>Instaladores revisados</h3><p>Solo entran en la red empresas habilitadas, con seguro y con trabajos que hemos comprobado. No tienes que investigar a nadie.</p></li>
+        <li><h3>Alguien da la cara</h3><p>Si surge un problema (un retraso, una avería, una garantía), puedes acudir a eSolar Cantabria y mediamos con el instalador. No te quedas solo frente a una empresa.</p></li>
+        <li><h3>El que trabaja mal, sale</h3><p>Un instalador que no cumple deja de recibir clientes de la red. Eso hace que todos cuiden cada trabajo.</p></li>
+        <li><h3>Material a mejor precio</h3><p>La red compra paneles e inversores por volumen, y eso se nota en tu presupuesto.</p></li>
+        <li><h3>Un segundo presupuesto, si lo quieres</h3><p>¿Prefieres comparar? Te conseguimos otro de un instalador distinto de la red.</p></li>
+        <li><h3>Seguimiento después de instalar</h3><p>Cuando terminan, te contactamos para comprobar que todo está bien y que la instalación produce lo que debe.</p></li>
+        <li><h3>Una sola petición</h3><p>Nada de buscar y llamar a varias empresas: pides una vez y te llama alguien que trabaja en tu zona.</p></li>
+        <li><h3>Llegas sabiendo los números</h3><p>Lo que produce el sol en tu municipio, lo que puedes ahorrar y qué ayudas son reales, antes de hablar con nadie.</p></li>
+      </ul>
+      <div class="caja caja-dato garantias">
+        <h3>Y en cualquier caso</h3>
+        <ul>
+          <li>Presupuesto cerrado y por escrito antes de empezar.</li>
+          <li>Paneles de fabricantes Tier 1 con 25 años de garantía de producción.</li>
+          <li>Todos los papeles: CIE, legalización, declaración responsable y documentación para la deducción.</li>
+          <li>Tus datos solo los recibe el instalador que te atiende. No los vendemos ni los pasamos a nadie más.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque bloque-oscuro">
+    <div class="ancho">
+      <h2>¿Empezamos?</h2>
+      <div class="acciones">
+        <a class="boton" href="/presupuesto/">Pedir presupuesto</a>
+        <a class="boton boton-sec" href="/calculadoras/ahorro-placas-solares/">Calcular mi ahorro primero</a>
+      </div>
+      <p style="margin-top:2rem">¿Eres instalador en Cantabria? <a href="/instaladores/">Así puedes entrar en la red</a>.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cabeza { padding-block: 1.5rem 2rem; }
+  .foto-cabeza { padding-bottom: 3rem; }
+  .pasos { list-style: none; padding: 0; counter-reset: paso; display: grid; gap: 1.6rem; margin-top: 2rem; max-width: 760px; }
+  .pasos li { counter-increment: paso; display: grid; grid-template-columns: 3rem 1fr; column-gap: 1rem; }
+  .pasos li::before { content: counter(paso); grid-row: span 2; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--sol); color: var(--cantabrico); font-family: var(--titular); font-weight: 800; font-size: 1.2rem; display: grid; place-items: center; }
+  .pasos p { margin-top: .3rem; }
+  .ventajas { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem 2.2rem; margin-top: 2.4rem; }
+  @media (max-width: 1000px) { .ventajas { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .ventajas { grid-template-columns: 1fr; } }
+  .ventajas li { max-width: none; border-top: 3px solid var(--sol); padding-top: 1rem; }
+  .ventajas h3 { font-size: 1.15rem; }
+  .ventajas p { margin-top: .4rem; font-size: 1rem; }
+  .garantias { margin-top: 3rem; padding: 1.5rem 1.7rem; }
+  .garantias ul { padding-left: 1.2rem; margin-top: .6rem; display: grid; gap: .35rem; }
+</style>

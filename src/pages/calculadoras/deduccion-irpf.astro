@@ -1,0 +1,86 @@
+---
+import CalcMarco from '../../components/CalcMarco.astro';
+---
+<CalcMarco slug="deduccion-irpf"
+  tituloSeo="Deducción del IRPF por placas solares en 2026: calculadora"
+  descripcionSeo="Calcula la deducción del IRPF por instalar placas solares de autoconsumo en 2026: 10 % o 20 % de lo pagado con una base máxima de 5.000 € al año (Real Decreto-ley 7/2026)."
+  entradilla="El Real Decreto-ley 7/2026 creó una deducción nueva en el IRPF por instalar autoconsumo durante 2026. Pon lo que pagas y te decimos cuánto te devuelve Hacienda y qué necesitas para tener derecho.">
+
+  <Fragment slot="entradas">
+    <div class="campo">
+      <label for="i-pagado">Lo que pagas por la instalación (€, con IVA)</label>
+      <input class="entrada" id="i-pagado" name="pagado" type="number" min="0" max="200000" step="50" value="5500" inputmode="numeric">
+    </div>
+    <div class="campo">
+      <label for="i-subv">Subvenciones que recibas para la misma instalación (€)</label>
+      <input class="entrada" id="i-subv" name="subvencion" type="number" min="0" step="50" value="0" inputmode="numeric">
+    </div>
+    <fieldset class="grupo">
+      <legend>¿Dónde se instala?</legend>
+      <label class="opcion"><input type="radio" name="tipo" value="propio" checked> En una vivienda o inmueble de mi propiedad (casa, chalet…)</label>
+      <label class="opcion"><input type="radio" name="tipo" value="edificio"> En el edificio de viviendas donde tengo mi piso (instalación comunitaria)</label>
+    </fieldset>
+    <fieldset class="grupo">
+      <legend>Comprueba los requisitos</legend>
+      <label class="opcion"><input type="checkbox" name="r2026" checked> La instalación se termina y se paga en 2026</label>
+      <label class="opcion"><input type="checkbox" name="rbanco" checked> Pago con tarjeta, transferencia o cheque nominativo (no en efectivo)</label>
+      <label class="opcion"><input type="checkbox" name="rcie" checked> Tendré el Certificado de Instalación Eléctrica (CIE)</label>
+      <label class="opcion"><input type="checkbox" name="ractividad"> La instalación es para una actividad económica (negocio, autónomo)</label>
+    </fieldset>
+  </Fragment>
+
+  <Fragment slot="resultados">
+    <div class="principal">
+      <p class="cifra"><span data-r="deduccion">–</span><small>de deducción en el IRPF de 2026 (la declaración que presentas en 2027)</small></p>
+      <p data-r="detalle">–</p>
+    </div>
+    <div class="caja" data-r-caja><p data-r="requisitos">–</p></div>
+    <div class="cta-calc">
+      <p>Los instaladores de la red te entregan el CIE y las facturas que necesitas para la deducción.</p>
+      <a class="boton" href="/presupuesto/">Pedir presupuesto</a>
+    </div>
+  </Fragment>
+
+  <Fragment slot="explicacion">
+    <h2>Lo que dice la norma</h2>
+    <p>El Real Decreto-ley 7/2026, de 20 de marzo (BOE del 21 de marzo), añadió a la Ley del IRPF la disposición adicional 62.ª, «Deducción por la instalación de sistemas de autoconsumo renovable»:</p>
+    <ul>
+      <li><strong>10 %</strong> de lo pagado entre el 1 de enero y el 31 de diciembre de 2026 por instalar en un inmueble de tu propiedad un sistema de autoconsumo renovable, que puede incluir baterías.</li>
+      <li><strong>20 %</strong> para los propietarios de viviendas en edificios de uso predominante residencial donde se haga la instalación en 2026.</li>
+      <li><strong>Base máxima de 5.000 € al año.</strong> Una misma instalación no puede dar derecho a las dos deducciones.</li>
+      <li>Cuentan los equipos, la instalación y las obras necesarias, <strong>pagados por medios bancarios</strong>. Hay que restar las subvenciones.</li>
+      <li>Se aplica en el año en que termina la instalación, que no puede ser posterior a 2026. Hace falta el <strong>Certificado de Instalación Eléctrica (CIE)</strong>.</li>
+      <li>No vale si la instalación está afecta a una actividad económica, y no se puede sumar a la deducción por obras de eficiencia energética para la misma instalación.</li>
+    </ul>
+    <p class="nota">Fuente: <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-6544" rel="noopener">BOE-A-2026-6544</a>, artículo 36. Comprobado el 30 de octubre de 2026. Esto no es asesoramiento fiscal: confírmalo con tu gestor si tu caso tiene particularidades.</p>
+  </Fragment>
+</CalcMarco>
+
+<script>
+  import { deduccionIrpf, euros } from '../../lib/solar.js';
+  import { valor, escribir } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.calc form')!;
+  const res = document.querySelector<HTMLElement>('.calc .resultados')!;
+  const caja = res.querySelector<HTMLElement>('[data-r-caja]')!;
+
+  function calcular() {
+    const edificio = valor(form, 'tipo') === 'edificio';
+    const d = deduccionIrpf({ pagado: valor(form, 'pagado') || 0, subvencion: valor(form, 'subvencion') || 0, edificio });
+    const fallos = [];
+    if (!valor(form, 'r2026')) fallos.push('la instalación tiene que terminarse y pagarse en 2026');
+    if (!valor(form, 'rbanco')) fallos.push('lo pagado en efectivo no cuenta');
+    if (!valor(form, 'rcie')) fallos.push('sin el CIE no hay deducción');
+    if (valor(form, 'ractividad')) fallos.push('no se aplica si la instalación está afecta a una actividad económica');
+    const vale = fallos.length === 0;
+    escribir(res, 'deduccion', vale ? euros(d.deduccion) : '0 €');
+    escribir(res, 'detalle', `El ${d.porcentaje * 100} % de una base de ${euros(d.base)}${d.base === 5000 ? ' (el máximo)' : ''}.`);
+    escribir(res, 'requisitos', vale
+      ? 'Cumples los requisitos que has marcado. Guarda las facturas, los justificantes de pago y el CIE.'
+      : `Así no tendrías derecho: ${fallos.join('; ')}.`);
+    caja.className = `caja ${vale ? 'caja-ok' : 'caja-aviso'}`;
+  }
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  calcular();
+</script>

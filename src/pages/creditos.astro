@@ -1,0 +1,26 @@
+---
+import Legal from '../layouts/Legal.astro';
+import fotos from '../data/fotos.json';
+import municipios from '../data/municipios.json';
+
+const nombre = (clave: string) => {
+  const slug = clave.split('/')[1];
+  return clave.startsWith('municipios/') ? municipios.find((m) => m.slug === slug)?.nombre ?? slug : slug.replace(/-/g, ' ');
+};
+const lista = Object.entries(fotos as Record<string, any>).sort((a, b) => nombre(a[0]).localeCompare(nombre(b[0]), 'es'));
+---
+<Legal titulo="Créditos de las fotos" url="/creditos/" actualizado="30 de octubre de 2026"
+  descripcion="Autores y licencias de las fotografías que se usan en eSolar Cantabria, todas con licencia libre de Wikimedia Commons.">
+  <p>Las fotos de esta web proceden de Wikimedia Commons y tienen licencias libres (Creative Commons o dominio público) que permiten su uso. Las de pueblos y paisajes son de los propios municipios de Cantabria. Las de placas, baterías y bombas de calor son ilustrativas: no son instalaciones de la red. Gracias a sus autores.</p>
+  <p>Datos de producción solar: PVGIS, Comisión Europea (Centro Común de Investigación). Datos de municipios: Wikidata.</p>
+  <ul class="creditos">
+    {lista.map(([clave, f]) => (
+      <li><strong>{nombre(clave)}</strong>: <a href={f.pagina} rel="noopener">{f.titulo || 'original'}</a>, de {f.autor}, {f.licenciaUrl ? <a href={f.licenciaUrl} rel="noopener license">{f.licencia}</a> : f.licencia}.</li>
+    ))}
+  </ul>
+</Legal>
+
+<style>
+  .creditos { font-size: .92rem; }
+  .creditos li { overflow-wrap: anywhere; }
+</style>

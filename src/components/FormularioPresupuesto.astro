@@ -1,0 +1,136 @@
+---
+// Formulario corto: nombre, teléfono y municipio. El email y el mensaje son opcionales.
+// Si el visitante viene de una calculadora, se adjunta el resumen guardado en sessionStorage («esolar-calculo»).
+import municipios from '../data/municipios.json';
+import { sitio, enlaceWhatsapp } from '../data/sitio.js';
+
+interface Props { titulo?: string; municipio?: string; id?: string }
+const { titulo = 'Pide tu presupuesto', municipio = '', id = 'presupuesto' } = Astro.props;
+const alfabetico = [...municipios].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+const whatsapp = enlaceWhatsapp();
+---
+<form class="formulario" id={id} action="/send-mail.php" method="post" novalidate>
+  <h2 class="titulo-form">{titulo}</h2>
+  <p class="sub">Sin compromiso. Te llama un instalador de la red que trabaja cerca de tu casa.</p>
+
+  <div class="campo">
+    <label for={`${id}-nombre`}>Nombre</label>
+    <input class="entrada" id={`${id}-nombre`} name="nombre" autocomplete="name" required maxlength="80">
+  </div>
+  <div class="campo">
+    <label for={`${id}-telefono`}>Teléfono</label>
+    <input class="entrada" id={`${id}-telefono`} name="telefono" type="tel" autocomplete="tel" inputmode="tel" required pattern="[+0-9 ]{9,16}" maxlength="16">
+  </div>
+  <div class="campo">
+    <label for={`${id}-municipio`}>Municipio</label>
+    <select class="entrada" id={`${id}-municipio`} name="municipio" required>
+      <option value="" selected={!municipio}>Elige tu municipio</option>
+      {alfabetico.map((m) => <option value={m.nombre} selected={m.slug === municipio}>{m.nombre}</option>)}
+    </select>
+  </div>
+
+  <details class="opcional">
+    <summary>Añadir email o un mensaje (opcional)</summary>
+    <div class="campo">
+      <label for={`${id}-email`}>Email</label>
+      <input class="entrada" id={`${id}-email`} name="email" type="email" autocomplete="email" maxlength="120">
+      <span class="ayuda">Si lo pones, te mandamos una copia de tu solicitud.</span>
+    </div>
+    <div class="campo">
+      <label for={`${id}-mensaje`}>Mensaje</label>
+      <textarea class="entrada" id={`${id}-mensaje`} name="mensaje" rows="3" maxlength="1500" placeholder="Tipo de tejado, si quieres batería, cuándo te viene bien que te llamen…"></textarea>
+    </div>
+  </details>
+
+  <div class="calculo" hidden>
+    <p class="etiqueta">Se adjuntan los datos de tu cálculo</p>
+    <p class="calculo-texto"></p>
+  </div>
+
+  <input type="hidden" name="origen" value={Astro.url.pathname}>
+  <input type="hidden" name="calculo" value="">
+  <div class="trampa" aria-hidden="true">
+    <label>No rellenes este campo <input name="web" tabindex="-1" autocomplete="off"></label>
+  </div>
+
+  <label class="consentimiento">
+    <input type="checkbox" name="acepto" required>
+    <span>Acepto que eSolar Cantabria pase mis datos a un instalador de su red para preparar el presupuesto, según la <a href="/privacidad/">política de privacidad</a>.</span>
+  </label>
+
+  <button class="boton enviar" type="submit">Pedir presupuesto</button>
+  <p class="estado" role="status" aria-live="polite"></p>
+  {whatsapp && <p class="alternativa">o escríbenos por <a href={whatsapp} rel="noopener">WhatsApp</a></p>}
+</form>
+
+<script>
+  import { sitio } from '../data/sitio.js';
+
+  document.querySelectorAll<HTMLFormElement>('form.formulario').forEach((form) => {
+    const estado = form.querySelector<HTMLElement>('.estado')!;
+    const boton = form.querySelector<HTMLButtonElement>('.enviar')!;
+
+    // Datos de una calculadora usada en esta visita
+    try {
+      const guardado = JSON.parse(sessionStorage.getItem('esolar-calculo') || 'null');
+      if (guardado?.texto) {
+        form.querySelector<HTMLInputElement>('[name=calculo]')!.value = guardado.texto;
+        const caja = form.querySelector<HTMLElement>('.calculo')!;
+        caja.querySelector('.calculo-texto')!.textContent = guardado.texto;
+        caja.hidden = false;
+        const select = form.querySelector<HTMLSelectElement>('[name=municipio]')!;
+        if (guardado.municipio && !select.value) select.value = guardado.municipio;
+      }
+    } catch {}
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        const primero = form.querySelector<HTMLElement>(':invalid');
+        const etiqueta = primero?.closest('.campo')?.querySelector('label')?.textContent;
+        estado.textContent = primero?.getAttribute('name') === 'acepto'
+          ? 'Para enviarlo, marca la casilla de privacidad.'
+          : `Revisa el campo «${etiqueta ?? 'obligatorio'}».`;
+        estado.className = 'estado error';
+        primero?.focus();
+        return;
+      }
+      boton.disabled = true;
+      estado.className = 'estado';
+      estado.textContent = 'Enviando…';
+      try {
+        const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || !j.ok) throw new Error(j.error || 'error');
+        form.innerHTML = `<div class="hecho"><h2 class="titulo-form">Solicitud enviada</h2><p>Gracias. Un instalador de la red te llamará al teléfono que nos has dado. Si pusiste email, te hemos mandado una copia.</p></div>`;
+        sessionStorage.removeItem('esolar-calculo');
+        window.umami?.track?.('presupuesto_enviado');
+      } catch {
+        boton.disabled = false;
+        estado.className = 'estado error';
+        estado.innerHTML = `No se ha podido enviar. Inténtalo de nuevo o escríbenos a <a href="mailto:${sitio.email}">${sitio.email}</a>.`;
+      }
+    });
+  });
+</script>
+
+<style>
+  .formulario { background: var(--bruma); border-radius: var(--radio-grande); padding: clamp(1.3rem, 4vw, 2rem); display: grid; gap: 1rem; }
+  .titulo-form { font-size: 1.5rem; }
+  .sub { color: var(--ria); margin-top: -.6rem; }
+  .opcional summary { cursor: pointer; color: var(--ria); font-weight: 600; padding-block: .2rem; }
+  .opcional[open] summary { margin-bottom: .8rem; }
+  .opcional .campo + .campo { margin-top: .9rem; }
+  .calculo { background: var(--blanco); border-radius: 10px; padding: .8rem 1rem; font-size: .92rem; }
+  .calculo .etiqueta { font-size: .9rem; }
+  .trampa { position: absolute; left: -9999px; }
+  .consentimiento { display: grid; grid-template-columns: auto 1fr; gap: .6rem; font-size: .9rem; color: var(--pizarra); align-items: start; }
+  .consentimiento input { width: 20px; height: 20px; margin-top: .15rem; accent-color: var(--cantabrico); }
+  .enviar { width: 100%; padding-block: 1rem; font-size: 1.08rem; }
+  .enviar:disabled { opacity: .6; cursor: wait; }
+  .estado:empty { display: none; }
+  .estado { font-size: .95rem; }
+  .estado.error { color: var(--aviso); font-weight: 600; }
+  .alternativa { text-align: center; font-size: .95rem; }
+  :global(.hecho) { display: grid; gap: .6rem; }
+</style>

@@ -1,0 +1,5612 @@
+[
+ {
+  "nombre": "Santander",
+  "ine": "39075",
+  "lat": 43.466666666,
+  "lon": -3.8,
+  "poblacion": 175425,
+  "slug": "santander",
+  "anual": 1202,
+  "meses": [
+   63.6,
+   76.6,
+   105.8,
+   116.6,
+   126.5,
+   118.7,
+   127,
+   124.7,
+   116.6,
+   95.9,
+   66.3,
+   63.6
+  ],
+  "irradiacion": 1525,
+  "inclinacion": 37,
+  "azimut": 3,
+  "altitud": 48,
+  "puesto": 26,
+  "vecinos": [
+   {
+    "slug": "camargo",
+    "nombre": "Camargo",
+    "km": 6
+   },
+   {
+    "slug": "marina-de-cudeyo",
+    "nombre": "Marina de Cudeyo",
+    "km": 6
+   },
+   {
+    "slug": "el-astillero",
+    "nombre": "El Astillero",
+    "km": 7
+   },
+   {
+    "slug": "santa-cruz-de-bezana",
+    "nombre": "Santa Cruz de Bezana",
+    "km": 9
+   },
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Torrelavega",
+  "ine": "39087",
+  "lat": 43.350555555,
+  "lon": -4.049166666,
+  "poblacion": 51796,
+  "slug": "torrelavega",
+  "anual": 1192,
+  "meses": [
+   66.2,
+   80.4,
+   106.8,
+   114.9,
+   121.1,
+   112.3,
+   119.1,
+   119.8,
+   114.8,
+   98.1,
+   70,
+   68.1
+  ],
+  "irradiacion": 1514,
+  "inclinacion": 37,
+  "azimut": -2,
+  "altitud": 28,
+  "puesto": 35,
+  "vecinos": [
+   {
+    "slug": "reocin",
+    "nombre": "Reocín",
+    "km": 3
+   },
+   {
+    "slug": "cartes",
+    "nombre": "Cartes",
+    "km": 3
+   },
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 5
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 7
+   },
+   {
+    "slug": "santillana-del-mar",
+    "nombre": "Santillana del Mar",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Castro-Urdiales",
+  "ine": "39020",
+  "lat": 43.384444444,
+  "lon": -3.215,
+  "poblacion": 33450,
+  "slug": "castro-urdiales",
+  "anual": 1185,
+  "meses": [
+   60.9,
+   75.4,
+   102.8,
+   114.3,
+   125.1,
+   118.6,
+   126.7,
+   124.9,
+   115.7,
+   94.4,
+   63.8,
+   62
+  ],
+  "irradiacion": 1492,
+  "inclinacion": 36,
+  "azimut": -2,
+  "altitud": 3,
+  "puesto": 37,
+  "vecinos": [
+   {
+    "slug": "guriezo",
+    "nombre": "Guriezo",
+    "km": 10
+   },
+   {
+    "slug": "liendo",
+    "nombre": "Liendo",
+    "km": 13
+   },
+   {
+    "slug": "laredo",
+    "nombre": "Laredo",
+    "km": 16
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 17
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 17
+   }
+  ]
+ },
+ {
+  "nombre": "Camargo",
+  "ine": "39016",
+  "lat": 43.426666666,
+  "lon": -3.855277777,
+  "poblacion": 30577,
+  "slug": "camargo",
+  "anual": 1210,
+  "meses": [
+   66.3,
+   80.3,
+   108.4,
+   117.1,
+   124.9,
+   116,
+   123.2,
+   122.3,
+   116.5,
+   98.7,
+   69.6,
+   66.4
+  ],
+  "irradiacion": 1536,
+  "inclinacion": 37,
+  "azimut": 0,
+  "altitud": 28,
+  "puesto": 24,
+  "vecinos": [
+   {
+    "slug": "el-astillero",
+    "nombre": "El Astillero",
+    "km": 4
+   },
+   {
+    "slug": "santa-cruz-de-bezana",
+    "nombre": "Santa Cruz de Bezana",
+    "km": 4
+   },
+   {
+    "slug": "santander",
+    "nombre": "Santander",
+    "km": 6
+   },
+   {
+    "slug": "marina-de-cudeyo",
+    "nombre": "Marina de Cudeyo",
+    "km": 8
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Piélagos",
+  "ine": "39052",
+  "lat": 43.357777777,
+  "lon": -3.958055555,
+  "poblacion": 26901,
+  "slug": "pielagos",
+  "anual": 1184,
+  "meses": [
+   66,
+   80,
+   105.5,
+   113.9,
+   120.3,
+   111.5,
+   118.9,
+   119.3,
+   113.6,
+   97.5,
+   69.6,
+   67.7
+  ],
+  "irradiacion": 1504,
+  "inclinacion": 37,
+  "azimut": -2,
+  "altitud": 40,
+  "puesto": 39,
+  "vecinos": [
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 6
+   },
+   {
+    "slug": "castaneda",
+    "nombre": "Castañeda",
+    "km": 6
+   },
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 6
+   },
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 7
+   },
+   {
+    "slug": "miengo",
+    "nombre": "Miengo",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "El Astillero",
+  "ine": "39008",
+  "lat": 43.401666666,
+  "lon": -3.819444444,
+  "poblacion": 18448,
+  "slug": "el-astillero",
+  "anual": 1182,
+  "meses": [
+   63.5,
+   77.1,
+   105.6,
+   114.9,
+   123.1,
+   114.4,
+   121.1,
+   120.2,
+   114.6,
+   96.7,
+   67,
+   63.3
+  ],
+  "irradiacion": 1499,
+  "inclinacion": 37,
+  "azimut": 1,
+  "altitud": 23,
+  "puesto": 42,
+  "vecinos": [
+   {
+    "slug": "camargo",
+    "nombre": "Camargo",
+    "km": 4
+   },
+   {
+    "slug": "marina-de-cudeyo",
+    "nombre": "Marina de Cudeyo",
+    "km": 6
+   },
+   {
+    "slug": "santander",
+    "nombre": "Santander",
+    "km": 7
+   },
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 7
+   },
+   {
+    "slug": "penagos",
+    "nombre": "Penagos",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Santa Cruz de Bezana",
+  "ine": "39073",
+  "lat": 43.444166666,
+  "lon": -3.903055555,
+  "poblacion": 13904,
+  "slug": "santa-cruz-de-bezana",
+  "anual": 1226,
+  "meses": [
+   67.3,
+   81.6,
+   109.7,
+   118.6,
+   126.6,
+   117.1,
+   124.7,
+   123.7,
+   117.3,
+   99.7,
+   71,
+   68.9
+  ],
+  "irradiacion": 1556,
+  "inclinacion": 37,
+  "azimut": 0,
+  "altitud": 44,
+  "puesto": 14,
+  "vecinos": [
+   {
+    "slug": "camargo",
+    "nombre": "Camargo",
+    "km": 4
+   },
+   {
+    "slug": "miengo",
+    "nombre": "Miengo",
+    "km": 7
+   },
+   {
+    "slug": "el-astillero",
+    "nombre": "El Astillero",
+    "km": 8
+   },
+   {
+    "slug": "santander",
+    "nombre": "Santander",
+    "km": 9
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Los Corrales de Buelna",
+  "ine": "39025",
+  "lat": 43.261666666,
+  "lon": -4.065277777,
+  "poblacion": 10958,
+  "slug": "los-corrales-de-buelna",
+  "anual": 1135,
+  "meses": [
+   63.1,
+   75.2,
+   101.3,
+   108.3,
+   113.8,
+   107.4,
+   114.7,
+   116,
+   110.6,
+   94.7,
+   65.9,
+   64.5
+  ],
+  "irradiacion": 1443,
+  "inclinacion": 37,
+  "azimut": -9,
+  "altitud": 91,
+  "puesto": 69,
+  "vecinos": [
+   {
+    "slug": "san-felices-de-buelna",
+    "nombre": "San Felices de Buelna",
+    "km": 2
+   },
+   {
+    "slug": "cieza",
+    "nombre": "Cieza",
+    "km": 5
+   },
+   {
+    "slug": "cartes",
+    "nombre": "Cartes",
+    "km": 7
+   },
+   {
+    "slug": "arenas-de-iguna",
+    "nombre": "Arenas de Iguña",
+    "km": 8
+   },
+   {
+    "slug": "anievas",
+    "nombre": "Anievas",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Santoña",
+  "ine": "39079",
+  "lat": 43.441388888,
+  "lon": -3.4575,
+  "poblacion": 10835,
+  "slug": "santona",
+  "anual": 1183,
+  "meses": [
+   62.7,
+   76.3,
+   103,
+   113.7,
+   123.5,
+   116.1,
+   124.4,
+   123.4,
+   115.1,
+   95.1,
+   66.3,
+   63.4
+  ],
+  "irradiacion": 1500,
+  "inclinacion": 37,
+  "azimut": 1,
+  "altitud": 12,
+  "puesto": 40,
+  "vecinos": [
+   {
+    "slug": "argonos",
+    "nombre": "Argoños",
+    "km": 3
+   },
+   {
+    "slug": "laredo",
+    "nombre": "Laredo",
+    "km": 5
+   },
+   {
+    "slug": "colindres",
+    "nombre": "Colindres",
+    "km": 5
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 5
+   },
+   {
+    "slug": "escalante",
+    "nombre": "Escalante",
+    "km": 5
+   }
+  ]
+ },
+ {
+  "nombre": "Laredo",
+  "ine": "39035",
+  "lat": 43.414444444,
+  "lon": -3.41,
+  "poblacion": 10698,
+  "slug": "laredo",
+  "anual": 1167,
+  "meses": [
+   60.4,
+   74,
+   101.8,
+   113.1,
+   123.5,
+   116.7,
+   124.8,
+   122.9,
+   114.4,
+   93.3,
+   63.3,
+   59.2
+  ],
+  "irradiacion": 1480,
+  "inclinacion": 36,
+  "azimut": 2,
+  "altitud": 26,
+  "puesto": 45,
+  "vecinos": [
+   {
+    "slug": "liendo",
+    "nombre": "Liendo",
+    "km": 3
+   },
+   {
+    "slug": "colindres",
+    "nombre": "Colindres",
+    "km": 4
+   },
+   {
+    "slug": "santona",
+    "nombre": "Santoña",
+    "km": 5
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 6
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Santa María de Cayón",
+  "ine": "39074",
+  "lat": 43.311388888,
+  "lon": -3.8525,
+  "poblacion": 9538,
+  "slug": "santa-maria-de-cayon",
+  "anual": 1152,
+  "meses": [
+   63.1,
+   77.7,
+   101.7,
+   109.6,
+   115,
+   109,
+   117.1,
+   117.9,
+   112.2,
+   96.3,
+   67.1,
+   64.9
+  ],
+  "irradiacion": 1461,
+  "inclinacion": 37,
+  "azimut": -8,
+  "altitud": 93,
+  "puesto": 51,
+  "vecinos": [
+   {
+    "slug": "penagos",
+    "nombre": "Penagos",
+    "km": 5
+   },
+   {
+    "slug": "castaneda",
+    "nombre": "Castañeda",
+    "km": 6
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 6
+   },
+   {
+    "slug": "saro",
+    "nombre": "Saro",
+    "km": 6
+   },
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Suances",
+  "ine": "39085",
+  "lat": 43.428333333,
+  "lon": -4.043611111,
+  "poblacion": 9034,
+  "slug": "suances",
+  "anual": 1209,
+  "meses": [
+   65,
+   79.9,
+   107.7,
+   117.4,
+   125.4,
+   116.7,
+   125.1,
+   124,
+   116.6,
+   97.5,
+   68.7,
+   64.9
+  ],
+  "irradiacion": 1534,
+  "inclinacion": 37,
+  "azimut": 0,
+  "altitud": 88,
+  "puesto": 25,
+  "vecinos": [
+   {
+    "slug": "miengo",
+    "nombre": "Miengo",
+    "km": 4
+   },
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 5
+   },
+   {
+    "slug": "santillana-del-mar",
+    "nombre": "Santillana del Mar",
+    "km": 6
+   },
+   {
+    "slug": "reocin",
+    "nombre": "Reocín",
+    "km": 8
+   },
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Colindres",
+  "ine": "39023",
+  "lat": 43.3949637,
+  "lon": -3.449786,
+  "poblacion": 8570,
+  "slug": "colindres",
+  "anual": 1163,
+  "meses": [
+   62.1,
+   75.9,
+   101.7,
+   111.2,
+   120.4,
+   113.1,
+   120.3,
+   119.9,
+   112.6,
+   95.1,
+   67,
+   63.6
+  ],
+  "irradiacion": 1473,
+  "inclinacion": 36,
+  "azimut": 0,
+  "altitud": 7,
+  "puesto": 47,
+  "vecinos": [
+   {
+    "slug": "laredo",
+    "nombre": "Laredo",
+    "km": 4
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 4
+   },
+   {
+    "slug": "santona",
+    "nombre": "Santoña",
+    "km": 5
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 6
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Reinosa",
+  "ine": "39059",
+  "lat": 43.001944444,
+  "lon": -4.137777777,
+  "poblacion": 8570,
+  "slug": "reinosa",
+  "anual": 1289,
+  "meses": [
+   67.7,
+   80.1,
+   109.6,
+   118.8,
+   130.3,
+   128.7,
+   146.1,
+   140.2,
+   124.3,
+   104,
+   70.6,
+   68.8
+  ],
+  "irradiacion": 1627,
+  "inclinacion": 36,
+  "azimut": -6,
+  "altitud": 853,
+  "puesto": 10,
+  "vecinos": [
+   {
+    "slug": "campoo-de-enmedio",
+    "nombre": "Campoo de Enmedio",
+    "km": 2
+   },
+   {
+    "slug": "villaescusa",
+    "nombre": "Villaescusa",
+    "km": 5
+   },
+   {
+    "slug": "hermandad-de-campoo-de-suso",
+    "nombre": "Hermandad de Campoo de Suso",
+    "km": 7
+   },
+   {
+    "slug": "santiurde-de-reinosa",
+    "nombre": "Santiurde de Reinosa",
+    "km": 8
+   },
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Reocín",
+  "ine": "39060",
+  "lat": 43.3598835,
+  "lon": -4.0876115,
+  "poblacion": 8389,
+  "slug": "reocin",
+  "anual": 1200,
+  "meses": [
+   67.1,
+   81.3,
+   107.9,
+   116.1,
+   122.1,
+   113,
+   119.5,
+   120.1,
+   115.6,
+   99.1,
+   70.5,
+   67.8
+  ],
+  "irradiacion": 1524,
+  "inclinacion": 37,
+  "azimut": -3,
+  "altitud": 26,
+  "puesto": 27,
+  "vecinos": [
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 3
+   },
+   {
+    "slug": "cartes",
+    "nombre": "Cartes",
+    "km": 4
+   },
+   {
+    "slug": "santillana-del-mar",
+    "nombre": "Santillana del Mar",
+    "km": 4
+   },
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 7
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Cabezón de la Sal",
+  "ine": "39012",
+  "lat": 43.3075,
+  "lon": -4.2325,
+  "poblacion": 8226,
+  "slug": "cabezon-de-la-sal",
+  "anual": 1115,
+  "meses": [
+   62.7,
+   76.5,
+   101.3,
+   107.7,
+   111.2,
+   102.7,
+   107.4,
+   110.3,
+   108.2,
+   94.8,
+   67.2,
+   64.7
+  ],
+  "irradiacion": 1413,
+  "inclinacion": 37,
+  "azimut": -10,
+  "altitud": 126,
+  "puesto": 86,
+  "vecinos": [
+   {
+    "slug": "mazcuerras",
+    "nombre": "Mazcuerras",
+    "km": 2
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 4
+   },
+   {
+    "slug": "ruente",
+    "nombre": "Ruente",
+    "km": 6
+   },
+   {
+    "slug": "ruiloba",
+    "nombre": "Ruiloba",
+    "km": 8
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Medio Cudeyo",
+  "ine": "39042",
+  "lat": 43.381388888,
+  "lon": -3.731666666,
+  "poblacion": 7775,
+  "slug": "medio-cudeyo",
+  "anual": 1138,
+  "meses": [
+   60.4,
+   75.9,
+   102.7,
+   110.9,
+   117.5,
+   109.5,
+   115.2,
+   115.4,
+   109.4,
+   94.6,
+   65.5,
+   60.6
+  ],
+  "irradiacion": 1439,
+  "inclinacion": 36,
+  "azimut": -9,
+  "altitud": 39,
+  "puesto": 64,
+  "vecinos": [
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 4
+   },
+   {
+    "slug": "lierganes",
+    "nombre": "Liérganes",
+    "km": 4
+   },
+   {
+    "slug": "riotuerto",
+    "nombre": "Riotuerto",
+    "km": 4
+   },
+   {
+    "slug": "marina-de-cudeyo",
+    "nombre": "Marina de Cudeyo",
+    "km": 5
+   },
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Polanco",
+  "ine": "39054",
+  "lat": 43.385833333,
+  "lon": -4.015,
+  "poblacion": 6304,
+  "slug": "polanco",
+  "anual": 1193,
+  "meses": [
+   67,
+   80.5,
+   106.8,
+   114.9,
+   121.2,
+   112.2,
+   119,
+   119.8,
+   114.8,
+   98.1,
+   70.1,
+   68.8
+  ],
+  "irradiacion": 1516,
+  "inclinacion": 37,
+  "azimut": -2,
+  "altitud": 51,
+  "puesto": 34,
+  "vecinos": [
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 5
+   },
+   {
+    "slug": "suances",
+    "nombre": "Suances",
+    "km": 5
+   },
+   {
+    "slug": "miengo",
+    "nombre": "Miengo",
+    "km": 5
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 6
+   },
+   {
+    "slug": "reocin",
+    "nombre": "Reocín",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Cartes",
+  "ine": "39018",
+  "lat": 43.325555555,
+  "lon": -4.068055555,
+  "poblacion": 5874,
+  "slug": "cartes",
+  "anual": 1146,
+  "meses": [
+   64.1,
+   77.3,
+   102.6,
+   109.1,
+   114.2,
+   107,
+   113.9,
+   116,
+   111.3,
+   96.3,
+   68.4,
+   65.3
+  ],
+  "irradiacion": 1458,
+  "inclinacion": 37,
+  "azimut": -7,
+  "altitud": 35,
+  "puesto": 59,
+  "vecinos": [
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 3
+   },
+   {
+    "slug": "reocin",
+    "nombre": "Reocín",
+    "km": 4
+   },
+   {
+    "slug": "san-felices-de-buelna",
+    "nombre": "San Felices de Buelna",
+    "km": 6
+   },
+   {
+    "slug": "los-corrales-de-buelna",
+    "nombre": "Los Corrales de Buelna",
+    "km": 7
+   },
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Entrambasaguas",
+  "ine": "39028",
+  "lat": 43.377777777,
+  "lon": -3.676666666,
+  "poblacion": 5693,
+  "slug": "entrambasaguas",
+  "anual": 1151,
+  "meses": [
+   63.7,
+   78,
+   102.6,
+   110.3,
+   116.8,
+   108.7,
+   115.1,
+   115.3,
+   110.4,
+   96.2,
+   68.2,
+   66.1
+  ],
+  "irradiacion": 1455,
+  "inclinacion": 37,
+  "azimut": -3,
+  "altitud": 44,
+  "puesto": 52,
+  "vecinos": [
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 4
+   },
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 4
+   },
+   {
+    "slug": "riotuerto",
+    "nombre": "Riotuerto",
+    "km": 4
+   },
+   {
+    "slug": "lierganes",
+    "nombre": "Liérganes",
+    "km": 6
+   },
+   {
+    "slug": "hazas-de-cesto",
+    "nombre": "Hazas de Cesto",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Miengo",
+  "ine": "39044",
+  "lat": 43.428055555,
+  "lon": -3.991111111,
+  "poblacion": 5265,
+  "slug": "miengo",
+  "anual": 1217,
+  "meses": [
+   65.4,
+   80.5,
+   108.5,
+   117.9,
+   125.8,
+   116.8,
+   125.1,
+   123.9,
+   116.8,
+   98.4,
+   70.2,
+   67.4
+  ],
+  "irradiacion": 1544,
+  "inclinacion": 37,
+  "azimut": 1,
+  "altitud": 8,
+  "puesto": 19,
+  "vecinos": [
+   {
+    "slug": "suances",
+    "nombre": "Suances",
+    "km": 4
+   },
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 5
+   },
+   {
+    "slug": "santa-cruz-de-bezana",
+    "nombre": "Santa Cruz de Bezana",
+    "km": 7
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 8
+   },
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Marina de Cudeyo",
+  "ine": "39040",
+  "lat": 43.420555555,
+  "lon": -3.754166666,
+  "poblacion": 5221,
+  "slug": "marina-de-cudeyo",
+  "anual": 1199,
+  "meses": [
+   65.7,
+   78.9,
+   106.7,
+   115.9,
+   124,
+   115.1,
+   122.2,
+   121.3,
+   115.2,
+   97.9,
+   69.1,
+   67.2
+  ],
+  "irradiacion": 1520,
+  "inclinacion": 37,
+  "azimut": 0,
+  "altitud": 33,
+  "puesto": 30,
+  "vecinos": [
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 5
+   },
+   {
+    "slug": "santander",
+    "nombre": "Santander",
+    "km": 6
+   },
+   {
+    "slug": "el-astillero",
+    "nombre": "El Astillero",
+    "km": 6
+   },
+   {
+    "slug": "camargo",
+    "nombre": "Camargo",
+    "km": 8
+   },
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Bárcena de Cicero",
+  "ine": "39009",
+  "lat": 43.425,
+  "lon": -3.521111111,
+  "poblacion": 4907,
+  "slug": "barcena-de-cicero",
+  "anual": 1195,
+  "meses": [
+   63.6,
+   78.7,
+   106,
+   115.6,
+   124.5,
+   116.4,
+   124,
+   123,
+   115.9,
+   96.7,
+   67.3,
+   63.5
+  ],
+  "irradiacion": 1515,
+  "inclinacion": 37,
+  "azimut": -1,
+  "altitud": 5,
+  "puesto": 33,
+  "vecinos": [
+   {
+    "slug": "escalante",
+    "nombre": "Escalante",
+    "km": 1
+   },
+   {
+    "slug": "santona",
+    "nombre": "Santoña",
+    "km": 5
+   },
+   {
+    "slug": "argonos",
+    "nombre": "Argoños",
+    "km": 5
+   },
+   {
+    "slug": "noja",
+    "nombre": "Noja",
+    "km": 6
+   },
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Ribamontán al Mar",
+  "ine": "39061",
+  "lat": 43.455555555,
+  "lon": -3.67,
+  "poblacion": 4605,
+  "slug": "ribamontan-al-mar",
+  "anual": 1200,
+  "meses": [
+   63.6,
+   76.8,
+   106.2,
+   117.4,
+   126.9,
+   118.5,
+   127,
+   124.1,
+   115.9,
+   95.5,
+   66.1,
+   62.1
+  ],
+  "irradiacion": 1520,
+  "inclinacion": 36,
+  "azimut": 4,
+  "altitud": 32,
+  "puesto": 28,
+  "vecinos": [
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 5
+   },
+   {
+    "slug": "bareyo",
+    "nombre": "Bareyo",
+    "km": 6
+   },
+   {
+    "slug": "marina-de-cudeyo",
+    "nombre": "Marina de Cudeyo",
+    "km": 8
+   },
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 8
+   },
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Ampuero",
+  "ine": "39002",
+  "lat": 43.344722222,
+  "lon": -3.414444444,
+  "poblacion": 4518,
+  "slug": "ampuero",
+  "anual": 1133,
+  "meses": [
+   59.8,
+   74.3,
+   98.8,
+   108.2,
+   116.6,
+   111.2,
+   117.6,
+   117.6,
+   110.2,
+   93.4,
+   64.7,
+   60.5
+  ],
+  "irradiacion": 1437,
+  "inclinacion": 36,
+  "azimut": -4,
+  "altitud": 17,
+  "puesto": 71,
+  "vecinos": [
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 2
+   },
+   {
+    "slug": "rasines",
+    "nombre": "Rasines",
+    "km": 4
+   },
+   {
+    "slug": "colindres",
+    "nombre": "Colindres",
+    "km": 6
+   },
+   {
+    "slug": "liendo",
+    "nombre": "Liendo",
+    "km": 6
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Santillana del Mar",
+  "ine": "39076",
+  "lat": 43.393333333,
+  "lon": -4.104722222,
+  "poblacion": 4189,
+  "slug": "santillana-del-mar",
+  "anual": 1212,
+  "meses": [
+   67,
+   82.4,
+   109.4,
+   117.3,
+   123.4,
+   113.7,
+   120.7,
+   120.9,
+   116.2,
+   100.1,
+   71.6,
+   69.3
+  ],
+  "irradiacion": 1537,
+  "inclinacion": 37,
+  "azimut": -1,
+  "altitud": 83,
+  "puesto": 23,
+  "vecinos": [
+   {
+    "slug": "reocin",
+    "nombre": "Reocín",
+    "km": 4
+   },
+   {
+    "slug": "suances",
+    "nombre": "Suances",
+    "km": 6
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 6
+   },
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 7
+   },
+   {
+    "slug": "polanco",
+    "nombre": "Polanco",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "San Vicente de la Barquera",
+  "ine": "39080",
+  "lat": 43.38318,
+  "lon": -4.40027,
+  "poblacion": 3995,
+  "slug": "san-vicente-de-la-barquera",
+  "anual": 1136,
+  "meses": [
+   66.4,
+   79.6,
+   104.9,
+   109.8,
+   112.9,
+   103.1,
+   107.5,
+   110.1,
+   109.2,
+   95.5,
+   68.5,
+   68.3
+  ],
+  "irradiacion": 1428,
+  "inclinacion": 38,
+  "azimut": -10,
+  "altitud": 17,
+  "puesto": 68,
+  "vecinos": [
+   {
+    "slug": "val-de-san-vicente",
+    "nombre": "Val de San Vicente",
+    "km": 7
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 7
+   },
+   {
+    "slug": "comillas",
+    "nombre": "Comillas",
+    "km": 9
+   },
+   {
+    "slug": "herrerias",
+    "nombre": "Herrerías",
+    "km": 9
+   },
+   {
+    "slug": "ruiloba",
+    "nombre": "Ruiloba",
+    "km": 12
+   }
+  ]
+ },
+ {
+  "nombre": "Villaescusa",
+  "ine": "39099",
+  "lat": 42.96302,
+  "lon": -4.166611,
+  "poblacion": 3970,
+  "slug": "villaescusa",
+  "anual": 1335,
+  "meses": [
+   63,
+   79,
+   112,
+   123.9,
+   139,
+   139,
+   160,
+   153.3,
+   130.8,
+   105.8,
+   69.2,
+   59.5
+  ],
+  "irradiacion": 1682,
+  "inclinacion": 34,
+  "azimut": -7,
+  "altitud": 875,
+  "puesto": 3,
+  "vecinos": [
+   {
+    "slug": "campoo-de-enmedio",
+    "nombre": "Campoo de Enmedio",
+    "km": 3
+   },
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 5
+   },
+   {
+    "slug": "hermandad-de-campoo-de-suso",
+    "nombre": "Hermandad de Campoo de Suso",
+    "km": 8
+   },
+   {
+    "slug": "valdeolea",
+    "nombre": "Valdeolea",
+    "km": 9
+   },
+   {
+    "slug": "valdeprado-del-rio",
+    "nombre": "Valdeprado del Río",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Campoo de Enmedio",
+  "ine": "39027",
+  "lat": 42.981666666,
+  "lon": -4.147222222,
+  "poblacion": 3729,
+  "slug": "campoo-de-enmedio",
+  "anual": 1309,
+  "meses": [
+   64.4,
+   79.2,
+   110.8,
+   120,
+   133.9,
+   134.6,
+   154.9,
+   148.3,
+   127.3,
+   103.8,
+   68,
+   63.3
+  ],
+  "irradiacion": 1648,
+  "inclinacion": 35,
+  "azimut": -1,
+  "altitud": 857,
+  "puesto": 7,
+  "vecinos": [
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 2
+   },
+   {
+    "slug": "villaescusa",
+    "nombre": "Villaescusa",
+    "km": 3
+   },
+   {
+    "slug": "hermandad-de-campoo-de-suso",
+    "nombre": "Hermandad de Campoo de Suso",
+    "km": 8
+   },
+   {
+    "slug": "valdeprado-del-rio",
+    "nombre": "Valdeprado del Río",
+    "km": 10
+   },
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Castañeda",
+  "ine": "39019",
+  "lat": 43.311388888,
+  "lon": -3.928055555,
+  "poblacion": 3290,
+  "slug": "castaneda",
+  "anual": 1145,
+  "meses": [
+   63.6,
+   77.5,
+   101.9,
+   109.3,
+   114.2,
+   107.9,
+   115.5,
+   116.7,
+   111.4,
+   96.1,
+   67,
+   64.2
+  ],
+  "irradiacion": 1457,
+  "inclinacion": 37,
+  "azimut": -7,
+  "altitud": 61,
+  "puesto": 61,
+  "vecinos": [
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 3
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 6
+   },
+   {
+    "slug": "santa-maria-de-cayon",
+    "nombre": "Santa María de Cayón",
+    "km": 6
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 6
+   },
+   {
+    "slug": "santiurde-de-toranzo",
+    "nombre": "Santiurde de Toranzo",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Ramales de la Victoria",
+  "ine": "39057",
+  "lat": 43.258888888,
+  "lon": -3.463888888,
+  "poblacion": 3099,
+  "slug": "ramales-de-la-victoria",
+  "anual": 1128,
+  "meses": [
+   56.9,
+   72.1,
+   99.6,
+   108.1,
+   117.5,
+   112.4,
+   119.9,
+   119.9,
+   110.5,
+   93.3,
+   60.5,
+   57.2
+  ],
+  "irradiacion": 1429,
+  "inclinacion": 35,
+  "azimut": -10,
+  "altitud": 86,
+  "puesto": 78,
+  "vecinos": [
+   {
+    "slug": "rasines",
+    "nombre": "Rasines",
+    "km": 6
+   },
+   {
+    "slug": "ruesga",
+    "nombre": "Ruesga",
+    "km": 8
+   },
+   {
+    "slug": "soba",
+    "nombre": "Soba",
+    "km": 9
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 10
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Voto",
+  "ine": "39102",
+  "lat": 43.355833333,
+  "lon": -3.495555555,
+  "poblacion": 2971,
+  "slug": "voto",
+  "anual": 1162,
+  "meses": [
+   61.4,
+   75.9,
+   101.7,
+   111.7,
+   120.7,
+   113.6,
+   121.3,
+   121.1,
+   113.3,
+   94.6,
+   65.8,
+   61.4
+  ],
+  "irradiacion": 1473,
+  "inclinacion": 36,
+  "azimut": 0,
+  "altitud": 34,
+  "puesto": 48,
+  "vecinos": [
+   {
+    "slug": "colindres",
+    "nombre": "Colindres",
+    "km": 6
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 6
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 7
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 8
+   },
+   {
+    "slug": "solorzano",
+    "nombre": "Solórzano",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Puente Viesgo",
+  "ine": "39056",
+  "lat": 43.300555555,
+  "lon": -3.963055555,
+  "poblacion": 2893,
+  "slug": "puente-viesgo",
+  "anual": 1139,
+  "meses": [
+   61.7,
+   76.4,
+   101.1,
+   109.5,
+   114.8,
+   108.1,
+   116.3,
+   117.4,
+   111.2,
+   93.5,
+   65.7,
+   63.8
+  ],
+  "irradiacion": 1449,
+  "inclinacion": 36,
+  "azimut": -8,
+  "altitud": 92,
+  "puesto": 63,
+  "vecinos": [
+   {
+    "slug": "castaneda",
+    "nombre": "Castañeda",
+    "km": 3
+   },
+   {
+    "slug": "pielagos",
+    "nombre": "Piélagos",
+    "km": 6
+   },
+   {
+    "slug": "san-felices-de-buelna",
+    "nombre": "San Felices de Buelna",
+    "km": 7
+   },
+   {
+    "slug": "santiurde-de-toranzo",
+    "nombre": "Santiurde de Toranzo",
+    "km": 7
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Val de San Vicente",
+  "ine": "39095",
+  "lat": 43.3775,
+  "lon": -4.483611111,
+  "poblacion": 2775,
+  "slug": "val-de-san-vicente",
+  "anual": 1137,
+  "meses": [
+   66.2,
+   79.7,
+   105,
+   109.9,
+   112.6,
+   103.2,
+   107.8,
+   110.7,
+   109.6,
+   95.6,
+   68.6,
+   67.9
+  ],
+  "irradiacion": 1430,
+  "inclinacion": 38,
+  "azimut": -10,
+  "altitud": 35,
+  "puesto": 66,
+  "vecinos": [
+   {
+    "slug": "san-vicente-de-la-barquera",
+    "nombre": "San Vicente de la Barquera",
+    "km": 7
+   },
+   {
+    "slug": "herrerias",
+    "nombre": "Herrerías",
+    "km": 7
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 12
+   },
+   {
+    "slug": "lamason",
+    "nombre": "Lamasón",
+    "km": 14
+   },
+   {
+    "slug": "rionansa",
+    "nombre": "Rionansa",
+    "km": 15
+   }
+  ]
+ },
+ {
+  "nombre": "Noja",
+  "ine": "39047",
+  "lat": 43.481388888,
+  "lon": -3.518611111,
+  "poblacion": 2661,
+  "slug": "noja",
+  "anual": 1213,
+  "meses": [
+   63.8,
+   78,
+   106.4,
+   117.8,
+   128.2,
+   120,
+   128.6,
+   126,
+   117.4,
+   96,
+   66.9,
+   63.5
+  ],
+  "irradiacion": 1536,
+  "inclinacion": 37,
+  "azimut": 0,
+  "altitud": 20,
+  "puesto": 22,
+  "vecinos": [
+   {
+    "slug": "argonos",
+    "nombre": "Argoños",
+    "km": 3
+   },
+   {
+    "slug": "arnuero",
+    "nombre": "Arnuero",
+    "km": 4
+   },
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 5
+   },
+   {
+    "slug": "escalante",
+    "nombre": "Escalante",
+    "km": 5
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Ribamontán al Monte",
+  "ine": "39062",
+  "lat": 43.408055555,
+  "lon": -3.661388888,
+  "poblacion": 2535,
+  "slug": "ribamontan-al-monte",
+  "anual": 1170,
+  "meses": [
+   62.8,
+   78.1,
+   103.6,
+   113.1,
+   121,
+   112.7,
+   119.9,
+   118.5,
+   112.3,
+   95.4,
+   67.8,
+   64.4
+  ],
+  "irradiacion": 1481,
+  "inclinacion": 37,
+  "azimut": 1,
+  "altitud": 53,
+  "puesto": 44,
+  "vecinos": [
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 4
+   },
+   {
+    "slug": "ribamontan-al-mar",
+    "nombre": "Ribamontán al Mar",
+    "km": 5
+   },
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 6
+   },
+   {
+    "slug": "hazas-de-cesto",
+    "nombre": "Hazas de Cesto",
+    "km": 6
+   },
+   {
+    "slug": "solorzano",
+    "nombre": "Solórzano",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Alfoz de Lloredo",
+  "ine": "39001",
+  "lat": 43.379166666,
+  "lon": -4.175555555,
+  "poblacion": 2500,
+  "slug": "alfoz-de-lloredo",
+  "anual": 1199,
+  "meses": [
+   66,
+   80.6,
+   108.5,
+   116.8,
+   123.4,
+   113.2,
+   120.3,
+   120.5,
+   115.5,
+   98.7,
+   69.2,
+   66.6
+  ],
+  "irradiacion": 1519,
+  "inclinacion": 37,
+  "azimut": -2,
+  "altitud": 55,
+  "puesto": 31,
+  "vecinos": [
+   {
+    "slug": "santillana-del-mar",
+    "nombre": "Santillana del Mar",
+    "km": 6
+   },
+   {
+    "slug": "ruiloba",
+    "nombre": "Ruiloba",
+    "km": 6
+   },
+   {
+    "slug": "reocin",
+    "nombre": "Reocín",
+    "km": 7
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 7
+   },
+   {
+    "slug": "cabezon-de-la-sal",
+    "nombre": "Cabezón de la Sal",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Guriezo",
+  "ine": "39030",
+  "lat": 43.341944444,
+  "lon": -3.326666666,
+  "poblacion": 2496,
+  "slug": "guriezo",
+  "anual": 1148,
+  "meses": [
+   59.9,
+   74.4,
+   99.9,
+   109.9,
+   119.2,
+   112.8,
+   119.6,
+   119.5,
+   111.3,
+   94.3,
+   65.3,
+   62.4
+  ],
+  "irradiacion": 1452,
+  "inclinacion": 36,
+  "azimut": -5,
+  "altitud": 68,
+  "puesto": 55,
+  "vecinos": [
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 7
+   },
+   {
+    "slug": "liendo",
+    "nombre": "Liendo",
+    "km": 7
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 8
+   },
+   {
+    "slug": "rasines",
+    "nombre": "Rasines",
+    "km": 9
+   },
+   {
+    "slug": "castro-urdiales",
+    "nombre": "Castro-Urdiales",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "San Felices de Buelna",
+  "ine": "39069",
+  "lat": 43.275277777,
+  "lon": -4.048611111,
+  "poblacion": 2379,
+  "slug": "san-felices-de-buelna",
+  "anual": 1138,
+  "meses": [
+   63.9,
+   75,
+   101.1,
+   108.5,
+   113.8,
+   107,
+   114.6,
+   115.9,
+   111.3,
+   94.8,
+   67.6,
+   64.8
+  ],
+  "irradiacion": 1447,
+  "inclinacion": 37,
+  "azimut": -6,
+  "altitud": 106,
+  "puesto": 65,
+  "vecinos": [
+   {
+    "slug": "los-corrales-de-buelna",
+    "nombre": "Los Corrales de Buelna",
+    "km": 2
+   },
+   {
+    "slug": "cartes",
+    "nombre": "Cartes",
+    "km": 6
+   },
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 7
+   },
+   {
+    "slug": "cieza",
+    "nombre": "Cieza",
+    "km": 7
+   },
+   {
+    "slug": "torrelavega",
+    "nombre": "Torrelavega",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Liérganes",
+  "ine": "39037",
+  "lat": 43.343333333,
+  "lon": -3.741111111,
+  "poblacion": 2365,
+  "slug": "lierganes",
+  "anual": 1078,
+  "meses": [
+   55.6,
+   69.5,
+   95.7,
+   103.8,
+   109.9,
+   104.3,
+   111,
+   111.1,
+   105.2,
+   93.6,
+   61.9,
+   56.5
+  ],
+  "irradiacion": 1370,
+  "inclinacion": 36,
+  "azimut": -5,
+  "altitud": 93,
+  "puesto": 98,
+  "vecinos": [
+   {
+    "slug": "riotuerto",
+    "nombre": "Riotuerto",
+    "km": 3
+   },
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 4
+   },
+   {
+    "slug": "penagos",
+    "nombre": "Penagos",
+    "km": 5
+   },
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 6
+   },
+   {
+    "slug": "miera",
+    "nombre": "Miera",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Meruelo",
+  "ine": "39043",
+  "lat": 43.456944444,
+  "lon": -3.573888888,
+  "poblacion": 2321,
+  "slug": "meruelo",
+  "anual": 1225,
+  "meses": [
+   64.9,
+   79.9,
+   108.2,
+   118.9,
+   128.9,
+   120.6,
+   129,
+   125.8,
+   117.9,
+   97.4,
+   68.4,
+   65.1
+  ],
+  "irradiacion": 1551,
+  "inclinacion": 37,
+  "azimut": 3,
+  "altitud": 27,
+  "puesto": 16,
+  "vecinos": [
+   {
+    "slug": "arnuero",
+    "nombre": "Arnuero",
+    "km": 2
+   },
+   {
+    "slug": "bareyo",
+    "nombre": "Bareyo",
+    "km": 4
+   },
+   {
+    "slug": "noja",
+    "nombre": "Noja",
+    "km": 5
+   },
+   {
+    "slug": "escalante",
+    "nombre": "Escalante",
+    "km": 5
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Arnuero",
+  "ine": "39006",
+  "lat": 43.473055555,
+  "lon": -3.563055555,
+  "poblacion": 2300,
+  "slug": "arnuero",
+  "anual": 1225,
+  "meses": [
+   65.6,
+   80,
+   108.3,
+   118.9,
+   128.8,
+   120.5,
+   128.9,
+   125.8,
+   117.9,
+   97.6,
+   68.5,
+   64.5
+  ],
+  "irradiacion": 1551,
+  "inclinacion": 37,
+  "azimut": 2,
+  "altitud": 54,
+  "puesto": 17,
+  "vecinos": [
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 2
+   },
+   {
+    "slug": "noja",
+    "nombre": "Noja",
+    "km": 4
+   },
+   {
+    "slug": "bareyo",
+    "nombre": "Bareyo",
+    "km": 4
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 6
+   },
+   {
+    "slug": "argonos",
+    "nombre": "Argoños",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Penagos",
+  "ine": "39048",
+  "lat": 43.337777777,
+  "lon": -3.808055555,
+  "poblacion": 2253,
+  "slug": "penagos",
+  "anual": 1103,
+  "meses": [
+   57.1,
+   72.7,
+   97.6,
+   106.5,
+   111.9,
+   106.2,
+   113.7,
+   114.2,
+   108.9,
+   93.1,
+   62.6,
+   58.6
+  ],
+  "irradiacion": 1404,
+  "inclinacion": 36,
+  "azimut": 0,
+  "altitud": 110,
+  "puesto": 93,
+  "vecinos": [
+   {
+    "slug": "santa-maria-de-cayon",
+    "nombre": "Santa María de Cayón",
+    "km": 5
+   },
+   {
+    "slug": "lierganes",
+    "nombre": "Liérganes",
+    "km": 5
+   },
+   {
+    "slug": "el-astillero",
+    "nombre": "El Astillero",
+    "km": 7
+   },
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 8
+   },
+   {
+    "slug": "riotuerto",
+    "nombre": "Riotuerto",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Corvera de Toranzo",
+  "ine": "39026",
+  "lat": 43.210277777,
+  "lon": -3.937222222,
+  "poblacion": 2204,
+  "slug": "corvera-de-toranzo",
+  "anual": 1123,
+  "meses": [
+   61.2,
+   74.3,
+   99.6,
+   106,
+   112,
+   106.8,
+   115.1,
+   116.3,
+   109.7,
+   93.7,
+   64.7,
+   63.1
+  ],
+  "irradiacion": 1425,
+  "inclinacion": 36,
+  "azimut": -10,
+  "altitud": 164,
+  "puesto": 82,
+  "vecinos": [
+   {
+    "slug": "santiurde-de-toranzo",
+    "nombre": "Santiurde de Toranzo",
+    "km": 3
+   },
+   {
+    "slug": "anievas",
+    "nombre": "Anievas",
+    "km": 5
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 7
+   },
+   {
+    "slug": "arenas-de-iguna",
+    "nombre": "Arenas de Iguña",
+    "km": 9
+   },
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Valdáliga",
+  "ine": "39091",
+  "lat": 43.329166666,
+  "lon": -4.349166666,
+  "poblacion": 2135,
+  "slug": "valdaliga",
+  "anual": 1132,
+  "meses": [
+   64.7,
+   78.3,
+   103.4,
+   108.9,
+   112.1,
+   103.7,
+   109.1,
+   112.1,
+   110.2,
+   95.6,
+   68,
+   66.5
+  ],
+  "irradiacion": 1429,
+  "inclinacion": 37,
+  "azimut": -10,
+  "altitud": 51,
+  "puesto": 72,
+  "vecinos": [
+   {
+    "slug": "san-vicente-de-la-barquera",
+    "nombre": "San Vicente de la Barquera",
+    "km": 7
+   },
+   {
+    "slug": "comillas",
+    "nombre": "Comillas",
+    "km": 8
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 8
+   },
+   {
+    "slug": "rionansa",
+    "nombre": "Rionansa",
+    "km": 9
+   },
+   {
+    "slug": "herrerias",
+    "nombre": "Herrerías",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Bareyo",
+  "ine": "39011",
+  "lat": 43.482222222,
+  "lon": -3.610833333,
+  "poblacion": 2124,
+  "slug": "bareyo",
+  "anual": 1221,
+  "meses": [
+   65.6,
+   79.9,
+   108.5,
+   118.8,
+   128.2,
+   119.7,
+   127.9,
+   125,
+   117.3,
+   97.6,
+   68.6,
+   64.5
+  ],
+  "irradiacion": 1547,
+  "inclinacion": 37,
+  "azimut": 2,
+  "altitud": 46,
+  "puesto": 18,
+  "vecinos": [
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 4
+   },
+   {
+    "slug": "arnuero",
+    "nombre": "Arnuero",
+    "km": 4
+   },
+   {
+    "slug": "ribamontan-al-mar",
+    "nombre": "Ribamontán al Mar",
+    "km": 6
+   },
+   {
+    "slug": "noja",
+    "nombre": "Noja",
+    "km": 7
+   },
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Comillas",
+  "ine": "39024",
+  "lat": 43.386944444,
+  "lon": -4.289444444,
+  "poblacion": 2075,
+  "slug": "comillas",
+  "anual": 1151,
+  "meses": [
+   65.1,
+   79.4,
+   105.4,
+   111.1,
+   115.2,
+   105.6,
+   110.8,
+   113.4,
+   111.3,
+   96.7,
+   69.1,
+   68
+  ],
+  "irradiacion": 1457,
+  "inclinacion": 38,
+  "azimut": -5,
+  "altitud": 45,
+  "puesto": 53,
+  "vecinos": [
+   {
+    "slug": "ruiloba",
+    "nombre": "Ruiloba",
+    "km": 3
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 6
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 8
+   },
+   {
+    "slug": "san-vicente-de-la-barquera",
+    "nombre": "San Vicente de la Barquera",
+    "km": 9
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Mazcuerras",
+  "ine": "39041",
+  "lat": 43.298611111,
+  "lon": -4.206666666,
+  "poblacion": 2068,
+  "slug": "mazcuerras",
+  "anual": 1095,
+  "meses": [
+   61,
+   74.4,
+   99.6,
+   105.8,
+   108.6,
+   101,
+   106.6,
+   109.4,
+   107.2,
+   93.3,
+   64.9,
+   63.2
+  ],
+  "irradiacion": 1387,
+  "inclinacion": 37,
+  "azimut": -9,
+  "altitud": 135,
+  "puesto": 95,
+  "vecinos": [
+   {
+    "slug": "cabezon-de-la-sal",
+    "nombre": "Cabezón de la Sal",
+    "km": 2
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 5
+   },
+   {
+    "slug": "ruente",
+    "nombre": "Ruente",
+    "km": 6
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 9
+   },
+   {
+    "slug": "ruiloba",
+    "nombre": "Ruiloba",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Limpias",
+  "ine": "39038",
+  "lat": 43.362777777,
+  "lon": -3.424722222,
+  "poblacion": 1983,
+  "slug": "limpias",
+  "anual": 1148,
+  "meses": [
+   59.2,
+   73.9,
+   99.9,
+   111.3,
+   120.9,
+   113.8,
+   120.9,
+   120.2,
+   112,
+   91.9,
+   63.4,
+   61
+  ],
+  "irradiacion": 1455,
+  "inclinacion": 35,
+  "azimut": -3,
+  "altitud": 22,
+  "puesto": 56,
+  "vecinos": [
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 2
+   },
+   {
+    "slug": "colindres",
+    "nombre": "Colindres",
+    "km": 4
+   },
+   {
+    "slug": "liendo",
+    "nombre": "Liendo",
+    "km": 5
+   },
+   {
+    "slug": "laredo",
+    "nombre": "Laredo",
+    "km": 6
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Hazas de Cesto",
+  "ine": "39031",
+  "lat": 43.396944444,
+  "lon": -3.589722222,
+  "poblacion": 1957,
+  "slug": "hazas-de-cesto",
+  "anual": 1156,
+  "meses": [
+   62.5,
+   77.7,
+   103.1,
+   111.8,
+   118.5,
+   111.1,
+   116.9,
+   116.8,
+   111.5,
+   95.5,
+   67.6,
+   63.4
+  ],
+  "irradiacion": 1461,
+  "inclinacion": 37,
+  "azimut": -6,
+  "altitud": 66,
+  "puesto": 49,
+  "vecinos": [
+   {
+    "slug": "solorzano",
+    "nombre": "Solórzano",
+    "km": 1
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 6
+   },
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 6
+   },
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 7
+   },
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Argoños",
+  "ine": "39005",
+  "lat": 43.46,
+  "lon": -3.491388888,
+  "poblacion": 1884,
+  "slug": "argonos",
+  "anual": 1181,
+  "meses": [
+   58.3,
+   73.8,
+   102.9,
+   116.3,
+   127.5,
+   120.1,
+   129.2,
+   126.1,
+   115.9,
+   92.4,
+   62.8,
+   56.1
+  ],
+  "irradiacion": 1496,
+  "inclinacion": 36,
+  "azimut": -3,
+  "altitud": 34,
+  "puesto": 43,
+  "vecinos": [
+   {
+    "slug": "santona",
+    "nombre": "Santoña",
+    "km": 3
+   },
+   {
+    "slug": "noja",
+    "nombre": "Noja",
+    "km": 3
+   },
+   {
+    "slug": "escalante",
+    "nombre": "Escalante",
+    "km": 3
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 5
+   },
+   {
+    "slug": "arnuero",
+    "nombre": "Arnuero",
+    "km": 6
+   }
+  ]
+ },
+ {
+  "nombre": "Selaya",
+  "ine": "39082",
+  "lat": 43.218333333,
+  "lon": -3.805555555,
+  "poblacion": 1868,
+  "slug": "selaya",
+  "anual": 1128,
+  "meses": [
+   60.5,
+   74.3,
+   100.1,
+   106.4,
+   112.2,
+   108.1,
+   117.5,
+   118,
+   110.5,
+   95.4,
+   64.1,
+   61.2
+  ],
+  "irradiacion": 1428,
+  "inclinacion": 36,
+  "azimut": -9,
+  "altitud": 224,
+  "puesto": 79,
+  "vecinos": [
+   {
+    "slug": "villacarriedo",
+    "nombre": "Villacarriedo",
+    "km": 1
+   },
+   {
+    "slug": "saro",
+    "nombre": "Saro",
+    "km": 5
+   },
+   {
+    "slug": "vega-de-pas",
+    "nombre": "Vega de Pas",
+    "km": 7
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 9
+   },
+   {
+    "slug": "san-roque-de-riomiera",
+    "nombre": "San Roque de Riomiera",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Arenas de Iguña",
+  "ine": "39004",
+  "lat": 43.188055555,
+  "lon": -4.048333333,
+  "poblacion": 1735,
+  "slug": "arenas-de-iguna",
+  "anual": 1113,
+  "meses": [
+   59,
+   72,
+   99.1,
+   106.6,
+   112.2,
+   106.8,
+   114.3,
+   115.5,
+   109.8,
+   94.4,
+   62.5,
+   61.1
+  ],
+  "irradiacion": 1412,
+  "inclinacion": 36,
+  "azimut": -9,
+  "altitud": 172,
+  "puesto": 90,
+  "vecinos": [
+   {
+    "slug": "molledo",
+    "nombre": "Molledo",
+    "km": 4
+   },
+   {
+    "slug": "anievas",
+    "nombre": "Anievas",
+    "km": 4
+   },
+   {
+    "slug": "cieza",
+    "nombre": "Cieza",
+    "km": 5
+   },
+   {
+    "slug": "barcena-de-pie-de-concha",
+    "nombre": "Bárcena de Pie de Concha",
+    "km": 7
+   },
+   {
+    "slug": "los-corrales-de-buelna",
+    "nombre": "Los Corrales de Buelna",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Santiurde de Toranzo",
+  "ine": "39078",
+  "lat": 43.239722222,
+  "lon": -3.937777777,
+  "poblacion": 1726,
+  "slug": "santiurde-de-toranzo",
+  "anual": 1104,
+  "meses": [
+   57.8,
+   72.1,
+   98.4,
+   105.4,
+   112.1,
+   106.6,
+   115,
+   116.5,
+   108.4,
+   91.7,
+   62.3,
+   57.8
+  ],
+  "irradiacion": 1404,
+  "inclinacion": 35,
+  "azimut": -2,
+  "altitud": 155,
+  "puesto": 91,
+  "vecinos": [
+   {
+    "slug": "corvera-de-toranzo",
+    "nombre": "Corvera de Toranzo",
+    "km": 3
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 5
+   },
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 7
+   },
+   {
+    "slug": "anievas",
+    "nombre": "Anievas",
+    "km": 7
+   },
+   {
+    "slug": "castaneda",
+    "nombre": "Castañeda",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Riotuerto",
+  "ine": "39064",
+  "lat": 43.353333333,
+  "lon": -3.704722222,
+  "poblacion": 1682,
+  "slug": "riotuerto",
+  "anual": 1149,
+  "meses": [
+   64,
+   77.6,
+   103.2,
+   110.6,
+   116.9,
+   108.6,
+   114.5,
+   114.7,
+   109.9,
+   95.9,
+   67.9,
+   65.5
+  ],
+  "irradiacion": 1453,
+  "inclinacion": 37,
+  "azimut": -3,
+  "altitud": 63,
+  "puesto": 54,
+  "vecinos": [
+   {
+    "slug": "lierganes",
+    "nombre": "Liérganes",
+    "km": 3
+   },
+   {
+    "slug": "medio-cudeyo",
+    "nombre": "Medio Cudeyo",
+    "km": 4
+   },
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 4
+   },
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 7
+   },
+   {
+    "slug": "marina-de-cudeyo",
+    "nombre": "Marina de Cudeyo",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Villacarriedo",
+  "ine": "39098",
+  "lat": 43.229444444,
+  "lon": -3.809166666,
+  "poblacion": 1670,
+  "slug": "villacarriedo",
+  "anual": 1129,
+  "meses": [
+   61.3,
+   74.2,
+   99.6,
+   106.4,
+   112.9,
+   108.2,
+   117.5,
+   118.2,
+   110.9,
+   94.7,
+   64.1,
+   61.4
+  ],
+  "irradiacion": 1426,
+  "inclinacion": 36,
+  "azimut": -7,
+  "altitud": 203,
+  "puesto": 76,
+  "vecinos": [
+   {
+    "slug": "selaya",
+    "nombre": "Selaya",
+    "km": 1
+   },
+   {
+    "slug": "saro",
+    "nombre": "Saro",
+    "km": 4
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 8
+   },
+   {
+    "slug": "vega-de-pas",
+    "nombre": "Vega de Pas",
+    "km": 8
+   },
+   {
+    "slug": "miera",
+    "nombre": "Miera",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Hermandad de Campoo de Suso",
+  "ine": "39032",
+  "lat": 43.0225,
+  "lon": -4.224444444,
+  "poblacion": 1619,
+  "slug": "hermandad-de-campoo-de-suso",
+  "anual": 1320,
+  "meses": [
+   71,
+   82.6,
+   111.5,
+   121,
+   132.3,
+   131.4,
+   149.6,
+   144.7,
+   127.3,
+   105.3,
+   72.7,
+   70.8
+  ],
+  "irradiacion": 1662,
+  "inclinacion": 36,
+  "azimut": -6,
+  "altitud": 931,
+  "puesto": 5,
+  "vecinos": [
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 7
+   },
+   {
+    "slug": "villaescusa",
+    "nombre": "Villaescusa",
+    "km": 8
+   },
+   {
+    "slug": "campoo-de-enmedio",
+    "nombre": "Campoo de Enmedio",
+    "km": 8
+   },
+   {
+    "slug": "santiurde-de-reinosa",
+    "nombre": "Santiurde de Reinosa",
+    "km": 12
+   },
+   {
+    "slug": "pesquera",
+    "nombre": "Pesquera",
+    "km": 14
+   }
+  ]
+ },
+ {
+  "nombre": "Molledo",
+  "ine": "39046",
+  "lat": 43.154166666,
+  "lon": -4.040833333,
+  "poblacion": 1482,
+  "slug": "molledo",
+  "anual": 1125,
+  "meses": [
+   61,
+   73.9,
+   99.5,
+   106.6,
+   112.4,
+   106.9,
+   114.6,
+   115.7,
+   110.2,
+   95.6,
+   65.2,
+   63.1
+  ],
+  "irradiacion": 1425,
+  "inclinacion": 37,
+  "azimut": -13,
+  "altitud": 234,
+  "puesto": 80,
+  "vecinos": [
+   {
+    "slug": "barcena-de-pie-de-concha",
+    "nombre": "Bárcena de Pie de Concha",
+    "km": 3
+   },
+   {
+    "slug": "arenas-de-iguna",
+    "nombre": "Arenas de Iguña",
+    "km": 4
+   },
+   {
+    "slug": "anievas",
+    "nombre": "Anievas",
+    "km": 6
+   },
+   {
+    "slug": "cieza",
+    "nombre": "Cieza",
+    "km": 8
+   },
+   {
+    "slug": "pesquera",
+    "nombre": "Pesquera",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Cillorigo de Liébana",
+  "ine": "39022",
+  "lat": 43.178333333,
+  "lon": -4.599166666,
+  "poblacion": 1386,
+  "slug": "cillorigo-de-liebana",
+  "anual": 1226,
+  "meses": [
+   64.1,
+   82.3,
+   106.7,
+   112.9,
+   126.4,
+   121.9,
+   137.5,
+   133.4,
+   118.1,
+   96,
+   64.7,
+   62.4
+  ],
+  "irradiacion": 1541,
+  "inclinacion": 35,
+  "azimut": -1,
+  "altitud": 285,
+  "puesto": 15,
+  "vecinos": [
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 3
+   },
+   {
+    "slug": "cabezon-de-liebana",
+    "nombre": "Cabezón de Liébana",
+    "km": 5
+   },
+   {
+    "slug": "camaleno",
+    "nombre": "Camaleño",
+    "km": 8
+   },
+   {
+    "slug": "penarrubia",
+    "nombre": "Peñarrubia",
+    "km": 9
+   },
+   {
+    "slug": "vega-de-liebana",
+    "nombre": "Vega de Liébana",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Potes",
+  "ine": "39055",
+  "lat": 43.153611111,
+  "lon": -4.623333333,
+  "poblacion": 1323,
+  "slug": "potes",
+  "anual": 1318,
+  "meses": [
+   68.4,
+   86.9,
+   117.1,
+   123.1,
+   134.6,
+   128.8,
+   146,
+   142.5,
+   126.3,
+   102.7,
+   72.5,
+   69.1
+  ],
+  "irradiacion": 1657,
+  "inclinacion": 36,
+  "azimut": -3,
+  "altitud": 314,
+  "puesto": 6,
+  "vecinos": [
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 3
+   },
+   {
+    "slug": "cabezon-de-liebana",
+    "nombre": "Cabezón de Liébana",
+    "km": 4
+   },
+   {
+    "slug": "camaleno",
+    "nombre": "Camaleño",
+    "km": 6
+   },
+   {
+    "slug": "vega-de-liebana",
+    "nombre": "Vega de Liébana",
+    "km": 6
+   },
+   {
+    "slug": "pesaguero",
+    "nombre": "Pesaguero",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Liendo",
+  "ine": "39036",
+  "lat": 43.395,
+  "lon": -3.378888888,
+  "poblacion": 1218,
+  "slug": "liendo",
+  "anual": 1166,
+  "meses": [
+   61.5,
+   76.3,
+   102.2,
+   112,
+   121.4,
+   114.4,
+   121.4,
+   120.7,
+   113.4,
+   95.3,
+   65.9,
+   61.7
+  ],
+  "irradiacion": 1474,
+  "inclinacion": 36,
+  "azimut": -2,
+  "altitud": 30,
+  "puesto": 46,
+  "vecinos": [
+   {
+    "slug": "laredo",
+    "nombre": "Laredo",
+    "km": 3
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 5
+   },
+   {
+    "slug": "colindres",
+    "nombre": "Colindres",
+    "km": 6
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 6
+   },
+   {
+    "slug": "guriezo",
+    "nombre": "Guriezo",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Solórzano",
+  "ine": "39084",
+  "lat": 43.386944444,
+  "lon": -3.586388888,
+  "poblacion": 1144,
+  "slug": "solorzano",
+  "anual": 1156,
+  "meses": [
+   63.5,
+   77.4,
+   103.1,
+   111.7,
+   118.3,
+   111,
+   116.8,
+   116.7,
+   111.5,
+   95.2,
+   67.4,
+   63.2
+  ],
+  "irradiacion": 1461,
+  "inclinacion": 36,
+  "azimut": -3,
+  "altitud": 72,
+  "puesto": 50,
+  "vecinos": [
+   {
+    "slug": "hazas-de-cesto",
+    "nombre": "Hazas de Cesto",
+    "km": 1
+   },
+   {
+    "slug": "ribamontan-al-monte",
+    "nombre": "Ribamontán al Monte",
+    "km": 6
+   },
+   {
+    "slug": "entrambasaguas",
+    "nombre": "Entrambasaguas",
+    "km": 7
+   },
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 7
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Ruente",
+  "ine": "39066",
+  "lat": 43.259444444,
+  "lon": -4.266111111,
+  "poblacion": 1083,
+  "slug": "ruente",
+  "anual": 1090,
+  "meses": [
+   59.2,
+   73.7,
+   99.6,
+   106,
+   109,
+   101.6,
+   108,
+   109.9,
+   107.8,
+   91.8,
+   63.2,
+   59.9
+  ],
+  "irradiacion": 1381,
+  "inclinacion": 36,
+  "azimut": -8,
+  "altitud": 198,
+  "puesto": 96,
+  "vecinos": [
+   {
+    "slug": "cabuerniga",
+    "nombre": "Cabuérniga",
+    "km": 4
+   },
+   {
+    "slug": "cabezon-de-la-sal",
+    "nombre": "Cabezón de la Sal",
+    "km": 6
+   },
+   {
+    "slug": "mazcuerras",
+    "nombre": "Mazcuerras",
+    "km": 6
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 9
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Soba",
+  "ine": "39083",
+  "lat": 43.188055555,
+  "lon": -3.517222222,
+  "poblacion": 1057,
+  "slug": "soba",
+  "anual": 1143,
+  "meses": [
+   55,
+   67.6,
+   98.3,
+   106.7,
+   119.6,
+   117.3,
+   127.4,
+   125,
+   112.7,
+   95.2,
+   61.5,
+   57.2
+  ],
+  "irradiacion": 1448,
+  "inclinacion": 35,
+  "azimut": -8,
+  "altitud": 319,
+  "puesto": 62,
+  "vecinos": [
+   {
+    "slug": "ramales-de-la-victoria",
+    "nombre": "Ramales de la Victoria",
+    "km": 9
+   },
+   {
+    "slug": "ruesga",
+    "nombre": "Ruesga",
+    "km": 11
+   },
+   {
+    "slug": "arredondo",
+    "nombre": "Arredondo",
+    "km": 12
+   },
+   {
+    "slug": "rasines",
+    "nombre": "Rasines",
+    "km": 15
+   },
+   {
+    "slug": "san-roque-de-riomiera",
+    "nombre": "San Roque de Riomiera",
+    "km": 16
+   }
+  ]
+ },
+ {
+  "nombre": "Rionansa",
+  "ine": "39063",
+  "lat": 43.254722222,
+  "lon": -4.4025,
+  "poblacion": 1022,
+  "slug": "rionansa",
+  "anual": 1115,
+  "meses": [
+   62,
+   77,
+   103,
+   108.2,
+   111,
+   102.7,
+   109.1,
+   111.4,
+   109.2,
+   93.5,
+   65.8,
+   62.3
+  ],
+  "irradiacion": 1403,
+  "inclinacion": 37,
+  "azimut": -12,
+  "altitud": 200,
+  "puesto": 87,
+  "vecinos": [
+   {
+    "slug": "lamason",
+    "nombre": "Lamasón",
+    "km": 6
+   },
+   {
+    "slug": "herrerias",
+    "nombre": "Herrerías",
+    "km": 8
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 9
+   },
+   {
+    "slug": "cabuerniga",
+    "nombre": "Cabuérniga",
+    "km": 9
+   },
+   {
+    "slug": "ruente",
+    "nombre": "Ruente",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Villafufre",
+  "ine": "39100",
+  "lat": 43.267222222,
+  "lon": -3.891944444,
+  "poblacion": 1022,
+  "slug": "villafufre",
+  "anual": 1147,
+  "meses": [
+   64.2,
+   77.1,
+   101.7,
+   108.2,
+   113.2,
+   107.5,
+   116.1,
+   117.3,
+   111.8,
+   96.5,
+   67.7,
+   66.1
+  ],
+  "irradiacion": 1447,
+  "inclinacion": 37,
+  "azimut": -4,
+  "altitud": 254,
+  "puesto": 57,
+  "vecinos": [
+   {
+    "slug": "santiurde-de-toranzo",
+    "nombre": "Santiurde de Toranzo",
+    "km": 5
+   },
+   {
+    "slug": "saro",
+    "nombre": "Saro",
+    "km": 5
+   },
+   {
+    "slug": "santa-maria-de-cayon",
+    "nombre": "Santa María de Cayón",
+    "km": 6
+   },
+   {
+    "slug": "castaneda",
+    "nombre": "Castañeda",
+    "km": 6
+   },
+   {
+    "slug": "puente-viesgo",
+    "nombre": "Puente Viesgo",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Rasines",
+  "ine": "39058",
+  "lat": 43.308055555,
+  "lon": -3.424722222,
+  "poblacion": 980,
+  "slug": "rasines",
+  "anual": 1129,
+  "meses": [
+   58.7,
+   73.4,
+   98.4,
+   108.3,
+   116.8,
+   111.4,
+   117.8,
+   117.8,
+   109.9,
+   93,
+   63.6,
+   60.3
+  ],
+  "irradiacion": 1433,
+  "inclinacion": 36,
+  "azimut": -5,
+  "altitud": 79,
+  "puesto": 77,
+  "vecinos": [
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 4
+   },
+   {
+    "slug": "ramales-de-la-victoria",
+    "nombre": "Ramales de la Victoria",
+    "km": 6
+   },
+   {
+    "slug": "limpias",
+    "nombre": "Limpias",
+    "km": 6
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 8
+   },
+   {
+    "slug": "guriezo",
+    "nombre": "Guriezo",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Cabuérniga",
+  "ine": "39014",
+  "lat": 43.227777777,
+  "lon": -4.300277777,
+  "poblacion": 976,
+  "slug": "cabuerniga",
+  "anual": 1131,
+  "meses": [
+   63.1,
+   76.5,
+   105.4,
+   109.2,
+   112.3,
+   105.1,
+   113.2,
+   114.6,
+   111.2,
+   93.6,
+   64.3,
+   62.2
+  ],
+  "irradiacion": 1425,
+  "inclinacion": 37,
+  "azimut": -13,
+  "altitud": 248,
+  "puesto": 73,
+  "vecinos": [
+   {
+    "slug": "ruente",
+    "nombre": "Ruente",
+    "km": 4
+   },
+   {
+    "slug": "rionansa",
+    "nombre": "Rionansa",
+    "km": 9
+   },
+   {
+    "slug": "los-tojos",
+    "nombre": "Los Tojos",
+    "km": 9
+   },
+   {
+    "slug": "tudanca",
+    "nombre": "Tudanca",
+    "km": 9
+   },
+   {
+    "slug": "cabezon-de-la-sal",
+    "nombre": "Cabezón de la Sal",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Camaleño",
+  "ine": "39015",
+  "lat": 43.151944444,
+  "lon": -4.692222222,
+  "poblacion": 964,
+  "slug": "camaleno",
+  "anual": 1309,
+  "meses": [
+   62.9,
+   85.1,
+   116.7,
+   125.5,
+   138,
+   133.1,
+   149.4,
+   144.3,
+   125.4,
+   100.6,
+   68.2,
+   59.9
+  ],
+  "irradiacion": 1649,
+  "inclinacion": 35,
+  "azimut": 7,
+  "altitud": 436,
+  "puesto": 8,
+  "vecinos": [
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 6
+   },
+   {
+    "slug": "vega-de-liebana",
+    "nombre": "Vega de Liébana",
+    "km": 7
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 8
+   },
+   {
+    "slug": "cabezon-de-liebana",
+    "nombre": "Cabezón de Liébana",
+    "km": 10
+   },
+   {
+    "slug": "tresviso",
+    "nombre": "Tresviso",
+    "km": 12
+   }
+  ]
+ },
+ {
+  "nombre": "Udías",
+  "ine": "39090",
+  "lat": 43.338333333,
+  "lon": -4.246944444,
+  "poblacion": 960,
+  "slug": "udias",
+  "anual": 1114,
+  "meses": [
+   62.5,
+   76.2,
+   101,
+   107.6,
+   111,
+   102.6,
+   107.4,
+   110.3,
+   108.1,
+   94.9,
+   66.4,
+   65.8
+  ],
+  "irradiacion": 1412,
+  "inclinacion": 37,
+  "azimut": -12,
+  "altitud": 170,
+  "puesto": 88,
+  "vecinos": [
+   {
+    "slug": "cabezon-de-la-sal",
+    "nombre": "Cabezón de la Sal",
+    "km": 4
+   },
+   {
+    "slug": "mazcuerras",
+    "nombre": "Mazcuerras",
+    "km": 5
+   },
+   {
+    "slug": "ruiloba",
+    "nombre": "Ruiloba",
+    "km": 5
+   },
+   {
+    "slug": "comillas",
+    "nombre": "Comillas",
+    "km": 6
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Valderredible",
+  "ine": "39094",
+  "lat": 42.807222222,
+  "lon": -3.939166666,
+  "poblacion": 922,
+  "slug": "valderredible",
+  "anual": 1348,
+  "meses": [
+   63.5,
+   79.9,
+   110.6,
+   122.3,
+   139,
+   141.2,
+   162.2,
+   154.9,
+   130.7,
+   108.6,
+   70.5,
+   64.3
+  ],
+  "irradiacion": 1694,
+  "inclinacion": 35,
+  "azimut": 5,
+  "altitud": 718,
+  "puesto": 2,
+  "vecinos": [
+   {
+    "slug": "valdeprado-del-rio",
+    "nombre": "Valdeprado del Río",
+    "km": 16
+   },
+   {
+    "slug": "valdeolea",
+    "nombre": "Valdeolea",
+    "km": 20
+   },
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 20
+   },
+   {
+    "slug": "campoo-de-yuso",
+    "nombre": "Campoo de Yuso",
+    "km": 24
+   },
+   {
+    "slug": "villaescusa",
+    "nombre": "Villaescusa",
+    "km": 25
+   }
+  ]
+ },
+ {
+  "nombre": "Valdeolea",
+  "ine": "39092",
+  "lat": 42.877777777,
+  "lon": -4.162222222,
+  "poblacion": 869,
+  "slug": "valdeolea",
+  "anual": 1376,
+  "meses": [
+   69.9,
+   83.9,
+   116.4,
+   124.4,
+   140.3,
+   141.6,
+   163.4,
+   156.9,
+   131.9,
+   108.2,
+   72.4,
+   66.9
+  ],
+  "irradiacion": 1729,
+  "inclinacion": 35,
+  "azimut": 0,
+  "altitud": 935,
+  "puesto": 1,
+  "vecinos": [
+   {
+    "slug": "valdeprado-del-rio",
+    "nombre": "Valdeprado del Río",
+    "km": 8
+   },
+   {
+    "slug": "villaescusa",
+    "nombre": "Villaescusa",
+    "km": 9
+   },
+   {
+    "slug": "campoo-de-enmedio",
+    "nombre": "Campoo de Enmedio",
+    "km": 12
+   },
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 14
+   },
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 15
+   }
+  ]
+ },
+ {
+  "nombre": "Ruesga",
+  "ine": "39067",
+  "lat": 43.2825,
+  "lon": -3.56,
+  "poblacion": 810,
+  "slug": "ruesga",
+  "anual": 1130,
+  "meses": [
+   60.6,
+   73.9,
+   99.8,
+   106.6,
+   115.8,
+   110.1,
+   116.7,
+   117,
+   109.5,
+   95.3,
+   64.8,
+   60.1
+  ],
+  "irradiacion": 1427,
+  "inclinacion": 36,
+  "azimut": -9,
+  "altitud": 149,
+  "puesto": 75,
+  "vecinos": [
+   {
+    "slug": "arredondo",
+    "nombre": "Arredondo",
+    "km": 3
+   },
+   {
+    "slug": "ramales-de-la-victoria",
+    "nombre": "Ramales de la Victoria",
+    "km": 8
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 10
+   },
+   {
+    "slug": "soba",
+    "nombre": "Soba",
+    "km": 11
+   },
+   {
+    "slug": "rasines",
+    "nombre": "Rasines",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Vega de Pas",
+  "ine": "39097",
+  "lat": 43.159444444,
+  "lon": -3.781111111,
+  "poblacion": 776,
+  "slug": "vega-de-pas",
+  "anual": 1033,
+  "meses": [
+   43.5,
+   61.7,
+   91.3,
+   101.2,
+   111.4,
+   108.9,
+   117.7,
+   116.2,
+   104,
+   85.9,
+   50.7,
+   40.7
+  ],
+  "irradiacion": 1312,
+  "inclinacion": 32,
+  "azimut": 2,
+  "altitud": 372,
+  "puesto": 101,
+  "vecinos": [
+   {
+    "slug": "san-pedro-del-romeral",
+    "nombre": "San Pedro del Romeral",
+    "km": 6
+   },
+   {
+    "slug": "selaya",
+    "nombre": "Selaya",
+    "km": 7
+   },
+   {
+    "slug": "villacarriedo",
+    "nombre": "Villacarriedo",
+    "km": 8
+   },
+   {
+    "slug": "san-roque-de-riomiera",
+    "nombre": "San Roque de Riomiera",
+    "km": 11
+   },
+   {
+    "slug": "luena",
+    "nombre": "Luena",
+    "km": 12
+   }
+  ]
+ },
+ {
+  "nombre": "Ruiloba",
+  "ine": "39068",
+  "lat": 43.381666666,
+  "lon": -4.250833333,
+  "poblacion": 769,
+  "slug": "ruiloba",
+  "anual": 1147,
+  "meses": [
+   65.1,
+   78.5,
+   105,
+   111.1,
+   115.1,
+   105.5,
+   110.7,
+   113.3,
+   111.1,
+   96.2,
+   67.5,
+   68
+  ],
+  "irradiacion": 1452,
+  "inclinacion": 37,
+  "azimut": -2,
+  "altitud": 38,
+  "puesto": 58,
+  "vecinos": [
+   {
+    "slug": "comillas",
+    "nombre": "Comillas",
+    "km": 3
+   },
+   {
+    "slug": "udias",
+    "nombre": "Udías",
+    "km": 5
+   },
+   {
+    "slug": "alfoz-de-lloredo",
+    "nombre": "Alfoz de Lloredo",
+    "km": 6
+   },
+   {
+    "slug": "cabezon-de-la-sal",
+    "nombre": "Cabezón de la Sal",
+    "km": 8
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Escalante",
+  "ine": "39029",
+  "lat": 43.435555555,
+  "lon": -3.513055555,
+  "poblacion": 716,
+  "slug": "escalante",
+  "anual": 1200,
+  "meses": [
+   65,
+   78.9,
+   106,
+   115.6,
+   124.3,
+   116.3,
+   124,
+   123,
+   115.9,
+   96.7,
+   68.7,
+   65.8
+  ],
+  "irradiacion": 1520,
+  "inclinacion": 37,
+  "azimut": 0,
+  "altitud": 2,
+  "puesto": 29,
+  "vecinos": [
+   {
+    "slug": "barcena-de-cicero",
+    "nombre": "Bárcena de Cicero",
+    "km": 1
+   },
+   {
+    "slug": "argonos",
+    "nombre": "Argoños",
+    "km": 3
+   },
+   {
+    "slug": "santona",
+    "nombre": "Santoña",
+    "km": 5
+   },
+   {
+    "slug": "noja",
+    "nombre": "Noja",
+    "km": 5
+   },
+   {
+    "slug": "meruelo",
+    "nombre": "Meruelo",
+    "km": 5
+   }
+  ]
+ },
+ {
+  "nombre": "Campoo de Yuso",
+  "ine": "39017",
+  "lat": 43.017222222,
+  "lon": -4.003611111,
+  "poblacion": 680,
+  "slug": "campoo-de-yuso",
+  "anual": 1271,
+  "meses": [
+   65.7,
+   77.4,
+   106.8,
+   116.8,
+   128.6,
+   129.6,
+   146.6,
+   140.7,
+   123.4,
+   102.3,
+   67.8,
+   64.8
+  ],
+  "irradiacion": 1607,
+  "inclinacion": 35,
+  "azimut": -3,
+  "altitud": 854,
+  "puesto": 11,
+  "vecinos": [
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 5
+   },
+   {
+    "slug": "san-miguel-de-aguayo",
+    "nombre": "San Miguel de Aguayo",
+    "km": 5
+   },
+   {
+    "slug": "santiurde-de-reinosa",
+    "nombre": "Santiurde de Reinosa",
+    "km": 8
+   },
+   {
+    "slug": "pesquera",
+    "nombre": "Pesquera",
+    "km": 9
+   },
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Vega de Liébana",
+  "ine": "39096",
+  "lat": 43.099444444,
+  "lon": -4.645555555,
+  "poblacion": 676,
+  "slug": "vega-de-liebana",
+  "anual": 1230,
+  "meses": [
+   62.6,
+   83.2,
+   110.6,
+   112.1,
+   123.6,
+   121.9,
+   139.9,
+   135,
+   119.8,
+   96.9,
+   66.1,
+   58.1
+  ],
+  "irradiacion": 1541,
+  "inclinacion": 35,
+  "azimut": 5,
+  "altitud": 468,
+  "puesto": 13,
+  "vecinos": [
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 6
+   },
+   {
+    "slug": "camaleno",
+    "nombre": "Camaleño",
+    "km": 7
+   },
+   {
+    "slug": "cabezon-de-liebana",
+    "nombre": "Cabezón de Liébana",
+    "km": 7
+   },
+   {
+    "slug": "pesaguero",
+    "nombre": "Pesaguero",
+    "km": 9
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Bárcena de Pie de Concha",
+  "ine": "39010",
+  "lat": 43.126666666,
+  "lon": -4.054722222,
+  "poblacion": 675,
+  "slug": "barcena-de-pie-de-concha",
+  "anual": 1134,
+  "meses": [
+   57.9,
+   71.1,
+   99.9,
+   108.1,
+   115.5,
+   112.2,
+   121.4,
+   120.5,
+   112.3,
+   95.9,
+   62.7,
+   56.7
+  ],
+  "irradiacion": 1440,
+  "inclinacion": 36,
+  "azimut": -11,
+  "altitud": 300,
+  "puesto": 70,
+  "vecinos": [
+   {
+    "slug": "molledo",
+    "nombre": "Molledo",
+    "km": 3
+   },
+   {
+    "slug": "pesquera",
+    "nombre": "Pesquera",
+    "km": 5
+   },
+   {
+    "slug": "arenas-de-iguna",
+    "nombre": "Arenas de Iguña",
+    "km": 7
+   },
+   {
+    "slug": "santiurde-de-reinosa",
+    "nombre": "Santiurde de Reinosa",
+    "km": 7
+   },
+   {
+    "slug": "san-miguel-de-aguayo",
+    "nombre": "San Miguel de Aguayo",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Luena",
+  "ine": "39039",
+  "lat": 43.095833333,
+  "lon": -3.900277777,
+  "poblacion": 600,
+  "slug": "luena",
+  "anual": 1183,
+  "meses": [
+   56.6,
+   71.7,
+   99.7,
+   112,
+   122.6,
+   122.8,
+   136,
+   132.4,
+   117.8,
+   96.2,
+   61,
+   53.8
+  ],
+  "irradiacion": 1494,
+  "inclinacion": 34,
+  "azimut": -7,
+  "altitud": 431,
+  "puesto": 41,
+  "vecinos": [
+   {
+    "slug": "san-pedro-del-romeral",
+    "nombre": "San Pedro del Romeral",
+    "km": 7
+   },
+   {
+    "slug": "san-miguel-de-aguayo",
+    "nombre": "San Miguel de Aguayo",
+    "km": 11
+   },
+   {
+    "slug": "vega-de-pas",
+    "nombre": "Vega de Pas",
+    "km": 12
+   },
+   {
+    "slug": "campoo-de-yuso",
+    "nombre": "Campoo de Yuso",
+    "km": 12
+   },
+   {
+    "slug": "corvera-de-toranzo",
+    "nombre": "Corvera de Toranzo",
+    "km": 13
+   }
+  ]
+ },
+ {
+  "nombre": "Herrerías",
+  "ine": "39033",
+  "lat": 43.315555555,
+  "lon": -4.464722222,
+  "poblacion": 570,
+  "slug": "herrerias",
+  "anual": 1131,
+  "meses": [
+   66.4,
+   78.9,
+   103.8,
+   108.8,
+   110.8,
+   102.7,
+   108.2,
+   111,
+   109.4,
+   94.5,
+   68.4,
+   68.3
+  ],
+  "irradiacion": 1424,
+  "inclinacion": 38,
+  "azimut": -11,
+  "altitud": 180,
+  "puesto": 74,
+  "vecinos": [
+   {
+    "slug": "val-de-san-vicente",
+    "nombre": "Val de San Vicente",
+    "km": 7
+   },
+   {
+    "slug": "lamason",
+    "nombre": "Lamasón",
+    "km": 7
+   },
+   {
+    "slug": "rionansa",
+    "nombre": "Rionansa",
+    "km": 8
+   },
+   {
+    "slug": "san-vicente-de-la-barquera",
+    "nombre": "San Vicente de la Barquera",
+    "km": 9
+   },
+   {
+    "slug": "valdaliga",
+    "nombre": "Valdáliga",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Cabezón de Liébana",
+  "ine": "39013",
+  "lat": 43.135555555,
+  "lon": -4.575,
+  "poblacion": 530,
+  "slug": "cabezon-de-liebana",
+  "anual": 1214,
+  "meses": [
+   63.2,
+   76.4,
+   107.3,
+   111.3,
+   127,
+   122.8,
+   140.6,
+   132.7,
+   116.1,
+   92.5,
+   63.9,
+   60.3
+  ],
+  "irradiacion": 1528,
+  "inclinacion": 35,
+  "azimut": 11,
+  "altitud": 416,
+  "puesto": 21,
+  "vecinos": [
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 4
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 5
+   },
+   {
+    "slug": "vega-de-liebana",
+    "nombre": "Vega de Liébana",
+    "km": 7
+   },
+   {
+    "slug": "pesaguero",
+    "nombre": "Pesaguero",
+    "km": 7
+   },
+   {
+    "slug": "camaleno",
+    "nombre": "Camaleño",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Cieza",
+  "ine": "39021",
+  "lat": 43.222222222,
+  "lon": -4.0875,
+  "poblacion": 528,
+  "slug": "cieza",
+  "anual": 1137,
+  "meses": [
+   61,
+   75.8,
+   101.8,
+   108.5,
+   114.6,
+   109,
+   117.6,
+   117.4,
+   111.5,
+   95,
+   64.2,
+   60.3
+  ],
+  "irradiacion": 1446,
+  "inclinacion": 36,
+  "azimut": -10,
+  "altitud": 153,
+  "puesto": 67,
+  "vecinos": [
+   {
+    "slug": "los-corrales-de-buelna",
+    "nombre": "Los Corrales de Buelna",
+    "km": 5
+   },
+   {
+    "slug": "arenas-de-iguna",
+    "nombre": "Arenas de Iguña",
+    "km": 5
+   },
+   {
+    "slug": "san-felices-de-buelna",
+    "nombre": "San Felices de Buelna",
+    "km": 7
+   },
+   {
+    "slug": "anievas",
+    "nombre": "Anievas",
+    "km": 7
+   },
+   {
+    "slug": "molledo",
+    "nombre": "Molledo",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Saro",
+  "ine": "39081",
+  "lat": 43.2625,
+  "lon": -3.828333333,
+  "poblacion": 480,
+  "slug": "saro",
+  "anual": 1104,
+  "meses": [
+   56.5,
+   73.2,
+   98.3,
+   106.4,
+   111.9,
+   106.4,
+   114.7,
+   115.4,
+   109.3,
+   93.8,
+   61.2,
+   56.8
+  ],
+  "irradiacion": 1398,
+  "inclinacion": 36,
+  "azimut": -5,
+  "altitud": 165,
+  "puesto": 92,
+  "vecinos": [
+   {
+    "slug": "villacarriedo",
+    "nombre": "Villacarriedo",
+    "km": 4
+   },
+   {
+    "slug": "selaya",
+    "nombre": "Selaya",
+    "km": 5
+   },
+   {
+    "slug": "villafufre",
+    "nombre": "Villafufre",
+    "km": 5
+   },
+   {
+    "slug": "santa-maria-de-cayon",
+    "nombre": "Santa María de Cayón",
+    "km": 6
+   },
+   {
+    "slug": "penagos",
+    "nombre": "Penagos",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Arredondo",
+  "ine": "39007",
+  "lat": 43.275833333,
+  "lon": -3.600555555,
+  "poblacion": 478,
+  "slug": "arredondo",
+  "anual": 1069,
+  "meses": [
+   44.1,
+   63.6,
+   96.9,
+   106.4,
+   117,
+   111.4,
+   118,
+   117.1,
+   108.3,
+   89,
+   52.6,
+   45.1
+  ],
+  "irradiacion": 1354,
+  "inclinacion": 33,
+  "azimut": -13,
+  "altitud": 163,
+  "puesto": 99,
+  "vecinos": [
+   {
+    "slug": "ruesga",
+    "nombre": "Ruesga",
+    "km": 3
+   },
+   {
+    "slug": "miera",
+    "nombre": "Miera",
+    "km": 9
+   },
+   {
+    "slug": "san-roque-de-riomiera",
+    "nombre": "San Roque de Riomiera",
+    "km": 9
+   },
+   {
+    "slug": "ramales-de-la-victoria",
+    "nombre": "Ramales de la Victoria",
+    "km": 11
+   },
+   {
+    "slug": "voto",
+    "nombre": "Voto",
+    "km": 12
+   }
+  ]
+ },
+ {
+  "nombre": "San Pedro del Romeral",
+  "ine": "39071",
+  "lat": 43.116666666,
+  "lon": -3.817222222,
+  "poblacion": 432,
+  "slug": "san-pedro-del-romeral",
+  "anual": 1121,
+  "meses": [
+   52.5,
+   69.1,
+   94.7,
+   104.5,
+   115.8,
+   116.5,
+   127.7,
+   125.3,
+   111,
+   92.6,
+   57.8,
+   53.9
+  ],
+  "irradiacion": 1419,
+  "inclinacion": 35,
+  "azimut": -14,
+  "altitud": 734,
+  "puesto": 83,
+  "vecinos": [
+   {
+    "slug": "vega-de-pas",
+    "nombre": "Vega de Pas",
+    "km": 6
+   },
+   {
+    "slug": "luena",
+    "nombre": "Luena",
+    "km": 7
+   },
+   {
+    "slug": "selaya",
+    "nombre": "Selaya",
+    "km": 11
+   },
+   {
+    "slug": "villacarriedo",
+    "nombre": "Villacarriedo",
+    "km": 13
+   },
+   {
+    "slug": "corvera-de-toranzo",
+    "nombre": "Corvera de Toranzo",
+    "km": 14
+   }
+  ]
+ },
+ {
+  "nombre": "Miera",
+  "ine": "39045",
+  "lat": 43.275555555,
+  "lon": -3.711944444,
+  "poblacion": 397,
+  "slug": "miera",
+  "anual": 1052,
+  "meses": [
+   48.2,
+   62.4,
+   89.2,
+   101.5,
+   111.2,
+   107.3,
+   115.6,
+   114.3,
+   105.2,
+   89.6,
+   57.3,
+   50
+  ],
+  "irradiacion": 1331,
+  "inclinacion": 34,
+  "azimut": -10,
+  "altitud": 321,
+  "puesto": 100,
+  "vecinos": [
+   {
+    "slug": "san-roque-de-riomiera",
+    "nombre": "San Roque de Riomiera",
+    "km": 5
+   },
+   {
+    "slug": "lierganes",
+    "nombre": "Liérganes",
+    "km": 8
+   },
+   {
+    "slug": "riotuerto",
+    "nombre": "Riotuerto",
+    "km": 9
+   },
+   {
+    "slug": "villacarriedo",
+    "nombre": "Villacarriedo",
+    "km": 9
+   },
+   {
+    "slug": "arredondo",
+    "nombre": "Arredondo",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Los Tojos",
+  "ine": "39086",
+  "lat": 43.156111111,
+  "lon": -4.251666666,
+  "poblacion": 369,
+  "slug": "los-tojos",
+  "anual": 1116,
+  "meses": [
+   60.6,
+   75.5,
+   101,
+   105.8,
+   110.9,
+   105.3,
+   113.9,
+   113.5,
+   108.5,
+   93.9,
+   65.6,
+   61.4
+  ],
+  "irradiacion": 1407,
+  "inclinacion": 37,
+  "azimut": -17,
+  "altitud": 615,
+  "puesto": 85,
+  "vecinos": [
+   {
+    "slug": "cabuerniga",
+    "nombre": "Cabuérniga",
+    "km": 9
+   },
+   {
+    "slug": "tudanca",
+    "nombre": "Tudanca",
+    "km": 10
+   },
+   {
+    "slug": "ruente",
+    "nombre": "Ruente",
+    "km": 12
+   },
+   {
+    "slug": "polaciones",
+    "nombre": "Polaciones",
+    "km": 14
+   },
+   {
+    "slug": "hermandad-de-campoo-de-suso",
+    "nombre": "Hermandad de Campoo de Suso",
+    "km": 15
+   }
+  ]
+ },
+ {
+  "nombre": "San Roque de Riomiera",
+  "ine": "39072",
+  "lat": 43.235833333,
+  "lon": -3.700277777,
+  "poblacion": 333,
+  "slug": "san-roque-de-riomiera",
+  "anual": 972,
+  "meses": [
+   35,
+   50.3,
+   79.5,
+   94.9,
+   112,
+   112.5,
+   122.9,
+   115.6,
+   99,
+   76.9,
+   42.4,
+   30.9
+  ],
+  "irradiacion": 1238,
+  "inclinacion": 29,
+  "azimut": 10,
+  "altitud": 390,
+  "puesto": 102,
+  "vecinos": [
+   {
+    "slug": "miera",
+    "nombre": "Miera",
+    "km": 5
+   },
+   {
+    "slug": "selaya",
+    "nombre": "Selaya",
+    "km": 9
+   },
+   {
+    "slug": "villacarriedo",
+    "nombre": "Villacarriedo",
+    "km": 9
+   },
+   {
+    "slug": "arredondo",
+    "nombre": "Arredondo",
+    "km": 9
+   },
+   {
+    "slug": "vega-de-pas",
+    "nombre": "Vega de Pas",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Valdeprado del Río",
+  "ine": "39093",
+  "lat": 42.910555555,
+  "lon": -4.075555555,
+  "poblacion": 306,
+  "slug": "valdeprado-del-rio",
+  "anual": 1333,
+  "meses": [
+   66.6,
+   81.3,
+   111.2,
+   120.2,
+   135.4,
+   137.4,
+   159.2,
+   152.2,
+   128.8,
+   105,
+   69.6,
+   66.7
+  ],
+  "irradiacion": 1679,
+  "inclinacion": 35,
+  "azimut": 2,
+  "altitud": 955,
+  "puesto": 4,
+  "vecinos": [
+   {
+    "slug": "valdeolea",
+    "nombre": "Valdeolea",
+    "km": 8
+   },
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 8
+   },
+   {
+    "slug": "villaescusa",
+    "nombre": "Villaescusa",
+    "km": 9
+   },
+   {
+    "slug": "campoo-de-enmedio",
+    "nombre": "Campoo de Enmedio",
+    "km": 10
+   },
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 11
+   }
+  ]
+ },
+ {
+  "nombre": "Peñarrubia",
+  "ine": "39049",
+  "lat": 43.255833333,
+  "lon": -4.578611111,
+  "poblacion": 301,
+  "slug": "penarrubia",
+  "anual": 1121,
+  "meses": [
+   63.5,
+   73.7,
+   102.1,
+   106.5,
+   110.7,
+   103.1,
+   110.7,
+   111.3,
+   107.7,
+   94.4,
+   68.9,
+   68.8
+  ],
+  "irradiacion": 1412,
+  "inclinacion": 37,
+  "azimut": -11,
+  "altitud": 435,
+  "puesto": 84,
+  "vecinos": [
+   {
+    "slug": "tresviso",
+    "nombre": "Tresviso",
+    "km": 7
+   },
+   {
+    "slug": "lamason",
+    "nombre": "Lamasón",
+    "km": 8
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 9
+   },
+   {
+    "slug": "herrerias",
+    "nombre": "Herrerías",
+    "km": 11
+   },
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 12
+   }
+  ]
+ },
+ {
+  "nombre": "Pesaguero",
+  "ine": "39050",
+  "lat": 43.0775,
+  "lon": -4.539444444,
+  "poblacion": 275,
+  "slug": "pesaguero",
+  "anual": 1269,
+  "meses": [
+   61,
+   79.9,
+   110.5,
+   115.8,
+   131.1,
+   130.9,
+   150.8,
+   144.2,
+   125.6,
+   100.3,
+   62.7,
+   55.8
+  ],
+  "irradiacion": 1594,
+  "inclinacion": 34,
+  "azimut": -10,
+  "altitud": 597,
+  "puesto": 12,
+  "vecinos": [
+   {
+    "slug": "cabezon-de-liebana",
+    "nombre": "Cabezón de Liébana",
+    "km": 7
+   },
+   {
+    "slug": "vega-de-liebana",
+    "nombre": "Vega de Liébana",
+    "km": 9
+   },
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 11
+   },
+   {
+    "slug": "polaciones",
+    "nombre": "Polaciones",
+    "km": 11
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 12
+   }
+  ]
+ },
+ {
+  "nombre": "Anievas",
+  "ine": "39003",
+  "lat": 43.203055555,
+  "lon": -4.000555555,
+  "poblacion": 274,
+  "slug": "anievas",
+  "anual": 1114,
+  "meses": [
+   59.7,
+   73.3,
+   99.7,
+   106.8,
+   112.1,
+   106.3,
+   114.1,
+   115.1,
+   109.6,
+   93.4,
+   64.5,
+   59.7
+  ],
+  "irradiacion": 1419,
+  "inclinacion": 36,
+  "azimut": -2,
+  "altitud": 282,
+  "puesto": 89,
+  "vecinos": [
+   {
+    "slug": "arenas-de-iguna",
+    "nombre": "Arenas de Iguña",
+    "km": 4
+   },
+   {
+    "slug": "corvera-de-toranzo",
+    "nombre": "Corvera de Toranzo",
+    "km": 5
+   },
+   {
+    "slug": "molledo",
+    "nombre": "Molledo",
+    "km": 6
+   },
+   {
+    "slug": "santiurde-de-toranzo",
+    "nombre": "Santiurde de Toranzo",
+    "km": 7
+   },
+   {
+    "slug": "cieza",
+    "nombre": "Cieza",
+    "km": 7
+   }
+  ]
+ },
+ {
+  "nombre": "Las Rozas de Valdearroyo",
+  "ine": "39065",
+  "lat": 42.973888888,
+  "lon": -4.026944444,
+  "poblacion": 258,
+  "slug": "las-rozas-de-valdearroyo",
+  "anual": 1300,
+  "meses": [
+   65.5,
+   78.2,
+   110.2,
+   118.3,
+   131.8,
+   133.3,
+   151.8,
+   146.3,
+   126.6,
+   105.8,
+   68.6,
+   64
+  ],
+  "irradiacion": 1638,
+  "inclinacion": 35,
+  "azimut": -1,
+  "altitud": 842,
+  "puesto": 9,
+  "vecinos": [
+   {
+    "slug": "campoo-de-yuso",
+    "nombre": "Campoo de Yuso",
+    "km": 5
+   },
+   {
+    "slug": "valdeprado-del-rio",
+    "nombre": "Valdeprado del Río",
+    "km": 8
+   },
+   {
+    "slug": "san-miguel-de-aguayo",
+    "nombre": "San Miguel de Aguayo",
+    "km": 9
+   },
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 10
+   },
+   {
+    "slug": "campoo-de-enmedio",
+    "nombre": "Campoo de Enmedio",
+    "km": 10
+   }
+  ]
+ },
+ {
+  "nombre": "Santiurde de Reinosa",
+  "ine": "39077",
+  "lat": 43.062222222,
+  "lon": -4.081666666,
+  "poblacion": 254,
+  "slug": "santiurde-de-reinosa",
+  "anual": 1189,
+  "meses": [
+   58.3,
+   69.6,
+   100.5,
+   112.6,
+   123.5,
+   122.1,
+   134.8,
+   131,
+   117.2,
+   97.5,
+   60.8,
+   60.7
+  ],
+  "irradiacion": 1504,
+  "inclinacion": 34,
+  "azimut": -6,
+  "altitud": 661,
+  "puesto": 36,
+  "vecinos": [
+   {
+    "slug": "pesquera",
+    "nombre": "Pesquera",
+    "km": 2
+   },
+   {
+    "slug": "san-miguel-de-aguayo",
+    "nombre": "San Miguel de Aguayo",
+    "km": 5
+   },
+   {
+    "slug": "barcena-de-pie-de-concha",
+    "nombre": "Bárcena de Pie de Concha",
+    "km": 7
+   },
+   {
+    "slug": "reinosa",
+    "nombre": "Reinosa",
+    "km": 8
+   },
+   {
+    "slug": "campoo-de-yuso",
+    "nombre": "Campoo de Yuso",
+    "km": 8
+   }
+  ]
+ },
+ {
+  "nombre": "Valle de Villaverde",
+  "ine": "39101",
+  "lat": 43.23230925,
+  "lon": -3.282444195,
+  "poblacion": 249,
+  "slug": "valle-de-villaverde",
+  "anual": 1102,
+  "meses": [
+   42.3,
+   67.2,
+   99.3,
+   109.1,
+   121.2,
+   118.5,
+   126.4,
+   125.2,
+   111.8,
+   90.4,
+   52.4,
+   38.4
+  ],
+  "irradiacion": 1404,
+  "inclinacion": 32,
+  "azimut": -8,
+  "altitud": 360,
+  "puesto": 94,
+  "vecinos": [
+   {
+    "slug": "guriezo",
+    "nombre": "Guriezo",
+    "km": 13
+   },
+   {
+    "slug": "rasines",
+    "nombre": "Rasines",
+    "km": 14
+   },
+   {
+    "slug": "ramales-de-la-victoria",
+    "nombre": "Ramales de la Victoria",
+    "km": 15
+   },
+   {
+    "slug": "ampuero",
+    "nombre": "Ampuero",
+    "km": 16
+   },
+   {
+    "slug": "castro-urdiales",
+    "nombre": "Castro-Urdiales",
+    "km": 18
+   }
+  ]
+ },
+ {
+  "nombre": "Lamasón",
+  "ine": "39034",
+  "lat": 43.253611111,
+  "lon": -4.481944444,
+  "poblacion": 237,
+  "slug": "lamason",
+  "anual": 1124,
+  "meses": [
+   66.2,
+   76.6,
+   102.8,
+   108.1,
+   110,
+   102.7,
+   109.4,
+   111.3,
+   109.4,
+   93.7,
+   65.1,
+   69.2
+  ],
+  "irradiacion": 1412,
+  "inclinacion": 37,
+  "azimut": -11,
+  "altitud": 252,
+  "puesto": 81,
+  "vecinos": [
+   {
+    "slug": "rionansa",
+    "nombre": "Rionansa",
+    "km": 6
+   },
+   {
+    "slug": "herrerias",
+    "nombre": "Herrerías",
+    "km": 7
+   },
+   {
+    "slug": "penarrubia",
+    "nombre": "Peñarrubia",
+    "km": 8
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 13
+   },
+   {
+    "slug": "val-de-san-vicente",
+    "nombre": "Val de San Vicente",
+    "km": 14
+   }
+  ]
+ },
+ {
+  "nombre": "Polaciones",
+  "ine": "39053",
+  "lat": 43.101944444,
+  "lon": -4.413055555,
+  "poblacion": 209,
+  "slug": "polaciones",
+  "anual": 1146,
+  "meses": [
+   57.9,
+   74.1,
+   100.1,
+   105,
+   116.4,
+   115.5,
+   127.5,
+   124.2,
+   112.6,
+   94,
+   62.7,
+   56.5
+  ],
+  "irradiacion": 1441,
+  "inclinacion": 35,
+  "azimut": -18,
+  "altitud": 896,
+  "puesto": 60,
+  "vecinos": [
+   {
+    "slug": "tudanca",
+    "nombre": "Tudanca",
+    "km": 8
+   },
+   {
+    "slug": "pesaguero",
+    "nombre": "Pesaguero",
+    "km": 11
+   },
+   {
+    "slug": "cabezon-de-liebana",
+    "nombre": "Cabezón de Liébana",
+    "km": 14
+   },
+   {
+    "slug": "los-tojos",
+    "nombre": "Los Tojos",
+    "km": 14
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 17
+   }
+  ]
+ },
+ {
+  "nombre": "San Miguel de Aguayo",
+  "ine": "39070",
+  "lat": 43.057222222,
+  "lon": -4.020833333,
+  "poblacion": 164,
+  "slug": "san-miguel-de-aguayo",
+  "anual": 1185,
+  "meses": [
+   56.4,
+   70.1,
+   99.8,
+   111.7,
+   123.9,
+   123.5,
+   136.7,
+   132.7,
+   116.3,
+   96.9,
+   60.9,
+   55.8
+  ],
+  "irradiacion": 1501,
+  "inclinacion": 34,
+  "azimut": -1,
+  "altitud": 851,
+  "puesto": 38,
+  "vecinos": [
+   {
+    "slug": "campoo-de-yuso",
+    "nombre": "Campoo de Yuso",
+    "km": 5
+   },
+   {
+    "slug": "santiurde-de-reinosa",
+    "nombre": "Santiurde de Reinosa",
+    "km": 5
+   },
+   {
+    "slug": "pesquera",
+    "nombre": "Pesquera",
+    "km": 5
+   },
+   {
+    "slug": "barcena-de-pie-de-concha",
+    "nombre": "Bárcena de Pie de Concha",
+    "km": 8
+   },
+   {
+    "slug": "las-rozas-de-valdearroyo",
+    "nombre": "Las Rozas de Valdearroyo",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Tudanca",
+  "ine": "39089",
+  "lat": 43.162777777,
+  "lon": -4.368888888,
+  "poblacion": 154,
+  "slug": "tudanca",
+  "anual": 1086,
+  "meses": [
+   54.3,
+   73.7,
+   101.8,
+   104.3,
+   109.8,
+   104.2,
+   111.5,
+   111.7,
+   105.9,
+   91.5,
+   60,
+   56.9
+  ],
+  "irradiacion": 1364,
+  "inclinacion": 35,
+  "azimut": -8,
+  "altitud": 429,
+  "puesto": 97,
+  "vecinos": [
+   {
+    "slug": "polaciones",
+    "nombre": "Polaciones",
+    "km": 8
+   },
+   {
+    "slug": "cabuerniga",
+    "nombre": "Cabuérniga",
+    "km": 9
+   },
+   {
+    "slug": "los-tojos",
+    "nombre": "Los Tojos",
+    "km": 10
+   },
+   {
+    "slug": "rionansa",
+    "nombre": "Rionansa",
+    "km": 11
+   },
+   {
+    "slug": "ruente",
+    "nombre": "Ruente",
+    "km": 14
+   }
+  ]
+ },
+ {
+  "nombre": "Pesquera",
+  "ine": "39051",
+  "lat": 43.083611111,
+  "lon": -4.075555555,
+  "poblacion": 72,
+  "slug": "pesquera",
+  "anual": 1199,
+  "meses": [
+   59.2,
+   72.4,
+   101.6,
+   112.6,
+   123.6,
+   122,
+   134.8,
+   131,
+   118.4,
+   98.4,
+   64,
+   60.9
+  ],
+  "irradiacion": 1515,
+  "inclinacion": 35,
+  "azimut": -9,
+  "altitud": 617,
+  "puesto": 32,
+  "vecinos": [
+   {
+    "slug": "santiurde-de-reinosa",
+    "nombre": "Santiurde de Reinosa",
+    "km": 2
+   },
+   {
+    "slug": "barcena-de-pie-de-concha",
+    "nombre": "Bárcena de Pie de Concha",
+    "km": 5
+   },
+   {
+    "slug": "san-miguel-de-aguayo",
+    "nombre": "San Miguel de Aguayo",
+    "km": 5
+   },
+   {
+    "slug": "molledo",
+    "nombre": "Molledo",
+    "km": 8
+   },
+   {
+    "slug": "campoo-de-yuso",
+    "nombre": "Campoo de Yuso",
+    "km": 9
+   }
+  ]
+ },
+ {
+  "nombre": "Tresviso",
+  "ine": "39088",
+  "lat": 43.258333333,
+  "lon": -4.666666666,
+  "poblacion": 52,
+  "slug": "tresviso",
+  "anual": 1215,
+  "meses": [
+   64.1,
+   80.9,
+   109.1,
+   116.5,
+   123.9,
+   116.6,
+   128.4,
+   127.1,
+   118.5,
+   100,
+   68,
+   62.3
+  ],
+  "irradiacion": 1530,
+  "inclinacion": 36,
+  "azimut": -13,
+  "altitud": 875,
+  "puesto": 20,
+  "vecinos": [
+   {
+    "slug": "penarrubia",
+    "nombre": "Peñarrubia",
+    "km": 7
+   },
+   {
+    "slug": "cillorigo-de-liebana",
+    "nombre": "Cillorigo de Liébana",
+    "km": 10
+   },
+   {
+    "slug": "potes",
+    "nombre": "Potes",
+    "km": 12
+   },
+   {
+    "slug": "camaleno",
+    "nombre": "Camaleño",
+    "km": 12
+   },
+   {
+    "slug": "lamason",
+    "nombre": "Lamasón",
+    "km": 15
+   }
+  ]
+ }
+]

@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import { ibi } from '../data/ibi.js';
+import municipios from '../data/municipios.json';
+
+const comprobados = Object.entries(ibi).map(([slug, d]) => ({ ...d, nombre: municipios.find((m) => m.slug === slug)!.nombre }));
+const preguntas = [
+  { p: '¿Cuánto me devuelve Hacienda por poner placas solares en 2026?', r: 'El 10 % de lo que pagues por instalar autoconsumo en un inmueble tuyo durante 2026, o el 20 % si es una instalación en un edificio de viviendas, con una base máxima de 5.000 € al año. Como mucho, 500 € o 1.000 €. Lo establece el Real Decreto-ley 7/2026.' },
+  { p: '¿Hay bonificación del IBI por placas solares en Santander?', r: 'No para las placas fotovoltaicas. La ordenanza del IBI de Santander bonifica un 50 % durante un año, una sola vez, solo las instalaciones de solar térmica que cubran al menos el 60 % del agua caliente.' },
+  { p: '¿Hay subvenciones del Gobierno de Cantabria para placas solares en 2026?', r: 'A 30 de octubre de 2026 no hemos encontrado ninguna convocatoria abierta para autoconsumo en viviendas. Si se abre alguna, la publicaremos aquí con su enlace al Boletín Oficial de Cantabria.' },
+];
+const esquema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: preguntas.map((q) => ({ '@type': 'Question', name: q.p, acceptedAnswer: { '@type': 'Answer', text: q.r } })),
+};
+---
+<Base titulo="Ayudas para placas solares en Cantabria en 2026: IRPF, IBI y subvenciones"
+  descripcion="Ayudas para placas solares en Cantabria en 2026, comprobadas en el BOE y en las ordenanzas: deducción del IRPF del 10 % o 20 %, bonificaciones del IBI por municipio y subvenciones abiertas."
+  esquema={esquema}
+  migas={[{ nombre: 'Ayudas', url: '/ayudas/' }]}>
+  <section class="ancho cabeza">
+    <h1>Ayudas para placas solares en Cantabria (2026)</h1>
+    <p class="entradilla">Solo lo que hemos comprobado en el BOE, en el Boletín Oficial de Cantabria o en la ordenanza de cada ayuntamiento, con el enlace a la fuente. Revisado el 30 de octubre de 2026.</p>
+  </section>
+
+  <section class="ancho prosa contenido">
+    <h2>Deducción del IRPF por autoconsumo (2026)</h2>
+    <div class="caja caja-ok"><p><strong>Vigente.</strong> Para instalaciones que se terminen y se paguen entre el 1 de enero y el 31 de diciembre de 2026.</p></div>
+    <p>El Real Decreto-ley 7/2026, de 20 de marzo, creó una deducción nueva en el IRPF (disposición adicional 62.ª de la Ley 35/2006):</p>
+    <table>
+      <thead><tr><th>Caso</th><th class="num">Deducción</th><th class="num">Base máxima</th><th class="num">Máximo a deducir</th></tr></thead>
+      <tbody>
+        <tr><td>Instalación en un inmueble de tu propiedad</td><td class="num">10 %</td><td class="num">5.000 €/año</td><td class="num">500 €</td></tr>
+        <tr><td>Propietario de vivienda en un edificio residencial donde se instala autoconsumo</td><td class="num">20 %</td><td class="num">5.000 €/año</td><td class="num">1.000 €</td></tr>
+      </tbody>
+    </table>
+    <p>Requisitos: pagar con tarjeta, transferencia, cheque nominativo o ingreso en cuenta (nunca en efectivo); tener el Certificado de Instalación Eléctrica (CIE); restar las subvenciones que recibas; y que la instalación no esté afecta a una actividad económica. Las dos deducciones no se pueden sumar para la misma instalación, ni combinar con la deducción por obras de eficiencia energética.</p>
+    <p><a href="/calculadoras/deduccion-irpf/">Calcula tu deducción</a>. Fuente: <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-6544" rel="noopener">Real Decreto-ley 7/2026 (BOE-A-2026-6544)</a>, artículo 36.</p>
+
+    <h3>Deducciones por obras de eficiencia energética</h3>
+    <p>Las deducciones del 20 % y del 40 % por obras que mejoran la eficiencia energética de la vivienda siguen vigentes hasta el 31 de diciembre de 2026, y la del 60 % para rehabilitación de edificios residenciales, hasta el 31 de diciembre de 2027. Exigen certificados energéticos de antes y después de la obra. Para unas placas solares solas, la deducción por autoconsumo suele ser más sencilla. <a href="/blog/deduccion-irpf-placas-solares-2026/">Lo explicamos aquí</a>.</p>
+
+    <h3>Punto de recarga para el coche eléctrico</h3>
+    <p>El mismo Real Decreto-ley 7/2026 prorrogó hasta el 31 de diciembre de 2026 la deducción del <strong>15 %</strong> por instalar un sistema de recarga en un inmueble de tu propiedad, con una base máxima de 4.000 € al año (hasta 600 €). Es compatible con la de las placas, porque son instalaciones distintas. <a href="/blog/placas-solares-coche-electrico/">Placas y coche eléctrico</a>.</p>
+
+    <h3>Empresas: libertad de amortización</h3>
+    <p>Las instalaciones de autoconsumo renovable de empresas que sustituyan instalaciones de energía fósil y entren en funcionamiento en 2026 pueden amortizarse libremente en el Impuesto sobre Sociedades, hasta 500.000 € de inversión y manteniendo la plantilla media durante 24 meses. La deducción del IRPF para particulares no se aplica a instalaciones afectas a una actividad económica. <a href="/blog/placas-solares-empresas-naves-cantabria/">Placas para empresas</a>.</p>
+
+    <h2>Bonificación del IBI por municipio</h2>
+    <p>La ley permite a los ayuntamientos bonificar hasta el 50 % del IBI a quien instale sistemas de aprovechamiento de la energía solar, pero cada uno decide si lo hace, cuánto, cuántos años y para qué tipo de instalación. Muchos solo bonifican la solar térmica.</p>
+    <p>Solo publicamos lo que hemos comprobado en la ordenanza:</p>
+    <ul>
+      {comprobados.map((c) => <li><strong>{c.nombre}:</strong> {c.resumen} <a href={c.fuente.url} rel="noopener">Ordenanza</a>.</li>)}
+    </ul>
+    <div class="caja caja-aviso"><p>Habrás visto webs que prometen «50 % de IBI en Santander» por poner placas. Para la fotovoltaica no es cierto. Antes de contar con una bonificación, pide al instalador o al ayuntamiento el artículo concreto de la ordenanza.</p></div>
+
+    <h2>Subvenciones</h2>
+    <p>A 30 de octubre de 2026 no hemos encontrado ninguna convocatoria abierta del Gobierno de Cantabria para autoconsumo en viviendas. Las ayudas al autoconsumo con fondos europeos de los últimos años ya no admiten solicitudes nuevas. Si se abre alguna convocatoria, la publicaremos aquí con su enlace al Boletín Oficial de Cantabria.</p>
+
+    <h2>Preguntas rápidas</h2>
+    {preguntas.map((q) => <details><summary>{q.p}</summary><p>{q.r}</p></details>)}
+  </section>
+</Base>
+
+<style>
+  .cabeza { padding-block: 1.5rem 1rem; }
+  .contenido { padding-bottom: 5rem; }
+  .contenido details { background: var(--bruma); border-radius: var(--radio); padding: 1rem 1.2rem; }
+  .contenido summary { cursor: pointer; font-family: var(--titular); font-weight: 700; color: var(--cantabrico); }
+  .contenido details p { margin-top: .6rem; }
+</style>

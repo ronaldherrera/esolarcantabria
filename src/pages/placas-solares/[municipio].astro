@@ -1,0 +1,223 @@
+---
+import Base from '../../layouts/Base.astro';
+import GraficoMeses from '../../components/GraficoMeses.astro';
+import FormularioPresupuesto from '../../components/FormularioPresupuesto.astro';
+import municipios from '../../data/municipios.json';
+import { ibi } from '../../data/ibi.js';
+import fotos from '../../data/fotos.json';
+import Foto from '../../components/Foto.astro';
+import { sitio } from '../../data/sitio.js';
+import { REFERENCIAS, MESES, SUPUESTOS, PERFILES, consumoDesdeFactura, potenciaRecomendada, balance, deduccionIrpf, numero, euros, kwh } from '../../lib/solar.js';
+
+export function getStaticPaths() {
+  return municipios.map((m) => ({ params: { municipio: m.slug }, props: { m } }));
+}
+const { m } = Astro.props;
+
+const media = Math.round(municipios.reduce((a, x) => a + x.anual, 0) / municipios.length);
+const mediaMeses = m.meses.map((_, i) => Math.round(municipios.reduce((a, x) => a + x.meses[i], 0) / municipios.length));
+const difBerlin = Math.round((m.anual / REFERENCIAS.berlin - 1) * 100);
+const difMedia = Math.round((m.anual / media - 1) * 100);
+const iMax = m.meses.indexOf(Math.max(...m.meses));
+const iMin = m.meses.indexOf(Math.min(...m.meses));
+const orientacion = m.azimut === 0 ? 'sur' : m.azimut < 0 ? `sur, girada ${Math.abs(m.azimut)}° al este` : `sur, girada ${m.azimut}° al oeste`;
+
+// Tres casas tipo, calculadas con el sol de este municipio
+const casos = [60, 90, 140].map((factura) => {
+  const consumo = consumoDesdeFactura(factura);
+  const pot = potenciaRecomendada(consumo, m.anual);
+  const b = balance({ meses: m.meses, kwp: pot.kwp, consumoAnual: consumo, diurno: PERFILES.mixto.diurno });
+  const coste = pot.kwp * SUPUESTOS.costeKwp;
+  const retorno = (coste - deduccionIrpf({ pagado: coste }).deduccion) / b.ahorro;
+  return { factura, consumo, pot, b, retorno };
+});
+
+const foto = (fotos as Record<string, any>)[`municipios/${m.slug}`];
+const tituloFoto = foto?.titulo?.replace(/^-?\d{4}-\d{2}-\d{2}\s*/, '') || m.nombre;
+// Guías que más encajan con este municipio (enlazado interno)
+const guias = [
+  ...(m.puesto <= 12 ? [['/blog/mejores-zonas-sol-cantabria-campoo-liebana/', 'Dónde hay más sol en Cantabria']] : []),
+  ...(m.puesto > 85 ? [['/blog/placas-solares-en-invierno-cantabria/', 'Cuánto producen las placas en invierno'], ['/blog/instalacion-solar-aislada-cabanas-fincas/', 'Instalaciones aisladas para cabañas y fincas']] : []),
+  ...((m.poblacion ?? 0) > 15000 ? [['/blog/autoconsumo-comunidad-de-vecinos-cantabria/', 'Placas en la comunidad de vecinos']] : []),
+  ['/blog/merecen-la-pena-placas-solares-cantabria/', '¿Merecen la pena las placas en Cantabria?'],
+  ['/blog/precio-placas-solares-cantabria/', 'Precio de las placas: qué incluye'],
+  ['/blog/deduccion-irpf-placas-solares-2026/', 'Deducción del IRPF en 2026'],
+].slice(0, 5);
+const ibiLocal = ibi[m.slug as keyof typeof ibi];
+const comparativa = difBerlin >= 0 ? `un ${difBerlin} % más que en Berlín` : `un ${-difBerlin} % menos que en Berlín`;
+const respecto = difMedia === 0 ? 'justo en la media de Cantabria' : difMedia > 0 ? `un ${difMedia} % por encima de la media de Cantabria` : `un ${-difMedia} % por debajo de la media de Cantabria`;
+
+const preguntas = [
+  {
+    p: `¿Merecen la pena las placas solares en ${m.nombre}?`,
+    r: `Cada kWp instalado en ${m.nombre} produce unos ${numero(m.anual)} kWh al año según PVGIS (Comisión Europea), ${comparativa} y ${respecto}. Con una factura de 90 € al mes, una instalación de ${casos[1].pot.paneles} paneles ahorra unos ${euros(casos[1].b.ahorro)} al año y se paga en unos ${numero(casos[1].retorno, 0)} años.`,
+  },
+  {
+    p: `¿Cuántas placas solares necesito en ${m.nombre}?`,
+    r: `Depende del consumo. Para una casa que gasta ${kwh(casos[1].consumo)} al año, unos ${casos[1].pot.paneles} paneles de 450 W (${numero(casos[1].pot.kwp, 2)} kWp), que ocupan unos ${casos[1].pot.m2} m² de tejado.`,
+  },
+  {
+    p: `¿Hace falta licencia de obras para poner placas en ${m.nombre}?`,
+    r: `No, si la instalación de autoconsumo es de menos de 100 kW: en Cantabria basta una declaración responsable en el ayuntamiento (Ley de Cantabria 5/2022, artículo 234). La excepción son los edificios o parcelas con protección de patrimonio cultural.`,
+  },
+];
+
+const esquema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Instalación de placas solares de autoconsumo',
+    name: `Placas solares en ${m.nombre}`,
+    provider: { '@type': 'Organization', name: sitio.nombre, url: sitio.url },
+    areaServed: { '@type': 'City', name: m.nombre, containedInPlace: { '@type': 'AdministrativeArea', name: 'Cantabria' } },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: preguntas.map((q) => ({ '@type': 'Question', name: q.p, acceptedAnswer: { '@type': 'Answer', text: q.r } })),
+  },
+];
+---
+<Base
+  titulo={`Placas solares en ${m.nombre}: producción, ahorro y presupuesto`}
+  descripcion={`Placas solares en ${m.nombre} (Cantabria): ${numero(m.anual)} kWh al año por kWp según PVGIS, ${comparativa}. Ahorro calculado para tu casa y presupuesto con un instalador de la red cercano.`}
+  esquema={esquema}
+  migas={[{ nombre: 'Municipios', url: '/placas-solares/' }, { nombre: m.nombre, url: `/placas-solares/${m.slug}/` }]}
+>
+  <section class="ancho cabeza">
+    <div class="intro">
+      <h1>Placas solares en {m.nombre}</h1>
+      <p class="entradilla">Cada kWp instalado en {m.nombre} produce unos <strong>{numero(m.anual)}&nbsp;kWh al año</strong>, {comparativa} y {respecto}. Es el municipio número {m.puesto} de 102 en producción solar.</p>
+      <div class="acciones">
+        <a class="boton" href="#presupuesto">Pedir presupuesto en {m.nombre}</a>
+        <a class="boton boton-sec" href="/calculadoras/ahorro-placas-solares/" data-municipio={m.slug}>Calcular mi ahorro</a>
+      </div>
+    </div>
+    <div class="grafico-caja">
+      <p class="cifra">{numero(m.anual)} <small>kWh al año por kWp en {m.nombre}</small></p>
+      <GraficoMeses meses={m.meses} nombre={m.nombre} comparar={{ nombre: `Media de Cantabria (${numero(media)} kWh)`, meses: mediaMeses }} />
+    </div>
+  </section>
+
+  {foto && (
+    <section class="ancho foto-municipio">
+      <Foto clave={`municipios/${m.slug}`} alt={`${tituloFoto} (${m.nombre}, Cantabria)`} proporcion="21 / 9" pie={`${tituloFoto}.`} />
+    </section>
+  )}
+
+  <section class="bloque bloque-bruma">
+    <div class="ancho">
+      <h2>Lo que sale en una casa de {m.nombre}</h2>
+      <p class="entradilla">Tres casos calculados con el sol de {m.nombre}, para un hogar con alguien en casa parte del día. Precio orientativo de {euros(SUPUESTOS.costeKwp)} por kWp con IVA y deducción del IRPF del 10 % si la instalación se termina en 2026.</p>
+      <div class="tabla-caja">
+        <table>
+          <thead><tr><th>Factura de luz</th><th class="num">Paneles</th><th class="num">Producción al año</th><th class="num">Ahorro al año</th><th class="num">Se paga en</th></tr></thead>
+          <tbody>
+            {casos.map((c) => (
+              <tr>
+                <td>{euros(c.factura)} al mes</td>
+                <td class="num">{c.pot.paneles} ({numero(c.pot.kwp, 2)} kWp)</td>
+                <td class="num">{kwh(c.b.produccion)}</td>
+                <td class="num">{euros(c.b.ahorro)}</td>
+                <td class="num">{numero(c.retorno, 0)} años</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="nota">Estimación con los supuestos de nuestras <a href="/calculadoras/">calculadoras</a>. Para tu caso exacto, pide presupuesto.</p>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <div class="ancho dos">
+      <div class="prosa">
+        <h2>El sol de {m.nombre}, en datos</h2>
+        <ul class="ficha">
+          <li><span>Mejor mes</span><b>{MESES[iMax]}: {numero(m.meses[iMax])}&nbsp;kWh por kWp</b></li>
+          <li><span>Mes más flojo</span><b>{MESES[iMin]}: {numero(m.meses[iMin])}&nbsp;kWh por kWp</b></li>
+          <li><span>Inclinación óptima de los paneles</span><b>{m.inclinacion}°</b></li>
+          <li><span>Orientación óptima</span><b>{orientacion}</b></li>
+          <li><span>Radiación anual sobre el panel</span><b>{numero(m.irradiacion)}&nbsp;kWh/m²</b></li>
+          <li><span>Altitud del núcleo principal</span><b>{numero(m.altitud)} m</b></li>
+          {m.poblacion && <li><span>Población</span><b>{numero(m.poblacion)} habitantes</b></li>}
+        </ul>
+        <p class="nota">Fuente: PVGIS 5.3 (Comisión Europea, JRC), radiación SARAH3 2005–2023, con el horizonte real del terreno y un 14 % de pérdidas. Las sombras de tu tejado concreto pueden cambiar el resultado.</p>
+      </div>
+      <div class="prosa">
+        <h2>Trámites en {m.nombre}</h2>
+        <p><strong>Licencia.</strong> Para autoconsumo de menos de 100 kW no hace falta licencia de obras: basta una declaración responsable en el Ayuntamiento de {m.nombre} (Ley de Cantabria 5/2022, art. 234.2.e). Si el edificio o la parcela tienen protección de patrimonio cultural, el trámite es otro.</p>
+        <p><strong>IBI.</strong> {ibiLocal
+          ? <Fragment>{ibiLocal.resumen} <a href={ibiLocal.fuente.url} rel="noopener">Ver la ordenanza</a>.</Fragment>
+          : <Fragment>Todavía no hemos comprobado la ordenanza fiscal de {m.nombre}, así que no te prometemos ninguna bonificación. Muchas solo valen para solar térmica. Pregunta en el ayuntamiento o a tu instalador.</Fragment>}</p>
+        <p><strong>IRPF.</strong> Si terminas la instalación en 2026, puedes deducirte el 10 % de lo que pagues (el 20 % en edificios de viviendas), con una base máxima de 5.000 €. <a href="/calculadoras/deduccion-irpf/">Calcula tu deducción</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque bloque-bruma">
+    <div class="ancho">
+      <h2>Preguntas sobre placas solares en {m.nombre}</h2>
+      <div class="preguntas">
+        {preguntas.map((q) => <details><summary>{q.p}</summary><p>{q.r}</p></details>)}
+      </div>
+      <h3 class="cerca">Guías útiles</h3>
+      <ul class="guias">{guias.map(([u, t]) => <li><a href={u}>{t}</a></li>)}</ul>
+      <h3 class="cerca">Municipios cercanos</h3>
+      <ul class="vecinos">
+        {m.vecinos.map((v) => {
+          const vm = municipios.find((x) => x.slug === v.slug)!;
+          return <li><a href={`/placas-solares/${v.slug}/`}>{v.nombre}</a> <span>{numero(vm.anual)}&nbsp;kWh por kWp, a {v.km} km</span></li>;
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bloque bloque-oscuro" id="presupuesto">
+    <div class="ancho dos">
+      <div>
+        <h2>Presupuesto de placas solares en {m.nombre}</h2>
+        <p style="margin-top:1rem">Te llama un instalador de la red que trabaja en tu zona, mira tu tejado y tus facturas y te da un presupuesto cerrado. Sin compromiso.</p>
+      </div>
+      <FormularioPresupuesto titulo={`Pide presupuesto en ${m.nombre}`} municipio={m.slug} id="presupuesto-municipio" />
+    </div>
+  </section>
+</Base>
+
+<script>
+  // El botón de la calculadora abre con este municipio ya elegido
+  document.querySelectorAll<HTMLAnchorElement>('[data-municipio]').forEach((a) =>
+    a.addEventListener('click', () => { try { localStorage.setItem('esolar-municipio', a.dataset.municipio!); } catch {} }));
+</script>
+
+<style>
+  .cabeza { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-block: 1.5rem 4rem; }
+  @media (max-width: 900px) { .cabeza { grid-template-columns: 1fr; } }
+  .foto-municipio { padding-bottom: 3.5rem; }
+  .grafico-caja { background: var(--bruma); border-radius: var(--radio-grande); padding: clamp(1.2rem, 3vw, 1.8rem); }
+  .grafico-caja .cifra { font-size: clamp(2.3rem, 5vw, 3.2rem); margin-bottom: 1.2rem; }
+  .grafico-caja .cifra small { display: block; font-size: 1rem; font-weight: 500; color: var(--ria); margin-top: .35rem; }
+  .tabla-caja { background: var(--blanco); border-radius: var(--radio); padding: .5rem 1.2rem; margin-block: 1.6rem 1rem; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  th, td { padding: .8rem .5rem; border-bottom: 1px solid var(--linea); text-align: left; }
+  tbody tr:last-child td { border-bottom: 0; }
+  th { font-family: var(--titular); color: var(--cantabrico); font-size: .95rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (max-width: 900px) { .dos { grid-template-columns: 1fr; } }
+  .ficha { list-style: none; padding: 0 !important; }
+  .ficha li { display: flex; justify-content: space-between; gap: 1rem; padding-block: .6rem; border-bottom: 1px solid var(--linea); margin: 0 !important; }
+  .ficha span { color: var(--ria); }
+  .ficha b { color: var(--cantabrico); font-weight: 600; text-align: right; }
+  .preguntas { display: grid; gap: .7rem; margin-top: 1.5rem; max-width: 80ch; }
+  .preguntas details { background: var(--blanco); border-radius: var(--radio); padding: 1rem 1.2rem; }
+  .preguntas summary { cursor: pointer; font-family: var(--titular); font-weight: 700; color: var(--cantabrico); font-size: 1.08rem; }
+  .preguntas p { margin-top: .7rem; }
+  .cerca { margin-top: 2.5rem; }
+  .guias { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem 1.5rem; margin-top: 1rem; }
+  .guias a { font-weight: 600; }
+  .vecinos { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .6rem 1.5rem; margin-top: 1rem; }
+  .vecinos a { font-weight: 600; }
+  .vecinos span { display: block; font-size: .88rem; color: var(--ria); }
+  .bloque-oscuro .dos { align-items: center; }
+</style>

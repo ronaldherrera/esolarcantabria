@@ -1,0 +1,17 @@
+---
+import Base from './Base.astro';
+interface Props { titulo: string; descripcion: string; url: string; actualizado: string }
+const { titulo, descripcion, url, actualizado } = Astro.props;
+---
+<Base titulo={titulo} descripcion={descripcion} migas={[{ nombre: titulo, url }]}>
+  <article class="ancho prosa legal">
+    <h1>{titulo}</h1>
+    <p class="nota">Última actualización: {actualizado}</p>
+    <slot />
+  </article>
+</Base>
+
+<style>
+  .legal { padding-block: 1.5rem 5rem; }
+  .legal h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
+</style>

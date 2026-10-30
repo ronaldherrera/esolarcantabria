@@ -1,0 +1,64 @@
+---
+// «Parte solar» de la portada: eliges municipio y ves lo que produce una placa allí, mes a mes.
+import municipios from '../data/municipios.json';
+import { REFERENCIAS, numero } from '../lib/solar.js';
+
+const alfabetico = [...municipios].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+const datos = Object.fromEntries(municipios.map((m) => [m.slug, { n: m.nombre, a: m.anual, m: m.meses, p: m.puesto }]));
+const inicial = municipios.find((m) => m.slug === 'santander')!;
+const max = 160;
+const flojo = (meses: number[]) => meses.indexOf(Math.min(...meses));
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const frase = (anual: number) => {
+  const dif = Math.round((anual / REFERENCIAS.berlin - 1) * 100);
+  return dif >= 0 ? `Un ${dif} % más que en Berlín.` : `Un ${-dif} % menos que en Berlín.`;
+};
+---
+<div class="parte" data-municipios={JSON.stringify(datos)} data-berlin={REFERENCIAS.berlin}>
+  <label for="parte-municipio">Parte solar de tu municipio</label>
+  <select id="parte-municipio" class="entrada">
+    {alfabetico.map((m) => <option value={m.slug} selected={m.slug === 'santander'}>{m.nombre}</option>)}
+  </select>
+  <p class="cifra-parte"><span data-anual>{numero(inicial.anual)}</span> <small>kWh al año por cada kWp</small></p>
+  <div class="mini" aria-hidden="true">
+    {inicial.meses.map((v) => <i style={`height:${(v / max) * 100}%`}></i>)}
+  </div>
+  <p class="frase" aria-live="polite">
+    <span data-frase>{frase(inicial.anual)} El mes más flojo es {MESES[flojo(inicial.meses)]}.</span>
+  </p>
+  <a class="ver" data-enlace href={`/placas-solares/${inicial.slug}/`}>Ver los datos de <span data-nombre>{inicial.nombre}</span></a>
+</div>
+
+<script>
+  const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  document.querySelectorAll<HTMLElement>('.parte').forEach((caja) => {
+    const datos = JSON.parse(caja.dataset.municipios!);
+    const berlin = Number(caja.dataset.berlin);
+    const select = caja.querySelector('select')!;
+    const barras = [...caja.querySelectorAll<HTMLElement>('.mini i')];
+    const fmt = new Intl.NumberFormat('es-ES', { useGrouping: 'always' });
+    select.addEventListener('change', () => {
+      const m = datos[select.value];
+      caja.querySelector('[data-anual]')!.textContent = fmt.format(m.a);
+      barras.forEach((b, i) => (b.style.height = `${(m.m[i] / 160) * 100}%`));
+      const dif = Math.round((m.a / berlin - 1) * 100);
+      const comp = dif >= 0 ? `Un ${dif} % más que en Berlín.` : `Un ${-dif} % menos que en Berlín.`;
+      caja.querySelector('[data-frase]')!.textContent = `${comp} El mes más flojo es ${MESES[m.m.indexOf(Math.min(...m.m))]}.`;
+      caja.querySelector<HTMLAnchorElement>('[data-enlace]')!.href = `/placas-solares/${select.value}/`;
+      caja.querySelector('[data-nombre]')!.textContent = m.n;
+    });
+  });
+</script>
+
+<style>
+  .parte { background: var(--cantabrico); color: #DCEAEE; border-radius: var(--radio-grande); padding: 1.6rem; box-shadow: 0 30px 60px -35px rgba(15, 59, 76, .7); }
+  label { display: block; font-weight: 600; margin-bottom: .5rem; color: var(--blanco); }
+  select { margin-bottom: 1.3rem; color: var(--pizarra); border-color: transparent; }
+  .cifra-parte { font-family: var(--titular); font-weight: 800; font-size: clamp(2.6rem, 6vw, 3.4rem); color: var(--blanco); line-height: 1; }
+  .cifra-parte small { font-size: 1rem; font-weight: 500; color: var(--ria-clara); display: block; margin-top: .35rem; }
+  .mini { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; align-items: end; height: 84px; margin: 1.3rem 0 .9rem; }
+  .mini i { display: block; background: var(--sol); border-radius: 3px 3px 0 0; transition: height .35s ease; }
+  .frase { font-size: .98rem; }
+  .ver { display: inline-block; margin-top: .9rem; color: var(--sol); font-weight: 600; }
+  .ver:hover { color: var(--blanco); }
+</style>

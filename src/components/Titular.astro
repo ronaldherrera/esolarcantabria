@@ -1,0 +1,17 @@
+---
+// Datos del titular para los textos legales. Lo que falte no se muestra; en desarrollo se avisa.
+import { sitio } from '../data/sitio.js';
+const t = sitio.titular;
+const faltan = !t.nombre || !t.nif || !t.domicilio;
+---
+<ul>
+  <li><strong>Nombre comercial:</strong> {sitio.nombre}</li>
+  {t.nombre && <li><strong>Titular:</strong> {t.nombre}</li>}
+  {t.nif && <li><strong>NIF:</strong> {t.nif}</li>}
+  {t.domicilio && <li><strong>Domicilio:</strong> {t.domicilio}</li>}
+  <li><strong>Email:</strong> <a href={`mailto:${sitio.email}`}>{sitio.email}</a></li>
+  {sitio.telefono && <li><strong>Teléfono:</strong> {sitio.telefono}</li>}
+</ul>
+{faltan && import.meta.env.DEV && (
+  <p class="caja caja-aviso"><strong>Solo se ve en desarrollo:</strong> faltan el nombre, NIF y domicilio del titular en <code>src/data/sitio.js</code>. La ley (LSSI, art. 10) los exige antes de publicar.</p>
+)}

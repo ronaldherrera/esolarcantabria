@@ -1,0 +1,120 @@
+---
+import Base from '../../layouts/Base.astro';
+import CampoMunicipio from '../../components/CampoMunicipio.astro';
+import { calculadoras } from '../../data/calculadoras.js';
+import municipios from '../../data/municipios.json';
+import { SUPUESTOS, PERFILES, consumoDesdeFactura, potenciaRecomendada, balance, deduccionIrpf, euros, numero } from '../../lib/solar.js';
+
+// Resultado de ejemplo de cada calculadora: una casa de Santander con 90 € de luz al mes
+const stdr = municipios.find((m) => m.slug === 'santander')!;
+const consumo = consumoDesdeFactura(90);
+const pot = potenciaRecomendada(consumo, stdr.anual);
+const b = balance({ meses: stdr.meses, kwp: pot.kwp, consumoAnual: consumo, diurno: PERFILES.mixto.diurno });
+const sinBat = balance({ meses: stdr.meses, kwp: 3.6, consumoAnual: consumo, diurno: PERFILES.fuera.diurno });
+const conBat = balance({ meses: stdr.meses, kwp: 3.6, consumoAnual: consumo, diurno: PERFILES.fuera.diurno, bateriaKwh: 5 });
+const ejemplos: Record<string, { cifra: string; dice: string; necesitas: string[] }> = {
+  'ahorro-placas-solares': { cifra: euros(b.ahorro), dice: 'de ahorro al año', necesitas: ['Tu municipio', 'Lo que pagas de luz'] },
+  'cuantas-placas-necesito': { cifra: `${pot.paneles} paneles`, dice: `${numero(pot.kwp, 2)} kWp y ${pot.m2} m² de tejado`, necesitas: ['Tu consumo anual'] },
+  bateria: { cifra: `+${euros(conBat.ahorro - sinBat.ahorro)}`, dice: 'al año con una batería de 5 kWh', necesitas: ['Potencia de las placas', 'Tu consumo'] },
+  excedentes: { cifra: euros(b.compensacion), dice: 'descontados en la factura al año', necesitas: ['Potencia', 'Tu tarifa'] },
+  'deduccion-irpf': { cifra: euros(deduccionIrpf({ pagado: pot.kwp * SUPUESTOS.costeKwp }).deduccion), dice: 'menos en la renta de 2026', necesitas: ['Lo que pagas'] },
+  aerotermia: { cifra: '−55 %', dice: 'en calefacción frente al gas, aprox.', necesitas: ['Tu gasto en calefacción'] },
+};
+---
+<Base titulo="Calculadoras solares para Cantabria"
+  descripcion="Calculadoras de placas solares con la producción real de cada municipio de Cantabria: ahorro, número de paneles, batería, excedentes, deducción del IRPF y aerotermia."
+  migas={[{ nombre: 'Calculadoras', url: '/calculadoras/' }]}>
+  <section class="banda">
+    <div class="ancho banda-rejilla">
+      <div>
+        <h1>Calculadoras solares para Cantabria</h1>
+        <p class="entradilla">Hechas con la producción real de tu municipio, mes a mes. Empieza por aquí: dos datos y ves cuánto ahorrarías.</p>
+      </div>
+      <form class="rapida" onsubmit="return false" aria-label="Cálculo rápido de ahorro">
+        <CampoMunicipio id="r-municipio" />
+        <div class="campo">
+          <label for="r-factura">Tu factura de luz al mes (€)</label>
+          <input class="entrada" id="r-factura" name="factura" type="number" min="20" max="2000" step="5" value="90" inputmode="numeric">
+        </div>
+        <p class="resultado" aria-live="polite"><span data-ahorro>{euros(b.ahorro)}</span> <small>de ahorro al año, con <span data-paneles>{pot.paneles}</span> paneles</small></p>
+        <a class="boton" href="/calculadoras/ahorro-placas-solares/" data-seguir>Afinar el cálculo</a>
+      </form>
+    </div>
+  </section>
+
+  <section class="ancho herramientas">
+    <h2 class="solo-lector">Todas las calculadoras</h2>
+    <p class="nota ejemplo">Resultados de ejemplo para una casa de Santander que paga 90 € de luz al mes.</p>
+    <ol>
+      {calculadoras.map((c) => {
+        const e = ejemplos[c.slug];
+        return (
+          <li>
+            <div class="muestra"><b>{e.cifra}</b><span>{e.dice}</span></div>
+            <div class="texto">
+              <h3><a href={`/calculadoras/${c.slug}/`}>{c.titulo}</a></h3>
+              <p>{c.descripcion}</p>
+              <p class="necesitas">Necesitas: {e.necesitas.join(', ').toLowerCase()}</p>
+            </div>
+            <a class="boton boton-sec abrir" href={`/calculadoras/${c.slug}/`} aria-hidden="true" tabindex="-1">Calcular</a>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+</Base>
+
+<script>
+  import municipios from '../../data/municipios.json';
+  import { PERFILES, consumoDesdeFactura, potenciaRecomendada, balance, euros } from '../../lib/solar.js';
+  import { recordarMunicipio, municipioGuardado } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.rapida')!;
+  const sel = form.querySelector<HTMLSelectElement>('select')!;
+  const factura = form.querySelector<HTMLInputElement>('[name=factura]')!;
+  const porSlug = Object.fromEntries(municipios.map((m) => [m.slug, m]));
+  const g = municipioGuardado();
+  if (g && porSlug[g]) sel.value = g;
+  function calcular() {
+    const m = porSlug[sel.value];
+    const consumo = consumoDesdeFactura(Number(factura.value) || 0);
+    if (consumo < 300) { form.querySelector('[data-ahorro]')!.textContent = '–'; return; }
+    const pot = potenciaRecomendada(consumo, m.anual);
+    const b = balance({ meses: m.meses, kwp: pot.kwp, consumoAnual: consumo, diurno: PERFILES.mixto.diurno });
+    form.querySelector('[data-ahorro]')!.textContent = euros(b.ahorro);
+    form.querySelector('[data-paneles]')!.textContent = String(pot.paneles);
+    recordarMunicipio(m.slug);
+  }
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  calcular();
+</script>
+
+<style>
+  .banda { background: var(--cantabrico); color: #DCEAEE; padding-block: 2.5rem 3.5rem; margin-top: 1rem; }
+  .banda h1 { color: var(--blanco); }
+  .banda .entradilla { color: #DCEAEE; }
+  .banda-rejilla { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  @media (max-width: 900px) { .banda-rejilla { grid-template-columns: 1fr; } }
+  .rapida { background: var(--blanco); color: var(--pizarra); border-radius: var(--radio-grande); padding: 1.5rem; display: grid; gap: 1rem; }
+  .resultado { font-family: var(--titular); font-weight: 800; font-size: 2.6rem; color: var(--cantabrico); line-height: 1; border-top: 1px solid var(--linea); padding-top: 1rem; }
+  .resultado small { display: block; font-size: 1rem; font-weight: 500; color: var(--ria); margin-top: .4rem; }
+
+  .herramientas { padding-block: 2.5rem 5rem; }
+  .ejemplo { margin-bottom: 1rem; }
+  .herramientas ol { list-style: none; padding: 0; border-top: 2px solid var(--cantabrico); }
+  .herramientas li { display: grid; grid-template-columns: 13rem 1fr auto; gap: 2rem; align-items: center; padding-block: 1.6rem; border-bottom: 1px solid var(--linea); }
+  .muestra b { display: block; font-family: var(--titular); font-weight: 800; font-size: 2rem; color: var(--prado); line-height: 1.05; }
+  .muestra span { font-size: .9rem; color: var(--ria); }
+  .texto h3 { font-size: 1.35rem; }
+  .texto h3 a { color: var(--cantabrico); text-decoration: none; }
+  .texto h3 a:hover { text-decoration: underline; }
+  .texto h3 a::after { content: ''; position: absolute; inset: 0; }
+  .herramientas li { position: relative; max-width: none; }
+  .texto p { margin-top: .35rem; }
+  .necesitas { font-size: .9rem; color: var(--ria); }
+  @media (max-width: 760px) {
+    .herramientas li { grid-template-columns: 1fr; gap: .8rem; }
+    .abrir { display: none; }
+  }
+</style>

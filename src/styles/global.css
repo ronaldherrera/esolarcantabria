@@ -1,0 +1,136 @@
+/* eSolar Cantabria · dirección «Sol del norte» (marca/propuesta-marca.html) */
+@import '@fontsource-variable/schibsted-grotesk';
+@import '@fontsource/atkinson-hyperlegible-next/400.css';
+@import '@fontsource/atkinson-hyperlegible-next/600.css';
+@import '@fontsource/atkinson-hyperlegible-next/400-italic.css';
+
+/* Las cifras del texto van en Schibsted: el cero de Atkinson lleva barra (Ø) y despista en importes */
+@font-face {
+  font-family: 'Cifras';
+  src: url('../../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2') format('woff2');
+  font-weight: 400 900;
+  font-display: swap;
+  unicode-range: U+0030-0039;
+}
+
+:root {
+  --cantabrico: #0F3B4C;
+  --cantabrico-hondo: #0A2C39;
+  --sol: #F2A71B;
+  --sol-suave: #FFF3D9;
+  --ria: #3B6E7E;
+  --ria-clara: #A9C9D3;
+  --prado: #2F7D4F;
+  --prado-suave: #E6F2EA;
+  --bruma: #EDF1F2;
+  --linea: #D5E0E3;
+  --pizarra: #1B2629;
+  --blanco: #FFFFFF;
+  --aviso: #A6401C;
+
+  --titular: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', system-ui, sans-serif;
+  --texto: 'Cifras', 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+
+  --ancho: 1160px;
+  --radio: 14px;
+  --radio-grande: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 6rem; }
+body {
+  font-family: var(--texto);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--pizarra);
+  background: var(--blanco);
+  text-rendering: optimizeLegibility;
+}
+@media (min-width: 900px) { body { font-size: 1.125rem; } }
+img, svg { display: block; max-width: 100%; height: auto; }
+input, select, textarea, button { font: inherit; color: inherit; }
+
+h1, h2, h3, h4 { font-family: var(--titular); color: var(--cantabrico); line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 800; }
+h3 { font-size: 1.3rem; font-weight: 700; }
+h4 { font-size: 1.08rem; font-weight: 700; }
+p, li { max-width: 68ch; text-wrap: pretty; }
+a { color: var(--ria); text-underline-offset: 3px; }
+a:hover { color: var(--cantabrico); }
+strong { font-weight: 600; }
+
+:focus-visible { outline: 3px solid var(--sol); outline-offset: 3px; border-radius: 4px; }
+
+.ancho { max-width: var(--ancho); margin-inline: auto; padding-inline: 1.25rem; }
+@media (min-width: 700px) { .ancho { padding-inline: 2rem; } }
+
+.bloque { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.bloque-bruma { background: var(--bruma); }
+.bloque-oscuro { background: var(--cantabrico); color: #DCEAEE; }
+.bloque-oscuro h2, .bloque-oscuro h3 { color: var(--blanco); }
+.bloque-oscuro a { color: var(--sol); }
+
+.entradilla { font-size: 1.15em; color: var(--pizarra); margin-top: 1rem; }
+.nota { font-size: .9rem; color: var(--ria); }
+.cifra { font-family: var(--titular); font-weight: 800; line-height: 1; color: var(--cantabrico); }
+
+/* Botones: azul sobre amarillo (5,9:1), nunca blanco sobre amarillo */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  background: var(--sol); color: var(--cantabrico);
+  font-family: var(--titular); font-weight: 700; font-size: 1.02rem; line-height: 1.2;
+  padding: .85rem 1.4rem; border-radius: 10px; border: 2px solid var(--sol);
+  text-decoration: none; cursor: pointer; transition: background-color .15s, border-color .15s;
+}
+.boton:hover { background: #E59A0C; border-color: #E59A0C; color: var(--cantabrico); }
+.boton-sec { background: transparent; border-color: var(--cantabrico); }
+.boton-sec:hover { background: var(--cantabrico); border-color: var(--cantabrico); color: var(--blanco); }
+.bloque-oscuro .boton-sec { border-color: var(--ria-clara); color: var(--blanco); }
+.bloque-oscuro .boton-sec:hover { background: var(--blanco); color: var(--cantabrico); }
+.boton-whatsapp { background: #1F7A4A; border-color: #1F7A4A; color: var(--blanco); }
+.boton-whatsapp:hover { background: #17633B; border-color: #17633B; color: var(--blanco); }
+.acciones { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+
+/* Texto largo (artículos, legales, guías) */
+.prosa { max-width: 70ch; }
+.prosa > * + * { margin-top: 1.05rem; }
+.prosa h2 { font-size: clamp(1.45rem, 2.6vw, 1.85rem); margin-top: 2.6rem; }
+.prosa h3 { margin-top: 2rem; }
+.prosa ul, .prosa ol { padding-left: 1.3rem; }
+.prosa li + li { margin-top: .4rem; }
+.prosa blockquote { border-left: 4px solid var(--sol); padding: .2rem 0 .2rem 1.1rem; color: var(--cantabrico); }
+.prosa table { width: 100%; border-collapse: collapse; font-size: .95rem; display: block; overflow-x: auto; }
+.prosa th, .prosa td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.prosa th { font-family: var(--titular); color: var(--cantabrico); font-weight: 700; }
+.prosa td.num, .prosa th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.prosa hr { border: 0; border-top: 1px solid var(--linea); margin-block: 2rem; }
+
+/* Cajas de aviso */
+.caja { border-radius: var(--radio); padding: 1.1rem 1.3rem; }
+.caja-aviso { background: var(--sol-suave); border-left: 4px solid var(--sol); border-radius: 0 var(--radio) var(--radio) 0; }
+.caja-dato { background: var(--bruma); }
+.caja-ok { background: var(--prado-suave); border-left: 4px solid var(--prado); border-radius: 0 var(--radio) var(--radio) 0; }
+
+/* Migas de pan */
+.migas { font-size: .9rem; color: var(--ria); padding-top: 1.5rem; }
+.migas ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+.migas li + li::before { content: '/'; margin-right: .35rem; color: var(--linea); }
+
+/* Formularios */
+.campo { display: grid; gap: .35rem; }
+.campo label, .etiqueta { font-weight: 600; color: var(--cantabrico); }
+.campo .ayuda { font-size: .88rem; color: var(--ria); }
+.entrada {
+  width: 100%; padding: .75rem .9rem; background: var(--blanco);
+  border: 1.5px solid #AFC3C9; border-radius: 10px; min-height: 48px;
+}
+.entrada:focus { border-color: var(--cantabrico); outline: 3px solid var(--sol); outline-offset: 0; }
+.entrada:user-invalid { border-color: var(--aviso); }
+
+.solo-lector { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

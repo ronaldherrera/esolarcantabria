@@ -1,0 +1,91 @@
+---
+// Marco común de las calculadoras: entradas, resultados y, debajo, cómo se calcula.
+import Base from '../layouts/Base.astro';
+import { calculadoras } from '../data/calculadoras.js';
+
+interface Props { slug: string; tituloSeo: string; descripcionSeo: string; entradilla: string }
+const { slug, tituloSeo, descripcionSeo, entradilla } = Astro.props;
+const calc = calculadoras.find((c) => c.slug === slug)!;
+const otras = calculadoras.filter((c) => c.slug !== slug);
+const esquema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: calc.titulo,
+  description: descripcionSeo,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Cualquiera (navegador)',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  inLanguage: 'es',
+};
+---
+<Base titulo={tituloSeo} descripcion={descripcionSeo} esquema={esquema}
+  migas={[{ nombre: 'Calculadoras', url: '/calculadoras/' }, { nombre: calc.corto, url: `/calculadoras/${slug}/` }]}>
+  <section class="ancho cabeza">
+    <h1>{calc.titulo}</h1>
+    <p class="entradilla">{entradilla}</p>
+  </section>
+
+  <section class="ancho calc">
+    <form class="entradas" onsubmit="return false" aria-label="Datos para el cálculo">
+      <slot name="entradas" />
+    </form>
+    <div class="resultados" aria-live="polite">
+      <slot name="resultados" />
+    </div>
+  </section>
+
+  <section class="bloque">
+    <div class="ancho metodo prosa">
+      <slot name="explicacion" />
+    </div>
+  </section>
+
+  <section class="bloque bloque-bruma">
+    <div class="ancho">
+      <h2>Otras calculadoras</h2>
+      <ul class="otras">
+        {otras.map((c) => <li><a href={`/calculadoras/${c.slug}/`}>{c.titulo}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cabeza { padding-block: 1.5rem 2rem; }
+  .calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 2rem; align-items: start; padding-bottom: 3rem; }
+  @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+  .entradas { background: var(--bruma); border-radius: var(--radio-grande); padding: clamp(1.2rem, 3vw, 1.8rem); display: grid; gap: 1.2rem; }
+  .resultados { position: sticky; top: 90px; display: grid; gap: 1rem; }
+  @media (max-width: 900px) { .resultados { position: static; } }
+  .otras { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .8rem 2rem; margin-top: 1.2rem; }
+  .otras a { font-weight: 600; }
+
+  /* Piezas compartidas por las calculadoras */
+  :global(.calc .grupo) { border: 0; padding: 0; display: grid; gap: .5rem; }
+  :global(.calc .grupo legend) { font-weight: 600; color: var(--cantabrico); margin-bottom: .4rem; }
+  :global(.calc .opcion) { display: flex; gap: .6rem; align-items: center; background: var(--blanco); border: 1.5px solid transparent; border-radius: 10px; padding: .6rem .8rem; cursor: pointer; }
+  :global(.calc .opcion:has(input:checked)) { border-color: var(--cantabrico); }
+  :global(.calc .opcion input) { accent-color: var(--cantabrico); width: 18px; height: 18px; }
+  :global(.calc .deslizador) { display: grid; grid-template-columns: 1fr 6.5rem; gap: .8rem; align-items: center; }
+  :global(.calc input[type=range]) { width: 100%; accent-color: var(--cantabrico); }
+  :global(.calc .supuestos summary) { cursor: pointer; font-weight: 600; color: var(--ria); }
+  :global(.calc .supuestos[open] summary) { margin-bottom: .9rem; }
+  :global(.calc .supuestos .campo + .campo) { margin-top: .8rem; }
+
+  :global(.calc .principal) { background: var(--cantabrico); color: #DCEAEE; border-radius: var(--radio-grande); padding: clamp(1.3rem, 3vw, 1.9rem); }
+  :global(.calc .principal .cifra) { color: var(--blanco); font-size: clamp(2.6rem, 6vw, 3.6rem); }
+  :global(.calc .principal .cifra small) { display: block; font-size: 1rem; font-weight: 500; color: var(--ria-clara); margin-top: .4rem; }
+  :global(.calc .principal p + p) { margin-top: .7rem; }
+  :global(.calc .datos) { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; list-style: none; padding: 0; }
+  :global(.calc .datos li) { background: var(--bruma); border-radius: var(--radio); padding: 1rem 1.1rem; }
+  :global(.calc .datos b) { display: block; font-family: var(--titular); font-size: 1.55rem; color: var(--cantabrico); font-weight: 800; line-height: 1.1; }
+  :global(.calc .datos span) { font-size: .9rem; color: var(--ria); }
+  :global(.calc .barras-doble) { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; align-items: end; height: 150px; background: var(--bruma); border-radius: var(--radio); padding: 1rem 1rem 0; }
+  :global(.calc .barras-doble .m) { position: relative; height: 100%; display: flex; align-items: flex-end; }
+  :global(.calc .barras-doble .p) { width: 100%; background: var(--sol); border-radius: 3px 3px 0 0; }
+  :global(.calc .barras-doble .c) { position: absolute; left: -2px; right: -2px; border-top: 3px solid var(--cantabrico); }
+  :global(.calc .leyenda) { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; font-size: .88rem; color: var(--ria); }
+  :global(.calc .leyenda .lp::before) { content: ''; display: inline-block; width: 12px; height: 10px; background: var(--sol); margin-right: .4rem; border-radius: 2px; }
+  :global(.calc .leyenda .lc::before) { content: ''; display: inline-block; width: 14px; border-top: 3px solid var(--cantabrico); margin-right: .4rem; vertical-align: middle; }
+  :global(.calc .cta-calc) { background: var(--sol-suave); border-radius: var(--radio); padding: 1.2rem; display: grid; gap: .7rem; }
+</style>

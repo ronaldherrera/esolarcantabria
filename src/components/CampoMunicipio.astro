@@ -1,0 +1,12 @@
+---
+import municipios from '../data/municipios.json';
+interface Props { id: string; inicial?: string }
+const { id, inicial = 'santander' } = Astro.props;
+const alfabetico = [...municipios].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+---
+<div class="campo">
+  <label for={id}>Municipio</label>
+  <select class="entrada" id={id} name="municipio" data-campo-municipio>
+    {alfabetico.map((m) => <option value={m.slug} selected={m.slug === inicial}>{m.nombre}</option>)}
+  </select>
+</div>

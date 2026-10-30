@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import FormularioPresupuesto from '../../components/FormularioPresupuesto.astro';
+import { getCollection, render } from 'astro:content';
+import { calculadoras } from '../../data/calculadoras.js';
+import { sitio } from '../../data/sitio.js';
+import fotos from '../../data/fotos.json';
+import Foto from '../../components/Foto.astro';
+
+export async function getStaticPaths() {
+  const articulos = await getCollection('blog');
+  return articulos.map((a) => ({ params: { slug: a.id }, props: { a, todos: articulos } }));
+}
+const { a, todos } = Astro.props;
+const { Content } = await render(a);
+const fecha = (d: Date) => d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+const calc = calculadoras.find((c) => c.slug === a.data.calculadora);
+const pos = todos.findIndex((x) => x.id === a.id);
+const relacionados = [1, 2, 3].map((k) => todos[(pos + k) % todos.length]).filter((x) => x.id !== a.id);
+const url = `/blog/${a.id}/`;
+const portada = a.data.imagen ? (fotos as Record<string, any>)[a.data.imagen] : undefined;
+
+const esquema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: a.data.titulo,
+  description: a.data.descripcion,
+  datePublished: a.data.fecha.toISOString(),
+  dateModified: (a.data.revisado ?? a.data.fecha).toISOString(),
+  author: { '@type': 'Organization', name: sitio.nombre, url: sitio.url },
+  publisher: { '@type': 'Organization', name: sitio.nombre, logo: { '@type': 'ImageObject', url: `${sitio.url}/marca/icono-512.png` } },
+  mainEntityOfPage: new URL(url, sitio.url).href,
+  inLanguage: 'es',
+  ...(portada ? { image: new URL(portada.src, sitio.url).href } : {}),
+  ...(a.data.fuentes.length ? { citation: a.data.fuentes.map((f) => f.url) } : {}),
+};
+---
+<Base titulo={a.data.titulo} descripcion={a.data.descripcion} tipo="article" esquema={esquema} imagen={portada?.src}
+  migas={[{ nombre: 'Guías', url: '/blog/' }, { nombre: a.data.titulo, url }]}>
+  <article class="ancho articulo">
+    <header>
+      <h1>{a.data.titulo}</h1>
+      <p class="entradilla">{a.data.descripcion}</p>
+      <p class="nota">
+        Publicado el <time datetime={a.data.fecha.toISOString()}>{fecha(a.data.fecha)}</time>
+        {a.data.revisado && <Fragment>. Revisado el <time datetime={a.data.revisado.toISOString()}>{fecha(a.data.revisado)}</time></Fragment>}.
+      </p>
+      {a.data.imagen && <Foto clave={a.data.imagen} alt={a.data.imagenAlt ?? ''} proporcion="2 / 1" prioridad class="portada" />}
+    </header>
+    <div class="prosa cuerpo">
+      <Content />
+    </div>
+    {a.data.fuentes.length > 0 && (
+      <aside class="fuentes">
+        <h2>Fuentes</h2>
+        <ul>{a.data.fuentes.map((f) => <li><a href={f.url} rel="noopener">{f.nombre}</a></li>)}</ul>
+      </aside>
+    )}
+    {calc && (
+      <aside class="caja caja-dato calc">
+        <h2>Calcúlalo para tu casa</h2>
+        <p>{calc.descripcion}</p>
+        <a class="boton" href={`/calculadoras/${calc.slug}/`}>{calc.titulo}</a>
+      </aside>
+    )}
+  </article>
+
+  <section class="bloque bloque-bruma">
+    <div class="ancho">
+      <h2>Sigue leyendo</h2>
+      <ul class="relacionados">
+        {relacionados.map((r) => {
+          const f = r.data.imagen ? (fotos as Record<string, any>)[r.data.imagen] : undefined;
+          return <li><a href={`/blog/${r.id}/`}>{f && <img src={f.src640} alt="" width="640" height={Math.round((640 * f.alto) / f.ancho)} loading="lazy">}<h3>{r.data.titulo}</h3><p>{r.data.descripcion}</p></a></li>;
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bloque bloque-oscuro">
+    <div class="ancho dos">
+      <div>
+        <h2>¿Lo vemos para tu casa?</h2>
+        <p style="margin-top:1rem">Te llama un instalador de la red que trabaja en tu zona y te da un presupuesto cerrado, sin compromiso.</p>
+      </div>
+      <FormularioPresupuesto id="presupuesto-articulo" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .articulo { padding-block: 1.5rem 4rem; display: grid; gap: 2.5rem; }
+  .articulo header { max-width: 60rem; }
+  .articulo :global(.portada) { margin-top: 2rem; }
+  .articulo h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); }
+  .cuerpo { font-size: 1.08rem; }
+  .fuentes, .calc { max-width: 70ch; }
+  .fuentes h2, .calc h2 { font-size: 1.25rem; margin-bottom: .7rem; }
+  .fuentes ul { padding-left: 1.2rem; display: grid; gap: .35rem; font-size: .95rem; }
+  .calc { padding: 1.5rem; display: grid; gap: .8rem; justify-items: start; }
+  .relacionados { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .relacionados a { display: block; height: 100%; background: var(--blanco); border-radius: var(--radio); padding: 1.4rem; text-decoration: none; color: var(--pizarra); border: 2px solid transparent; }
+  .relacionados a:hover { border-color: var(--cantabrico); }
+  .relacionados h3 { margin-bottom: .5rem; }
+  .relacionados img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; margin-bottom: .9rem; }
+  .relacionados a { padding: 1rem 1rem 1.3rem; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  @media (max-width: 900px) { .dos { grid-template-columns: 1fr; } }
+</style>

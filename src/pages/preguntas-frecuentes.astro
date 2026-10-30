@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import municipios from '../data/municipios.json';
+import { REFERENCIAS, numero } from '../lib/solar.js';
+
+const santander = municipios.find((m) => m.slug === 'santander')!;
+const masQueBerlin = municipios.filter((m) => m.anual > REFERENCIAS.berlin).length;
+
+const grupos = [
+  {
+    titulo: 'Sobre las placas en Cantabria',
+    preguntas: [
+      { p: '¿Funcionan las placas solares con el cielo nublado de Cantabria?', r: `Sí. Las placas producen con la luz difusa, aunque menos que con sol directo. Según PVGIS (Comisión Europea), cada kWp instalado en Santander produce ${numero(santander.anual)} kWh al año, más que en Berlín (${numero(REFERENCIAS.berlin)}). ${masQueBerlin} de los 102 municipios de Cantabria superan a Berlín.` },
+      { p: '¿Cuánto producen en invierno?', r: `Bastante menos que en verano. En Santander, un kWp produce unos ${numero(santander.meses[11])} kWh en diciembre frente a ${numero(santander.meses[6])} en julio. Por eso el ahorro se calcula mes a mes y no con una media.` },
+      { p: '¿Les afecta el salitre o la lluvia?', r: 'La lluvia las limpia. El salitre de primera línea de costa exige paneles y estructuras preparados para ambiente marino (los paneles certificados con la norma de niebla salina IEC 61701) y tornillería de acero inoxidable. Lo explicamos en la guía sobre placas junto al mar.' },
+      { p: '¿Y el viento del nordeste o la galerna?', r: 'La estructura se calcula para el viento de la zona según el Código Técnico de la Edificación. En una vivienda normal, sobre tejado, no suele ser un problema si la fijación está bien hecha.' },
+    ],
+  },
+  {
+    titulo: 'Sobre trámites y ayudas',
+    preguntas: [
+      { p: '¿Necesito licencia de obras?', r: 'No, si la instalación de autoconsumo es de menos de 100 kW: en Cantabria basta una declaración responsable en el ayuntamiento (Ley 5/2022, artículo 234). La excepción son los edificios o parcelas con protección de patrimonio cultural.' },
+      { p: '¿Qué ayudas hay en 2026?', r: 'Una deducción en el IRPF del 10 % (20 % en edificios de viviendas) de lo que pagues en 2026, con una base máxima de 5.000 € al año. Las bonificaciones del IBI dependen de cada ayuntamiento y muchas son solo para solar térmica. Todo está en la página de ayudas.' },
+      { p: '¿Qué pasa con la energía que no gasto?', r: 'Se vierte a la red y, con la compensación simplificada, tu comercializadora te la descuenta de la factura cada mes, con el límite de lo que pagas por la energía que compras ese mes.' },
+    ],
+  },
+  {
+    titulo: 'Sobre eSolar Cantabria',
+    preguntas: [
+      { p: '¿Por qué pedirlo a través de eSolar y no directamente a un instalador?', r: 'Puedes ir directo, claro. A través de la red, los instaladores están revisados, eSolar Cantabria da la cara si hay un problema y media con el instalador, quien no cumple deja de recibir clientes, el material sale a mejor precio por volumen, te conseguimos un segundo presupuesto si quieres comparar y hacemos seguimiento después de instalar.' },
+      { p: '¿Quién me hace la instalación?', r: 'Un instalador de nuestra red que trabaja en tu zona. eSolar Cantabria es una red de instaladores: tú pides el presupuesto aquí y te lo prepara él.' },
+      { p: '¿Qué hacéis con mis datos?', r: 'Solo se los pasamos al instalador de la red que te va a atender, para que prepare tu presupuesto. No los vendemos ni los usamos para nada más. Detalles en la política de privacidad.' },
+      { p: '¿Pedir presupuesto me compromete a algo?', r: 'No. Te llaman, te dan un presupuesto cerrado y decides tú.' },
+    ],
+  },
+];
+const esquema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: grupos.flatMap((g) => g.preguntas).map((q) => ({ '@type': 'Question', name: q.p, acceptedAnswer: { '@type': 'Answer', text: q.r } })),
+};
+---
+<Base titulo="Preguntas frecuentes sobre placas solares en Cantabria"
+  descripcion="Respuestas claras sobre placas solares en Cantabria: si funcionan con nubes, cuánto producen en invierno, licencias, ayudas, excedentes y cómo trabaja la red de instaladores."
+  esquema={esquema}
+  migas={[{ nombre: 'Preguntas frecuentes', url: '/preguntas-frecuentes/' }]}>
+  <section class="ancho cabeza">
+    <h1>Preguntas frecuentes</h1>
+    <p class="entradilla">Lo que más nos preguntan sobre placas solares en Cantabria, con datos.</p>
+  </section>
+  <section class="ancho contenido">
+    {grupos.map((g) => (
+      <div class="grupo">
+        <h2>{g.titulo}</h2>
+        {g.preguntas.map((q) => <details><summary>{q.p}</summary><p>{q.r}</p></details>)}
+      </div>
+    ))}
+    <div class="caja caja-dato"><p>¿No está tu pregunta? Escríbenos desde la página de <a href="/presupuesto/">presupuesto</a> y te respondemos.</p></div>
+  </section>
+</Base>
+
+<style>
+  .cabeza { padding-block: 1.5rem 1.5rem; }
+  .contenido { padding-bottom: 5rem; max-width: 860px; margin-left: max(0px, calc((100vw - var(--ancho)) / 2)); }
+  .grupo { display: grid; gap: .7rem; margin-bottom: 2.6rem; }
+  .grupo h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+  details { background: var(--bruma); border-radius: var(--radio); padding: 1rem 1.2rem; }
+  summary { cursor: pointer; font-family: var(--titular); font-weight: 700; color: var(--cantabrico); font-size: 1.08rem; }
+  details p { margin-top: .7rem; }
+</style>

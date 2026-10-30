@@ -1,0 +1,104 @@
+---
+import CalcMarco from '../../components/CalcMarco.astro';
+import CampoMunicipio from '../../components/CampoMunicipio.astro';
+import { SUPUESTOS } from '../../lib/solar.js';
+---
+<CalcMarco slug="cuantas-placas-necesito"
+  tituloSeo="¿Cuántas placas solares necesito? Calculadora para Cantabria"
+  descripcionSeo="Calcula cuántas placas solares necesita tu casa en Cantabria según tu consumo y el sol real de tu municipio: número de paneles, potencia en kWp y metros de tejado."
+  entradilla="Pon tu consumo anual (viene en la factura) y la parte que quieres cubrir. El número de paneles sale de lo que produce un panel en tu municipio, no de una media de España.">
+
+  <Fragment slot="entradas">
+    <CampoMunicipio id="c-municipio" />
+    <div class="campo">
+      <label for="c-consumo">Consumo de luz al año</label>
+      <div class="deslizador">
+        <input type="range" min="1000" max="15000" step="100" value="4000" aria-label="Consumo anual (deslizador)">
+        <input class="entrada" id="c-consumo" name="consumo" type="number" min="300" max="100000" step="100" value="4000" inputmode="numeric">
+      </div>
+      <span class="ayuda">En kWh. Si no lo sabes, la <a href="/calculadoras/ahorro-placas-solares/">calculadora de ahorro</a> lo estima con tu factura.</span>
+    </div>
+    <div class="campo">
+      <label for="c-cubrir">Parte del consumo que quieres producir</label>
+      <div class="deslizador">
+        <input type="range" min="30" max="130" step="5" value="80" aria-label="Porcentaje a cubrir (deslizador)">
+        <input class="entrada" id="c-cubrir" name="cubrir" type="number" min="10" max="200" step="5" value="80" inputmode="numeric">
+      </div>
+      <span class="ayuda">En %. Sin batería, entre el 60 y el 90 % suele ser lo razonable.</span>
+    </div>
+    <div class="campo">
+      <label for="c-panel">Potencia de cada panel (W)</label>
+      <select class="entrada" id="c-panel" name="panel">
+        <option value="0.41">410 W</option>
+        <option value="0.45" selected>450 W</option>
+        <option value="0.5">500 W</option>
+      </select>
+    </div>
+  </Fragment>
+
+  <Fragment slot="resultados">
+    <div class="principal">
+      <p class="cifra"><span data-r="paneles">–</span><small>paneles de <span data-r="w">–</span></small></p>
+      <p><span data-r="kwp">–</span> de potencia, que producen unos <strong data-r="produccion">–</strong> al año en <span data-r="nombre">–</span>.</p>
+    </div>
+    <ul class="datos">
+      <li><b data-r="m2">–</b><span>de tejado, contando las separaciones</span></li>
+      <li><b data-r="porpanel">–</b><span>produce cada panel al año allí</span></li>
+      <li><b data-r="invierno">–</b><span>producidos en diciembre</span></li>
+      <li><b data-r="verano">–</b><span>producidos en julio</span></li>
+    </ul>
+    <p class="nota" data-r="aviso"></p>
+    <div class="cta-calc">
+      <p>El número final depende de tu tejado: orientación, sombras y espacio real. Un instalador de la red lo comprueba en la visita.</p>
+      <a class="boton" href="/presupuesto/" data-pedir>Pedir presupuesto con estos datos</a>
+    </div>
+  </Fragment>
+
+  <Fragment slot="explicacion">
+    <h2>Cómo se calcula</h2>
+    <p>Dividimos la energía que quieres producir entre lo que produce un panel en tu municipio. Lo que produce cada kWp sale de PVGIS (Comisión Europea), con la inclinación óptima y el horizonte real del terreno. Redondeamos a paneles enteros.</p>
+    <p>Para el tejado contamos unos {SUPUESTOS.superficiePanel} m² por panel, que incluye las separaciones entre filas y los bordes. En un tejado inclinado bien orientado puede bastar algo menos.</p>
+    <h3>¿Por qué no cubrir el 100 %?</h3>
+    <p>Porque sin batería solo aprovechas directamente lo que gastas mientras hay sol. En verano sobra energía y en invierno falta, y los excedentes se pagan bastante peor que la luz que compras. Cubrir en torno al 80 % del consumo anual suele dar el mejor equilibrio entre inversión y ahorro. Si tienes batería, coche eléctrico o aerotermia, tiene sentido subir.</p>
+  </Fragment>
+</CalcMarco>
+
+<script>
+  import municipios from '../../data/municipios.json';
+  import { SUPUESTOS, kwh, numero } from '../../lib/solar.js';
+  import { enlazarDeslizadores, valor, escribir, guardarCalculo, municipioGuardado, recordarMunicipio } from '../../lib/calc-ui.js';
+
+  const form = document.querySelector<HTMLFormElement>('.calc form')!;
+  const res = document.querySelector<HTMLElement>('.calc .resultados')!;
+  const porSlug = Object.fromEntries(municipios.map((m) => [m.slug, m]));
+  enlazarDeslizadores(form);
+  const guardado = municipioGuardado();
+  if (guardado && porSlug[guardado]) (form.elements.namedItem('municipio') as HTMLSelectElement).value = guardado;
+
+  let resumen = '';
+  function calcular() {
+    const m = porSlug[valor(form, 'municipio')];
+    const consumo = valor(form, 'consumo') || 0;
+    const cubrir = (valor(form, 'cubrir') || 80) / 100;
+    const kwpPanel = Number(valor(form, 'panel'));
+    const porPanel = m.anual * kwpPanel;
+    const paneles = Math.max(1, Math.round((consumo * cubrir) / porPanel));
+    const kwp = paneles * kwpPanel;
+    escribir(res, 'paneles', numero(paneles));
+    escribir(res, 'w', `${kwpPanel * 1000} W`);
+    escribir(res, 'kwp', `${numero(kwp, 2)} kWp`);
+    escribir(res, 'produccion', kwh(kwp * m.anual));
+    escribir(res, 'nombre', m.nombre);
+    escribir(res, 'm2', `${Math.ceil(paneles * SUPUESTOS.superficiePanel)} m²`);
+    escribir(res, 'porpanel', kwh(porPanel));
+    escribir(res, 'invierno', kwh(kwp * m.meses[11]));
+    escribir(res, 'verano', kwh(kwp * m.meses[6]));
+    escribir(res, 'aviso', kwp > 15 ? 'Por encima de 15 kW la tramitación con la distribuidora cambia: tu instalador te lo explicará.' : `Tu consumo medio es de ${kwh(consumo / 12)} al mes.`);
+    resumen = `Calculadora de paneles: ${m.nombre}, consumo ${kwh(consumo)}/año, cubrir ${Math.round(cubrir * 100)} %. Resultado: ${paneles} paneles de ${kwpPanel * 1000} W (${numero(kwp, 2)} kWp).`;
+    recordarMunicipio(m.slug);
+  }
+  form.addEventListener('input', calcular);
+  form.addEventListener('change', calcular);
+  res.querySelector('[data-pedir]')!.addEventListener('click', () => guardarCalculo(resumen, porSlug[valor(form, 'municipio')].nombre));
+  calcular();
+</script>
